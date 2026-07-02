@@ -56,7 +56,19 @@ Remaining: fix focus-ring contrast on green button (use `outline: 3px solid #FFF
 ## SiteGenius skill (7-phase pipeline)
 Local: `C:\Users\Owner\.claude\skills\sitegenius\`. Two modes: **LocalSite** (premium 9/10, GSAP, lean, $2.5k–$8k — default) and **AwardsSite** (immersive 9.5/10, + Three.js WebGL, $12k+). AwardsSite WebGL rules: desktop + hover:hover + motion-on only, off ≤900px and reduced-motion, DPR ≤1.5, pause offscreen, mask shader away from text, `if(!window.THREE) return` fallback.
 Phases: 0 brief → 1 tokens/fonts (avoid Inter/Roboto; use Fraunces/Playfair/Syne/etc.) → 2 Figma → 3 AI assets (Higgsfield, ask first) → 4 motion (GSAP+SplitText+ScrollTrigger, transform/opacity only) → 5 luxury CSS (blend modes, clip-path reveals, tilt ≤12deg, horizontal scroll desktop-only) → 6 components (React only) → 7 QA/ship (375/768/1280/1920 screenshots, CWV green, zero console errors).
-Awwwards techniques reference: `skills/sitegenius/references/awwwards-techniques.md` in this repo (copy to local skill dir).
+### Reference bundle in this repo (`skills/sitegenius/references/`)
+- `awwwards-techniques.md` — 7-studio spectacle techniques (VATs, stencil masking, continuity element…)
+- `awwwards-research-2026.md` — rated 2026 winner techniques (progress-uniform, parabola easing…)
+- `functional-sites-2026.md` — conversion patterns + data (10-second test, 3-field forms, pricing anchors…)
+- `design-fundamentals-2026.md` — type scales, OKLCH color, layered shadows, bento, micro-interactions, nav
+- `imagery-direction.md` — art direction, grading to palette, per-industry image recipes
+- `seo-copy-playbook.md` — LocalBusiness JSON-LD, on-page checklist, PAS/AIDA/FAB copy recipes
+- `intake-menu.md` — **MANDATORY kickoff flow**: when Kallon asks for a site, first ask "menu or you decide?"; if menu, run the AskUserQuestion multiple-choice flow (options + Other); if no, decide everything and build.
+
+### Starter template
+`templates/localsite-starter/index.html` — production base for $350 builds (tokens, fluid type, layered shadows, click-to-call sticky header, bento services, 3-field Supabase form, NAP footer, JSON-LD, reveals, a11y). Verified clean at 375/1280. Start every LocalSite from it.
+
+(Copy files to local skill dir `C:\Users\Owner\.claude\skills\sitegenius\` as needed.)
 
 ## Known bugs / lessons
 | Problem | Fix |

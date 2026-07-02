@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+  RNR LocalSite Starter — production base for $350-band builds
+  Replace every {{PLACEHOLDER}}. Swap :root tokens per client.
+  Baked in: fluid type scale, layered shadows, grain, sticky
+  shrink header + click-to-call, bento services, 3-field form
+  (Supabase + honeypot), NAP footer, LocalBusiness JSON-LD,
+  scroll reveals, focus-visible, reduced-motion, 375px-safe.
+============================================================ -->
+<title>{{SERVICE}} in {{CITY}} | {{BUSINESS_NAME}}</title>
+<meta name="description" content="{{META_DESCRIPTION_155_CHARS_BENEFIT_PLUS_CTA}}">
+<link rel="canonical" href="https://{{DOMAIN}}/">
+<meta property="og:title" content="{{SERVICE}} in {{CITY}} | {{BUSINESS_NAME}}">
+<meta property="og:description" content="{{META_DESCRIPTION_155_CHARS_BENEFIT_PLUS_CTA}}">
+<meta property="og:image" content="https://{{DOMAIN}}/{{HERO_IMAGE}}.webp">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231A150F'/><circle cx='16' cy='16' r='6' fill='%23B0492A'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Swap fonts per client vibe; keep display+body pairing, never Inter/Roboto -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "{{SCHEMA_TYPE_e.g_Restaurant_Electrician_HairSalon}}",
+  "name": "{{BUSINESS_NAME}}",
+  "description": "{{ONE_SENTENCE}}",
+  "url": "https://{{DOMAIN}}",
+  "telephone": "{{PHONE_E164}}",
+  "email": "{{EMAIL}}",
+  "image": "https://{{DOMAIN}}/{{HERO_IMAGE}}.webp",
+  "address": { "@type": "PostalAddress", "streetAddress": "{{STREET}}", "addressLocality": "{{CITY}}", "addressRegion": "{{PROVINCE}}", "postalCode": "{{POSTAL}}", "addressCountry": "CA" },
+  "geo": { "@type": "GeoCoordinates", "latitude": {{LAT}}, "longitude": {{LNG}} },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "{{OPENS}}", "closes": "{{CLOSES}}" }],
+  "priceRange": "{{$$}}",
+  "areaServed": "{{CITY_AND_REGION}}",
+  "sameAs": ["{{GBP_URL}}"]
+}
+</script>
+<style>
+  /* ============ TOKENS — swap this block per client ============ */
+  :root{
+    --bg:#EFE9DE; --surface:#FAF6EF; --surface-2:#F1EADC;
+    --ink:#1A150F; --muted:#5F5544; --line:#DDD2BE;
+    --accent:#B0492A; --accent-deep:#893821; --accent-soft:#EBD7C9;
+    --display:"Fraunces",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    /* Fluid type — Major Third-ish, 375px→1280px (Utopia-style) */
+    --step--1:clamp(.88rem,.85rem + .13vw,.95rem);
+    --step-0:clamp(1rem,.96rem + .18vw,1.1rem);
+    --step-1:clamp(1.2rem,1.13rem + .32vw,1.38rem);
+    --step-2:clamp(1.44rem,1.31rem + .56vw,1.75rem);
+    --step-3:clamp(1.73rem,1.5rem + .96vw,2.28rem);
+    --step-4:clamp(2.07rem,1.71rem + 1.55vw,2.95rem);
+    --step-5:clamp(2.49rem,1.92rem + 2.42vw,3.85rem);
+    --r-sm:8px; --r-md:14px; --r-lg:22px;
+    /* Layered warm shadows — never single, never pure black */
+    --shadow-sm:0 1px 2px rgba(26,21,15,.05),0 2px 10px rgba(26,21,15,.07);
+    --shadow-md:0 2px 4px rgba(26,21,15,.04),0 8px 24px rgba(26,21,15,.09),0 24px 48px rgba(26,21,15,.08);
+    --shadow-lg:0 4px 8px rgba(26,21,15,.04),0 14px 36px rgba(26,21,15,.10),0 40px 80px rgba(26,21,15,.14);
+    --maxw:1160px; --dur:.5s; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  /* ============ BASE ============ */
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  ::selection{background:var(--accent);color:#fff}
+  img{max-width:100%;display:block}
+  h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-optical-sizing:auto;text-wrap:balance}
+  h1{font-size:var(--step-5);line-height:1.04}
+  h2{font-size:var(--step-4);line-height:1.08}
+  h3{font-size:var(--step-1);line-height:1.18}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 clamp(20px,5vw,44px)}
+  .grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.06;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:#fff;padding:10px 18px;z-index:100;border-radius:0 0 var(--r-sm) 0}
+  .skip:focus{left:0}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+  section{padding:clamp(64px,10vw,120px) 0}
+  /* ============ HEADER — sticky, shrinks on scroll ============ */
+  header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+  header.scrolled{border-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;transition:padding .3s var(--ease)}
+  header.scrolled .nav{padding:11px 0}
+  .logo{font-family:var(--display);font-weight:900;font-size:var(--step-1);letter-spacing:-.02em}
+  .logo em{color:var(--accent);font-style:normal}
+  .nav-links{display:flex;gap:clamp(16px,3vw,34px);align-items:center;list-style:none}
+  .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;font-weight:700;font-size:var(--step--1);padding:13px 26px;border-radius:999px;border:none;cursor:pointer;box-shadow:var(--shadow-sm);transition:background .25s,transform .25s var(--ease),box-shadow .25s}
+  .btn:hover{background:var(--accent-deep);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .btn:active{transform:scale(.96)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+  .btn-ghost:hover{background:var(--surface);border-color:var(--muted)}
+  .call-link{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:var(--step--1);color:var(--ink)}
+  .call-link svg{color:var(--accent)}
+  /* ============ HERO — must pass the 10-second test ============ */
+  .hero{padding:clamp(56px,9vw,110px) 0 clamp(56px,8vw,96px)}
+  .hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,64px);align-items:center}
+  .hero p.lede{font-size:var(--step-1);color:var(--muted);max-width:34ch;margin:22px 0 30px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .trust{display:flex;gap:10px;align-items:center;margin-top:26px;font-size:var(--step--1);color:var(--muted);font-weight:600}
+  .stars{display:flex;gap:2px;color:var(--accent)}
+  .hero-media{position:relative}
+  .hero-media img{border-radius:var(--r-lg);box-shadow:var(--shadow-lg);aspect-ratio:4/5;object-fit:cover;width:100%}
+  /* ============ SERVICES — bento, anchor ≥2× ============ */
+  .bento{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:minmax(190px,auto);gap:20px;margin-top:clamp(32px,5vw,56px)}
+  .cell{background:var(--surface);border:1px solid rgba(26,21,15,.07);border-radius:var(--r-md);padding:clamp(24px,3vw,36px);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;justify-content:flex-end;gap:10px;transition:transform .3s var(--ease),box-shadow .3s}
+  .cell:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+  .cell.anchor{grid-column:span 2;grid-row:span 2;background:var(--surface-2);justify-content:space-between}
+  .cell .num{font-family:var(--display);font-weight:900;font-size:var(--step-2);color:var(--accent);opacity:.9}
+  .cell p{font-size:var(--step--1);color:var(--muted)}
+  .cell svg{width:30px;height:30px;color:var(--accent)}
+  /* ============ PROOF ============ */
+  .proof{background:var(--surface)}
+  blockquote{font-family:var(--display);font-size:var(--step-3);line-height:1.25;font-weight:500;max-width:22ch;text-wrap:balance}
+  blockquote em{color:var(--accent);font-style:italic}
+  .attrib{margin-top:24px;font-weight:700}
+  .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
+  /* ============ CTA BAND ============ */
+  .cta-band{background:var(--ink);color:var(--bg);border-radius:var(--r-lg);padding:clamp(40px,6vw,72px);display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap;box-shadow:var(--shadow-lg)}
+  .cta-band h2{max-width:16ch}
+  /* ============ CONTACT — 3 fields max ============ */
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,72px)}
+  .nap{display:grid;gap:14px;margin-top:26px;font-size:var(--step--1);color:var(--muted)}
+  .nap strong{color:var(--ink)}
+  form{display:grid;gap:16px;background:var(--surface);border:1px solid rgba(26,21,15,.07);border-radius:var(--r-lg);padding:clamp(26px,4vw,40px);box-shadow:var(--shadow-md)}
+  label{font-weight:700;font-size:var(--step--1);display:grid;gap:7px}
+  input,textarea{font:inherit;font-size:16px;/* prevents iOS zoom */padding:13px 15px;border:1.5px solid var(--line);border-radius:var(--r-sm);background:var(--bg);color:var(--ink);transition:border-color .2s,box-shadow .2s;width:100%}
+  input:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+  textarea{min-height:110px;resize:vertical}
+  .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em}
+  .form-msg.ok{color:#2E6B3F}.form-msg.err{color:var(--accent-deep)}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  /* ============ FOOTER — dead-end catcher + NAP ============ */
+  footer{background:var(--surface-2);border-top:1px solid var(--line);padding:clamp(44px,6vw,72px) 0 32px;margin-top:clamp(64px,10vw,120px)}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
+  .foot-grid h3{font-size:var(--step-0)}
+  .foot-grid ul{list-style:none;display:grid;gap:9px;margin-top:14px;font-size:var(--step--1);color:var(--muted)}
+  .foot-grid a:hover{color:var(--accent)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:44px;padding-top:22px;font-size:var(--step--1);color:var(--muted)}
+  /* ============ REVEALS ============ */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  /* ============ MOBILE ≤900px — overlap-safe ============ */
+  @media(max-width:900px){
+    .hero-grid,.contact-grid{grid-template-columns:1fr}
+    .hero-media img{aspect-ratio:16/10}
+    .bento{grid-template-columns:1fr}
+    .cell.anchor{grid-column:span 1;grid-row:span 1}
+    .nav-links{display:none}/* replace with overlay menu if >4 pages */
+    .foot-grid{grid-template-columns:1fr}
+    .cta-band{flex-direction:column;align-items:flex-start}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .btn,.cell{transition:none}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+
+<header id="hdr">
+  <div class="container nav">
+    <a class="logo" href="#top">{{BUSINESS}}<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;gap:18px;align-items:center">
+      <a class="call-link" href="tel:{{PHONE_E164}}" aria-label="Call {{BUSINESS_NAME}}">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        {{PHONE_DISPLAY}}
+      </a>
+      <a class="btn" href="#contact">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO: answers "can you fix my problem / can I trust you / how do I contact you" above the fold -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="rv">
+        <p class="eyebrow">{{CITY}} · {{INDUSTRY}}</p>
+        <h1 style="margin-top:14px">{{BENEFIT_HEADLINE_WITH_NUMBER_MAX_10_WORDS}}</h1>
+        <p class="lede">{{WHO_ITS_FOR_AND_WHAT_CHANGES_ONE_SENTENCE}}</p>
+        <div class="hero-ctas">
+          <a class="btn" href="#contact">{{PRIMARY_CTA_e.g_Get_your_free_quote}}</a>
+          <a class="btn btn-ghost" href="#services">See services</a>
+        </div>
+        <div class="trust">
+          <span class="stars" aria-hidden="true">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
+          </span>
+          {{TRUST_LINE_e.g_5.0_from_38_Google_reviews_·_Serving_Winnipeg_since_2014}}
+        </div>
+      </div>
+      <div class="hero-media rv">
+        <img src="{{HERO_IMAGE}}.webp" width="720" height="900" fetchpriority="high"
+             alt="{{DESCRIPTIVE_ALT_showing_the_business_or_its_work}}">
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES: bento — anchor cell = the money service, ≥2× area -->
+  <section id="services">
+    <div class="container">
+      <p class="eyebrow rv">What we do</p>
+      <h2 class="rv" style="margin-top:12px;max-width:18ch">{{SERVICES_HEADING}}</h2>
+      <div class="bento">
+        <article class="cell anchor rv">
+          <span class="num">01</span>
+          <div>
+            <h3>{{FLAGSHIP_SERVICE}}</h3>
+            <p>{{FAB_COPY_feature_advantage_benefit_25_words}}</p>
+          </div>
+        </article>
+        <article class="cell rv"><span class="num">02</span><h3>{{SERVICE_2}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
+        <article class="cell rv"><span class="num">03</span><h3>{{SERVICE_3}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
+        <article class="cell rv"><span class="num">04</span><h3>{{SERVICE_4}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
+        <article class="cell rv"><span class="num">05</span><h3>{{SERVICE_5}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF: one strong real quote beats six weak ones -->
+  <section class="proof" id="about">
+    <div class="container">
+      <p class="eyebrow rv">Why {{CITY}} trusts us</p>
+      <blockquote class="rv" style="margin-top:18px">“{{REAL_QUOTE_with_a_<em>specific_result</em>_highlighted}}”</blockquote>
+      <p class="attrib rv">{{CUSTOMER_FULL_NAME}}<span>{{CONTEXT_e.g_Homeowner_River_Heights}}</span></p>
+    </div>
+  </section>
+
+  <!-- CTA BAND: restate offer, one action -->
+  <section aria-label="Call to action">
+    <div class="container">
+      <div class="cta-band rv">
+        <h2>{{RESTATED_OFFER_e.g_Ready_for_a_kitchen_you_love?}}</h2>
+        <a class="btn" href="#contact" style="background:var(--accent)">{{PRIMARY_CTA}}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT: 3 fields + honeypot; qualify AFTER the lead exists -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-top:12px">{{CONTACT_HEADING}}</h2>
+        <div class="nap">
+          <p><strong>{{BUSINESS_NAME}}</strong><br>{{STREET}}, {{CITY}}, {{PROVINCE}} {{POSTAL}}</p>
+          <p><strong>Call:</strong> <a href="tel:{{PHONE_E164}}" style="color:var(--accent);font-weight:700">{{PHONE_DISPLAY}}</a></p>
+          <p><strong>Email:</strong> <a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
+          <p><strong>Hours:</strong> {{HOURS_HUMAN}}</p>
+          <p><strong>Service area:</strong> {{AREAS_LIST}}</p>
+        </div>
+      </div>
+      <form id="lead-form" class="rv" novalidate>
+        <label>Name <input type="text" name="name" autocomplete="name" required></label>
+        <label>Email <input type="email" name="email" autocomplete="email" required></label>
+        <label>How can we help? <textarea name="message" required></textarea></label>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn" type="submit">{{FORM_CTA_e.g_Get_my_free_quote}}</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">{{BUSINESS}}<em>.</em></a>
+        <p style="margin-top:14px;color:var(--muted);font-size:var(--step--1);max-width:36ch">{{ONE_SENTENCE}}</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:{{PHONE_E164}}">{{PHONE_DISPLAY}}</a></li>
+          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
+          <li>{{STREET}}, {{CITY}} {{PROVINCE}}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr"></span> {{BUSINESS_NAME}}. All rights reserved.</span>
+      <span>Site by <a href="https://webelt.ca" style="font-weight:700">RNR Solutions</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sticky header shrink
+  const hdr = document.getElementById('hdr');
+  addEventListener('scroll', () => hdr.classList.toggle('scrolled', scrollY > 24), { passive: true });
+
+  // Scroll reveals — IntersectionObserver, transform/opacity only
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  }), { threshold: .12, rootMargin: '0px 0px -40px' });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Lead form → Supabase (paste real credentials)
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const form = document.getElementById('lead-form');
+  const msg = form.querySelector('.form-msg');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form._gotcha.value) return; // honeypot
+    const btn = form.querySelector('button');
+    if (!form.name.value.trim() || !form.email.value.includes('@') || !form.message.value.trim()) {
+      msg.textContent = 'Please fill in all three fields.'; msg.className = 'form-msg err'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY },
+        body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() })
+      });
+      if (!r.ok) throw 0;
+      msg.textContent = 'Thanks — we’ll be in touch within one business day.'; msg.className = 'form-msg ok';
+      form.reset();
+    } catch {
+      msg.textContent = 'Something went wrong — call us at {{PHONE_DISPLAY}} instead.'; msg.className = 'form-msg err';
+    }
+    btn.disabled = false; btn.textContent = '{{FORM_CTA_e.g_Get_my_free_quote}}';
+  });
+</script>
+</body>
+</html>
