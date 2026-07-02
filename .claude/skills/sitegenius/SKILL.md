@@ -25,7 +25,14 @@ Read `skills/sitegenius/references/design-planning.md`. Pick the industry preset
 
 ## Step 4 — Build
 - LocalSite / landing: copy `templates/localsite-starter/index.html`, replace every `{{PLACEHOLDER}}`, swap the `:root` token block to the client palette + fonts (never Inter/Roboto; reach for Fraunces, Playfair, Syne, Instrument Serif).
-- AwardsSite: same base + GSAP motion system + WebGL layer (desktop + hover:hover + motion-on only, off ≤900px, DPR ≤1.5, pause offscreen, `if(!window.THREE) return`; three pinned @0.158.0).
+- **LocalSite is Premium 9/10 — the template alone is NOT done.** Every LocalSite also gets the motion + luxury layer:
+  - GSAP (`cdn.jsdelivr.net/npm/gsap@3` + ScrollTrigger + SplitText, all free): SplitText stagger reveal on the hero headline; ScrollTrigger reveals with stagger on cards/sections (not uniform fade-ins).
+  - Custom cursor: `mix-blend-mode: difference` ring, grows on interactive hover — desktop `(hover:hover)` only.
+  - Hover tilt on cards (perspective, ≤12deg) and magnetic pull on primary CTAs — desktop only.
+  - Luxury CSS: at least two of — clip-path reveal (`inset(100% 0 0 0)` → `0%`), oversized italic/serif editorial moments, parallax depth on decorative layers, count-up numbers, blend-mode accents.
+  - Deliberate whitespace variance + section background rhythm (bg → surface → bg → ink) — equal-padding uniform sections read as template output.
+  - All of it: `transform`/`opacity` only, dead under `prefers-reduced-motion`, hidden ≤900px where decorative.
+- AwardsSite: everything above + WebGL layer (desktop + hover:hover + motion-on only, off ≤900px, DPR ≤1.5, pause offscreen, `if(!window.THREE) return`; three pinned @0.158.0).
 - The example build for reference: `index.html` at repo root (webelt.ca) — read it for tone and craft level; NEVER modify it.
 
 ## Step 5 — QA before saying done (hard gates)
