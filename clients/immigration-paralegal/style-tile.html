@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Style Tile — Immigration & Paralegal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F7F4EE; --surface:#FDFBF7; --ink:#17233B; --muted:#55617A;
+    --brass:#9C7A3C; --navy:#1F2E4D; --accent:#8C3B2E; --line:#DFD8C9;
+    --display:"Playfair Display",Georgia,serif; --body:"Hanken Grotesk",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{width:1280px;height:800px;overflow:hidden;background:var(--paper);color:var(--ink);font-family:var(--body);padding:44px 52px;display:grid;grid-template-columns:7fr 5fr;grid-template-rows:auto 1fr;gap:36px}
+  .tile-head{grid-column:1/-1;display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:18px}
+  .tile-head h1{font-family:var(--display);font-size:22px;font-weight:600}
+  .tile-head span{font-size:13px;color:var(--muted);font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+  .col{display:flex;flex-direction:column;gap:28px}
+  /* Type specimen */
+  .spec .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass);margin-bottom:12px}
+  .spec h2{font-family:var(--display);font-weight:600;font-size:52px;line-height:1.06;letter-spacing:-.015em;max-width:16ch}
+  .spec h2 em{font-style:italic;color:var(--accent)}
+  .spec p{margin-top:16px;font-size:16.5px;line-height:1.65;color:var(--muted);max-width:52ch}
+  /* Buttons */
+  .btn-row{display:flex;gap:14px;align-items:center}
+  .btn{display:inline-flex;align-items:center;font-weight:700;font-size:14.5px;padding:13px 26px;border-radius:6px;border:none}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary.hover{background:#2C3F66;box-shadow:0 2px 4px rgba(23,35,59,.08),0 8px 20px rgba(23,35,59,.16)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-ghost.hover{border-color:var(--brass);color:var(--navy);background:var(--surface)}
+  .lbl{font-size:11px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:10px}
+  /* Swatches */
+  .swatches{display:flex;gap:10px}
+  .sw{width:86px;height:86px;border-radius:8px;border:1px solid rgba(23,35,59,.1);display:flex;align-items:flex-end;padding:8px;font-size:10.5px;font-weight:700;letter-spacing:.03em}
+  /* Card sample */
+  .card{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--brass);border-radius:8px;padding:24px;max-width:420px}
+  .card .num{font-family:var(--display);font-style:italic;font-size:20px;color:var(--brass)}
+  .card h3{font-family:var(--display);font-size:20px;font-weight:600;margin:8px 0 6px}
+  .card p{font-size:14px;line-height:1.6;color:var(--muted)}
+  /* Mini hero mock */
+  .hero-mock{background:var(--navy);color:var(--paper);border-radius:10px;padding:34px 32px;display:flex;flex-direction:column;justify-content:space-between;height:100%;position:relative;overflow:hidden}
+  .hero-mock::after{content:"";position:absolute;right:-60px;top:-60px;width:230px;height:230px;border-radius:50%;border:1px solid rgba(156,122,60,.45)}
+  .hero-mock::before{content:"";position:absolute;right:-30px;top:-30px;width:150px;height:150px;border-radius:50%;border:1px solid rgba(156,122,60,.3)}
+  .hero-mock .eyebrow{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+  .hero-mock h3{font-family:var(--display);font-weight:600;font-size:34px;line-height:1.12;margin-top:12px;max-width:15ch}
+  .hero-mock h3 em{font-style:italic;color:#C9A96A}
+  .hero-mock p{font-size:14px;color:#B8C0D4;margin-top:12px;max-width:34ch;line-height:1.6}
+  .hero-mock .hm-cta{display:flex;gap:12px;margin-top:22px}
+  .hero-mock .btn-primary{background:var(--brass);color:#fff}
+  .hero-mock .btn-ghost{color:var(--paper);border-color:rgba(247,244,238,.35)}
+  .hero-mock .trust{margin-top:20px;font-size:12px;color:#8E99B3;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="tile-head">
+    <h1>Immigration & Paralegal Services — Style Tile</h1>
+    <span>Editorial authority · Playfair Display + Hanken Grotesk</span>
+  </div>
+
+  <div class="col">
+    <div class="spec">
+      <p class="eyebrow">Winnipeg · Immigration & Paralegal Services</p>
+      <h2>Your new life in Canada, <em>filed right</em> the first time.</h2>
+      <p>Licensed representation for work permits, permanent residence, citizenship and appeals — clear timelines, flat fees, and someone who answers the phone. Body text set in Hanken Grotesk at 16.5/1.65.</p>
+    </div>
+    <div>
+      <p class="lbl">Buttons — default / hover</p>
+      <div class="btn-row">
+        <span class="btn btn-primary">Book a consultation</span>
+        <span class="btn btn-primary hover">Book a consultation</span>
+        <span class="btn btn-ghost">Our services</span>
+        <span class="btn btn-ghost hover">Our services</span>
+      </div>
+    </div>
+    <div>
+      <p class="lbl">Palette — 60 paper · 30 navy/surface · 10 brass + oxblood</p>
+      <div class="swatches">
+        <div class="sw" style="background:#F7F4EE;color:#55617A">F7F4EE</div>
+        <div class="sw" style="background:#FDFBF7;color:#55617A">FDFBF7</div>
+        <div class="sw" style="background:#17233B;color:#B8C0D4">17233B</div>
+        <div class="sw" style="background:#1F2E4D;color:#B8C0D4">1F2E4D</div>
+        <div class="sw" style="background:#9C7A3C;color:#F7F4EE">9C7A3C</div>
+        <div class="sw" style="background:#8C3B2E;color:#F7F4EE">8C3B2E</div>
+      </div>
+    </div>
+    <div class="card">
+      <span class="num">01</span>
+      <h3>Permanent Residence</h3>
+      <p>Express Entry and PNP applications prepared end-to-end, so one missed document never costs you a year. Card sample: surface, 1px line, brass left rule.</p>
+    </div>
+  </div>
+
+  <div class="hero-mock">
+    <div>
+      <p class="eyebrow">Hero direction — type-led, navy field</p>
+      <h3>Immigration handled with <em>care and precision</em>.</h3>
+      <p>Regulated Canadian immigration consulting and paralegal services for Winnipeg families, workers and students.</p>
+      <div class="hm-cta">
+        <span class="btn btn-primary">Book a consultation</span>
+        <span class="btn btn-ghost">Services</span>
+      </div>
+    </div>
+    <p class="trust">Licensed & regulated · TODO: credentials, years, review count</p>
+  </div>
+</body>
+</html>
