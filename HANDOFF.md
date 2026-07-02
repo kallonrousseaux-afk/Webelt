@@ -44,7 +44,7 @@ WebGL aura: fBm domain-warped, gold shimmer, vignette, cursor-reactive (`uMouse`
 
 In the site: café hero in browser mock, count-up metrics, pricing ($350 headline), magnetic CTAs, custom difference-cursor, hover tilt, horizontal scroll process section (desktop only).
 
-**Supabase form wired but NOT live** — placeholder `SUPABASE_URL`/`SUPABASE_ANON_KEY` in both HTML files, POSTs to `/rest/v1/leads`, honeypot `_gotcha`. User must create project + `leads` table (id, name, email, message, created_at) and paste credentials into both files.
+**Supabase form is LIVE** on webelt.ca (done 2026-07). POSTs to `/rest/v1/leads`, honeypot `_gotcha`. Note: the `index.html` in this repo predates that and still has placeholder credentials — it's a design/pattern reference, not the deployed file.
 
 Design signed off 2026-06-24. Do not push 10/10 upgrades.
 
@@ -68,8 +68,8 @@ Awwwards techniques reference: `skills/sitegenius/references/awwwards-techniques
 | font_recommend errors | user_query ≤ 150 chars |
 
 ## Pending tasks (priority)
-1. ~~Write awwwards-techniques.md~~ — done, in this repo; copy to `C:\Users\Owner\.claude\skills\sitegenius\references\` and reference from SKILL.md.
-2. Supabase setup — create project + leads table, paste credentials into both HTML files.
-3. RNR site edits — user wants edits; no specifics named — ask.
+1. ~~Write awwwards-techniques.md~~ — done, in this repo.
+2. ~~Supabase setup~~ — done, live on webelt.ca.
+3. ~~RNR site edits~~ — none needed; site is up. This repo is reference material for future client sites.
 4. SAAP contrast fix — green button focus ring.
 5. SAAP deploy — after saapthaicurry.com registered.
