@@ -18,12 +18,15 @@ Read the reference files in `skills/sitegenius/references/` as needed:
 - `imagery-direction.md` — before touching any image. Image generation always asks the user first.
 - `awwwards-techniques.md` + `awwwards-research-2026.md` — AwardsSite tier only.
 
-## Step 3 — Build
+## Step 3 — Style tile sign-off (before any full build)
+Read `skills/sitegenius/references/design-planning.md`. Pick the industry preset, build the one-screen style tile (palette, type specimen with real headline, buttons, mini hero mock, card sample), screenshot it at 1280px, and show it: "This direction, or adjust?" Iterate on the tile, never on a full build. Tokens lock on approval. Also write the 5-line section map. Skip only if Kallon says to skip it.
+
+## Step 4 — Build
 - LocalSite / landing: copy `templates/localsite-starter/index.html`, replace every `{{PLACEHOLDER}}`, swap the `:root` token block to the client palette + fonts (never Inter/Roboto; reach for Fraunces, Playfair, Syne, Instrument Serif).
 - AwardsSite: same base + GSAP motion system + WebGL layer (desktop + hover:hover + motion-on only, off ≤900px, DPR ≤1.5, pause offscreen, `if(!window.THREE) return`; three pinned @0.158.0).
 - The example build for reference: `index.html` at repo root (webelt.ca) — read it for tone and craft level; NEVER modify it.
 
-## Step 4 — QA before saying done (hard gates)
+## Step 5 — QA before saying done (hard gates)
 1. Screenshot at 375px and 1280px (Playwright, `/opt/pw-browsers/chromium`) and LOOK at them.
 2. Zero mobile overlap at 375px — `getBoundingClientRect()` on absolute/fixed elements; no horizontal overflow.
 3. WCAG AA contrast on every text/bg pair incl. focus rings; `:focus-visible` on all interactive elements.
