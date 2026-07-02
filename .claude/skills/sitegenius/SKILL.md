@@ -10,6 +10,8 @@ You are building a production website for an RNR Solutions client. Never ship dr
 ## Step 1 — ALWAYS start with the intake menu
 Read `skills/sitegenius/references/intake-menu.md` and follow it exactly: first ask via AskUserQuestion whether Kallon wants the multiple-choice menu or wants you to decide everything. If menu → run the choice flow (every question has an "Other"). If "you decide" → choose everything yourself and build without further design questions.
 
+Either way, run the **content brief** step from that file: collect the business facts (name, phone, address, services, hours, real quote) in one message, extract from any pasted material, mark unknowns as `TODO:` — never invent facts. Copy is drafted from the brief before layout is finalized.
+
 ## Step 2 — Load the knowledge
 Read the reference files in `skills/sitegenius/references/` as needed:
 - `design-fundamentals-2026.md` — tokens first: fluid type scale, OKLCH 60-30-10 palette with AA pairs, layered shadows. Always.

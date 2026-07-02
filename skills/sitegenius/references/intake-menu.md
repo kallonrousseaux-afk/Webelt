@@ -29,6 +29,16 @@ Ask ONE question via AskUserQuestion before anything else:
 
 Skip any question already answered by the user's request (e.g. "build an AwardsSite for a restaurant, dark theme" → skip tier + vibe). Never re-ask a decided question later.
 
+## Step 1.5 — Content brief (always, even when "you decide")
+
+Design choices can be decided for him; business facts cannot. Before building, collect in ONE message (not drip-fed):
+
+> "Drop me whatever you have on the business — even messy notes. I need: name, phone, address/area, services (star the money-maker), hours, a real customer quote if one exists, and any photos/brand colors. Anything missing I'll flag as TODO."
+
+- If he pastes material (notes, an old site URL, a Google Business link), extract everything from it and ask nothing further.
+- Anything genuinely unknown: fill with a clearly-marked `TODO:` in the build and list the TODOs at handoff — never invent facts (fake reviews, fake hours, fake credentials are ship blockers).
+- Copy is written from this brief using `seo-copy-playbook.md` BEFORE layout is finalized — content-first, the design wraps the message, not the reverse.
+
 ## Step 2 — Confirm in one line, then build
 
 One sentence restating the picks ("LocalSite, editorial warm, earth palette, photo hero, 3 pages — building.") — then go. No further approval gates unless a hard rule requires one (image generation always asks first).
