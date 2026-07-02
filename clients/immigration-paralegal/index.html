@@ -102,6 +102,8 @@
   .orb-1{width:min(460px,60vw);height:min(460px,60vw);right:-130px;top:-130px}
   .orb-2{width:min(280px,40vw);height:min(280px,40vw);right:-40px;top:-40px;border-color:rgba(201,169,106,.28)}
   .orb-3{width:120px;height:120px;right:220px;top:120px;border-color:rgba(201,169,106,.18)}
+  #gl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 1.2s ease}
+  #gl.on{opacity:1}
   .hero-panel .glow{position:absolute;width:640px;height:640px;right:-180px;top:-220px;border-radius:50%;background:radial-gradient(circle,rgba(156,122,60,.16),transparent 65%);pointer-events:none}
   .hero-panel h1 .w{display:inline-block;overflow:hidden;vertical-align:bottom}
   .hero-panel h1 .w>span{display:inline-block;will-change:transform}
@@ -216,6 +218,7 @@
   <section class="hero" id="top">
     <div class="container">
       <div class="hero-panel rv">
+        <canvas id="gl" aria-hidden="true"></canvas>
         <div class="glow" aria-hidden="true"></div>
         <div class="orb orb-1" aria-hidden="true"></div>
         <div class="orb orb-2" aria-hidden="true"></div>
@@ -352,6 +355,7 @@
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/SplitText.min.js"></script>
@@ -428,6 +432,53 @@
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
   }
+
+  /* ---------- WebGL living aura — navy/brass (desktop + motion only) ---------- */
+  (function(){
+    if(!motionOK || !matchMedia('(hover:hover)').matches || innerWidth<=900) return;
+    if(!window.THREE) return;
+    const panel=document.querySelector('.hero-panel'), canvas=document.getElementById('gl');
+    if(!panel||!canvas) return;
+    let renderer;
+    try{ renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}); }catch(e){ return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+    const scene=new THREE.Scene();
+    const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+    const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(1,1)},uMouse:{value:new THREE.Vector2(0,0)}};
+    const vert='void main(){gl_Position=vec4(position.xy,0.0,1.0);}';
+    const frag=`precision highp float;
+uniform float uTime; uniform vec2 uRes; uniform vec2 uMouse;
+float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y;}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p*=2.;a*=.5;}return v;}
+void main(){
+ vec2 uv=gl_FragCoord.xy/uRes.xy;
+ float t=uTime*0.05; float breath=1.0+0.06*sin(uTime*0.15);
+ vec2 p=uv*2.6*breath;
+ vec2 q=vec2(fbm(p+vec2(t,0.)),fbm(p+vec2(5.2,1.3)-t));
+ vec2 r=vec2(fbm(p+4.*q+vec2(1.7,9.2)+0.22*uMouse),fbm(p+4.*q+vec2(8.3,2.8)-0.22*uMouse));
+ float f=fbm(p+4.*r+t*0.5);
+ vec3 navy=vec3(0.090,0.137,0.232),navy2=vec3(0.150,0.216,0.360),brass=vec3(0.612,0.478,0.235),soft=vec3(0.788,0.663,0.416),ox=vec3(0.42,0.20,0.16);
+ vec3 col=mix(navy,navy2,smoothstep(0.0,0.6,f));
+ col=mix(col,brass,smoothstep(0.52,0.98,f)*0.55);
+ col=mix(col,ox,smoothstep(0.88,1.2,r.x)*0.35);
+ float shimmer=smoothstep(0.55,0.86,f)*(0.5+0.5*sin(10.0*r.y+uTime*0.6));
+ col+=soft*shimmer*0.12;
+ float mask=smoothstep(0.18,1.0, uv.x*0.95 + (1.0-uv.y)*0.20);
+ float vig=smoothstep(1.2,0.25, length(uv-vec2(0.78,0.6)));
+ gl_FragColor=vec4(col, mask*vig*0.85);
+}`;
+    const mat=new THREE.ShaderMaterial({uniforms,vertexShader:vert,fragmentShader:frag,transparent:true});
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+    function resize(){const w=panel.clientWidth,h=panel.clientHeight;renderer.setSize(w,h,false);const pr=renderer.getPixelRatio();uniforms.uRes.value.set(w*pr,h*pr);}
+    resize(); addEventListener('resize',resize);
+    let tmx=0,tmy=0,mx=0,my=0;
+    addEventListener('mousemove',e=>{const r=panel.getBoundingClientRect();tmx=((e.clientX-r.left)/r.width-0.5)*2.0;tmy=((e.clientY-r.top)/r.height-0.5)*2.0;},{passive:true});
+    let vis=true; new IntersectionObserver(es=>{vis=es[0].isIntersecting;},{threshold:0}).observe(panel);
+    const clock=new THREE.Clock();
+    requestAnimationFrame(function loop(){requestAnimationFrame(loop); if(!vis)return; mx+=(tmx-mx)*0.04; my+=(tmy-my)*0.04; uniforms.uMouse.value.set(mx,my); uniforms.uTime.value=clock.getElapsedTime(); renderer.render(scene,cam);});
+    canvas.classList.add('on');
+  })();
 
   const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
   const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
