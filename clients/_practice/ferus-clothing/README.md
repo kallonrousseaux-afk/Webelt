@@ -11,6 +11,9 @@ Fictional streetwear label, built to test the skill's range on a genuinely diffe
 
 Real 3-page Barba.js SPA navigation (verified pattern from `ironclad-multipage`) — no page reloads, `document.title` synced per page.
 
+## `onepage.html` — single-file download-and-view version
+The 3-page version needs `ferus-shared.js` served alongside the HTML files (relative `<script src>`), which breaks if only individual HTML files get downloaded/shared without it — the intro overlay never resolves because none of the JS that hides it ever loads (screenshot-confirmed: the page gets stuck showing just the word "Ferus." forever, with everything else invisible). **`onepage.html` is a single self-contained file** with Home/Shop/Featured as anchor-linked sections on one page instead of separate files, and all JS inlined — same design, same real cart, no external file dependency. Use this one for a plain download-and-open preview; use the 3 separate files only when they'll actually be served together (a real webserver, or all 4 files kept in the same folder).
+
 ## Design direction (chosen freely)
 Near-black + off-white + acid lime (`#C8FF3D`) — bold, high-contrast streetwear editorial. Archivo Expanded (uppercase display) + Hanken Grotesk body. Marquee ticker, magnetic CTAs, hover image-swap product cards, slide-in cart drawer.
 
