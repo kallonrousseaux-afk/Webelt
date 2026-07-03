@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- TODO before launch: business name (Ironclad = placeholder), phone, address,
      hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys -->
-<title>Roofing & Exteriors in Winnipeg | Ironclad Roofing</title>
-<meta name="description" content="Licensed Winnipeg roofing and exteriors — storm repair, full replacements, free inspections. Get your free quote.">
-<link rel="canonical" href="https://TODO-DOMAIN.ca/">
-<meta property="og:title" content="Roofing & Exteriors in Winnipeg | Ironclad Roofing">
-<meta property="og:description" content="Licensed Winnipeg roofing and exteriors — storm repair, full replacements, free inspections.">
+<title>Storm Damage Roof Repair in Winnipeg | Ironclad Roofing</title>
+<meta name="description" content="Storm damage roof inspection and repair in Winnipeg — fast turnaround, insurance-ready documentation, free inspections.">
+<link rel="canonical" href="https://TODO-DOMAIN.ca/storm-damage-repair.html">
+<meta property="og:title" content="Storm Damage Roof Repair in Winnipeg | Ironclad Roofing">
+<meta property="og:description" content="Storm damage roof inspection and repair in Winnipeg — fast turnaround, insurance-ready documentation, free inspections.">
 <meta property="og:image" content="https://TODO-DOMAIN.ca/TODO-SOCIAL-SHARE-IMAGE.webp">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Roofing & Exteriors in Winnipeg | Ironclad Roofing">
-<meta name="twitter:description" content="Licensed Winnipeg roofing and exteriors — storm repair, full replacements, free inspections.">
+<meta name="twitter:title" content="Storm Damage Roof Repair in Winnipeg | Ironclad Roofing">
+<meta name="twitter:description" content="Storm damage roof inspection and repair in Winnipeg — fast turnaround, insurance-ready documentation, free inspections.">
 <meta name="twitter:image" content="https://TODO-DOMAIN.ca/TODO-SOCIAL-SHARE-IMAGE.webp">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230E1626'/><path d='M10 22V10l12 12V10' stroke='%23C9A96A' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -297,7 +297,7 @@
   </div>
 </footer>
 
-<script src="node_modules/@barba/core/dist/barba.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2/dist/barba.umd.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
@@ -407,6 +407,8 @@
         },
         enter({ next }) {
           document.body.classList.remove('lock'); // new page's content is already visible, no intro replay on internal nav
+          const titleMatch = next.html.match(/<title>([^<]*)<\/title>/); // Barba only swaps [data-barba="container"], not <head> — head must be updated manually
+          if (titleMatch) document.title = titleMatch[1];
           // Re-init what's page-specific: reveal elements + cursor targets, since Barba swapped the DOM
           next.container.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
           if (window.__reinitCursorTargets) window.__reinitCursorTargets(next.container);

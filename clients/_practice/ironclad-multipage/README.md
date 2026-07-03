@@ -14,3 +14,11 @@ Extends `ironclad-roofing/` into a real 3-page site (home + 2 service pages, mat
 
 ## QA result
 All 3 pages, both viewports (375px/1280px): 0 overflow, 0 broken images, 0 axe-core violations, 0 console errors.
+
+## Second pass: real browser back/forward through Barba (see build-gotchas #74-77)
+A real Playwright `goBack()`/`goForward()` test — never run before — found and fixed 3 more real bugs:
+1. **A committed file referenced `node_modules/@barba/core/...` as a live script `src`** (leftover from local test tooling, never reverted). Fixed to the CDN URL.
+2. **`document.title` never updated on internal navigation** — Barba swaps `[data-barba="container"]`, not `<head>`. Fixed by extracting the title from `next.html` in the `enter` hook.
+3. **`storm-damage-repair.html` and `roof-replacement.html` had fully duplicate `<title>`/description/canonical/OG/Twitter tags**, copy-pasted from `home.html` and never made page-specific. Fixed with unique metadata per page, sourced from each page's actual `<h1>`.
+
+Re-verified: title correctly updates on click, reverts on Back, re-updates on Forward; `navCount` stays at 1 throughout every step (genuine SPA, no reload).
