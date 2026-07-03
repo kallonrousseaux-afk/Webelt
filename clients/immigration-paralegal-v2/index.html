@@ -6,10 +6,18 @@
 <!-- TODO before launch: business name (Northgate = placeholder), phone, address,
      hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys.
      ALTERNATE DIRECTION (v2) for comparison against clients/immigration-paralegal/ —
-     same business facts, different design: light editorial paper palette instead of
-     dark navy/brass, Fraunces instead of Playfair Display, type-only statement hero
-     (no WebGL aura), scroll-scrubbed "application, stamped through" sequence as the
-     one AwardsSite centerpiece instead of the aura shader + continuity orbit. -->
+     same business facts, different design: warm ivory + deep plum palette with a
+     muted teal accent (all-new combo, not the earlier clay/forest attempt), Fraunces
+     instead of Playfair Display, type-only statement hero (no WebGL aura), a pinned
+     stacked-panel reveal (clip-path wipe, no canvas, no line-draw) as the one
+     AwardsSite centerpiece instead of the aura shader + continuity orbit.
+     Revision history: draft 1 used a scroll-scrubbed square canvas illustration —
+     rejected ("that square is gross"). Draft 2 used a clay/forest palette + a
+     horizontal line-draw timeline — palette liked in part but asked for a fully new
+     one, and the timeline was rejected too. This is draft 3: new teal/plum palette,
+     new centerpiece technique (pinned panel stack). See design-options-catalog.md's
+     scroll-scrubbed-sequence entry for the standing note not to default back to the
+     square-canvas recipe for this register. -->
 <title>Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal</title>
 <meta name="description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines. Book a consultation.">
 <link rel="canonical" href="https://TODO-DOMAIN.ca/">
@@ -21,7 +29,7 @@
 <meta name="twitter:title" content="Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal">
 <meta name="twitter:description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines.">
 <meta name="twitter:image" content="https://TODO-DOMAIN.ca/TODO-SOCIAL-SHARE-IMAGE.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F7F3EA'/><path d='M10 22V10l12 12V10' stroke='%23A64E1C' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%23F6F1E6'/><path d='M10 22V10l12 12V10' stroke='%233E6B63' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -44,11 +52,11 @@
 </script>
 <style>
   :root{
-    --bg:#F7F3EA; --bg-2:#EFE7D6; --ink:#182A22; --ink-2:#132018;
-    --paper:#F7F3EA; --navy:#16233A; --navy-2:#1E3050;
-    --muted:#6A6155; --muted-on-navy:#9AA6BC;
-    --line:rgba(24,42,34,.12); --line-on-navy:rgba(255,255,255,.14);
-    --clay:#A64E1C; --clay-deep:#8C4016; --clay-soft:#E4C4A8;
+    --bg:#F6F1E6; --bg-2:#EEE6D4; --ink:#231D1C;
+    --paper:#F6F1E6; --plum:#241B2E; --plum-2:#302343;
+    --muted:#6E6259; --muted-on-plum:#B7ACC2;
+    --line:rgba(35,29,28,.12); --line-on-plum:rgba(255,255,255,.14);
+    --teal:#3E6B63; --teal-deep:#2B4A45; --teal-soft:#9BC2BA;
     --display:"Fraunces",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
     --step--1:clamp(.85rem,.82rem + .14vw,.94rem);
     --step-0:clamp(1rem,.95rem + .2vw,1.13rem);
@@ -64,131 +72,146 @@
   html{scroll-behavior:smooth;scroll-padding-top:80px}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   body.lock{overflow:hidden}
-  ::selection{background:var(--clay);color:#fff}
+  ::selection{background:var(--teal);color:#fff}
   h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.015em;text-wrap:balance}
   p{text-wrap:pretty}
   a{color:inherit;text-decoration:none}
-  :focus-visible{outline:3px solid var(--clay);outline-offset:3px;border-radius:2px}
+  :focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:2px}
   .container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
-  .skip{position:absolute;left:-9999px;top:0;background:var(--clay);color:#fff;padding:10px 18px;z-index:200;font-weight:700}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--teal);color:#fff;padding:10px 18px;z-index:200;font-weight:700}
   .skip:focus{left:0}
-  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--clay-deep)}
-  .dark .eyebrow{color:var(--clay-soft)}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-deep)}
+  .dark .eyebrow{color:var(--teal-soft)}
   .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .intro{position:fixed;inset:0;z-index:120;background:var(--paper);display:flex;align-items:center;justify-content:center}
-  .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--clay-deep);overflow:hidden}
+  .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--teal-deep);overflow:hidden}
   .intro .word span{display:inline-block}
-  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--clay);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
-  .cursor-ring{position:fixed;top:0;left:0;width:42px;height:42px;border:1.5px solid var(--clay);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--teal);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
+  .cursor-ring{position:fixed;top:0;left:0;width:42px;height:42px;border:1.5px solid var(--teal);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
   .cursor-ring span{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s}
-  .cursor-ring.grow{width:76px;height:76px;background:var(--clay);border-color:var(--clay)}
+  .cursor-ring.grow{width:76px;height:76px;background:var(--teal);border-color:var(--teal)}
   .cursor-ring.grow span{opacity:1}
   @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
   header.hide{transform:translateY(-110%)}
-  header.solid{background:rgba(247,243,234,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.solid{background:rgba(246,241,230,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
   .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
-  .logo em{font-style:italic;color:var(--clay)}
+  .logo em{font-style:italic;color:var(--teal)}
   .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;list-style:none}
   .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .25s;position:relative}
-  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:var(--clay);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:var(--teal);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
   .nav-links a:hover{color:var(--ink)}
   .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
-  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--clay);color:#fff;font-weight:700;font-size:var(--step--1);padding:15px 30px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
-  .btn:hover{background:var(--clay-deep)}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--teal);color:#fff;font-weight:700;font-size:var(--step--1);padding:15px 30px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
+  .btn:hover{background:var(--teal-deep)}
   .btn:active{transform:scale(.96)}
   .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line)}
-  .btn-line:hover{background:rgba(24,42,34,.05);border-color:var(--clay)}
-  .dark .btn-line{color:#fff;border-color:var(--line-on-navy)}
-  .dark .btn-line:hover{background:rgba(255,255,255,.06);border-color:var(--clay-soft)}
+  .btn-line:hover{background:rgba(35,29,28,.05);border-color:var(--teal)}
+  .dark .btn-line{color:#fff;border-color:var(--line-on-plum)}
+  .dark .btn-line:hover{background:rgba(255,255,255,.06);border-color:var(--teal-soft)}
   .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:clamp(120px,14vh,180px) 0 clamp(40px,6vh,80px)}
   .hero .container{position:relative;width:100%}
   .hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:clamp(24px,4vh,44px)}
-  .hero-kicker .rule{height:1px;width:64px;background:var(--clay)}
+  .hero-kicker .rule{height:1px;width:64px;background:var(--teal)}
   .hero h1{font-size:clamp(2.7rem,1.5rem + 6.4vw,7.6rem);line-height:.98;font-weight:600}
   .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap}
   .hero h1 .ln>span{display:inline-block;will-change:transform}
-  .hero h1 em{font-style:italic;color:var(--clay)}
+  .hero h1 em{font-style:italic;color:var(--teal)}
   .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(36px,5vh,64px);flex-wrap:wrap}
   .hero-foot .lede{font-size:var(--step-1);color:var(--muted);max-width:38ch;line-height:1.55}
   .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
   .scroll-cue{position:absolute;right:clamp(20px,4vw,52px);bottom:clamp(40px,6vh,80px);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl}
   .scroll-cue .line{width:1px;height:56px;background:var(--line);position:relative;overflow:hidden}
-  .scroll-cue .line::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--clay);animation:drip 2.2s var(--ease) infinite}
+  .scroll-cue .line::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--teal);animation:drip 2.2s var(--ease) infinite}
   @keyframes drip{to{top:110%}}
-  .marquee{border-top:1px solid var(--line-on-navy);border-bottom:1px solid var(--line-on-navy);overflow:hidden;padding:22px 0;background:var(--navy)}
+  .marquee{border-top:1px solid var(--line-on-plum);border-bottom:1px solid var(--line-on-plum);overflow:hidden;padding:22px 0;background:var(--plum)}
   .marquee-track{display:flex;gap:0;width:max-content;will-change:transform}
-  .marquee span{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--muted-on-navy);white-space:nowrap;padding-right:18px}
-  .marquee b{color:var(--clay-soft);font-weight:500;padding-right:18px}
-  .dark{background:var(--navy);color:#fff}
+  .marquee span{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--muted-on-plum);white-space:nowrap;padding-right:18px}
+  .marquee b{color:var(--teal-soft);font-weight:500;padding-right:18px}
+  .dark{background:var(--plum);color:#fff}
   section{padding:clamp(80px,12vw,150px) 0}
   .sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
   .sec-head h2{font-size:var(--step-5);line-height:1.03;max-width:14ch}
-  .sec-head h2 em{font-style:italic;color:var(--clay)}
-  .dark .sec-head h2 em{color:var(--clay-soft)}
-  .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--clay-deep);padding-bottom:8px}
-  .dark .sec-head .idx{color:var(--clay-soft)}
+  .sec-head h2 em{font-style:italic;color:var(--teal)}
+  .dark .sec-head h2 em{color:var(--teal-soft)}
+  .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--teal-deep);padding-bottom:8px}
+  .dark .sec-head .idx{color:var(--teal-soft)}
   .svc-list{border-top:1px solid var(--line)}
   .svc{display:grid;grid-template-columns:80px 1fr 2fr 48px;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(24px,3.5vw,42px) 0;border-bottom:1px solid var(--line);position:relative;transition:padding-left .4s var(--ease)}
   .svc:hover{padding-left:18px}
-  .svc .n{font-family:var(--display);font-style:italic;font-size:var(--step-1);color:var(--clay-deep)}
+  .svc .n{font-family:var(--display);font-style:italic;font-size:var(--step-1);color:var(--teal-deep)}
   .svc h3{font-size:var(--step-3);font-weight:600;line-height:1.08}
   .svc p{font-size:var(--step-0);color:var(--muted);max-width:46ch}
   .svc .arrow{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .4s var(--ease);flex:none}
   .svc:hover .arrow{background:var(--ink);transform:rotate(45deg)}
   .svc:hover .arrow svg{stroke:var(--paper)}
   .svc .arrow svg{stroke:var(--ink);transition:stroke .3s}
-  .svc .fill{position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;background:rgba(24,42,34,.035);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);z-index:-1}
+  .svc .fill{position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;background:rgba(35,29,28,.035);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);z-index:-1}
   .svc:hover .fill{transform:scaleY(1)}
-  /* ============ Centerpiece: scroll-scrubbed "stamped through" sequence ============ */
-  .seq-section{position:relative;background:var(--navy);color:#fff}
-  .seq-pin{height:300vh}
-  .seq-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;gap:clamp(28px,4vh,48px)}
-  #seqCanvas{width:min(520px,72vw);height:min(520px,72vw);border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.4)}
-  .seq-caption{text-align:center;max-width:34ch}
-  .seq-caption p{color:var(--muted-on-navy);margin-top:10px;font-size:var(--step-0)}
-  @media(max-width:900px){.seq-pin{height:auto}.seq-sticky{position:relative;height:auto;padding:60px 0}}
+  /* ============ Centerpiece: pinned stacked-panel reveal (clip-path wipe) ============ */
+  .stack-section{position:relative;background:var(--plum);color:#fff}
+  .stack-pin{height:400vh}
+  .stack-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
+  .stack-panel{position:absolute;inset:0;display:flex;align-items:center;clip-path:inset(100% 0 0 0);background:var(--plum)}
+  .stack-panel:first-child{clip-path:inset(0 0 0 0)}
+  .stack-panel:nth-child(1){z-index:1}
+  .stack-panel:nth-child(2){z-index:2}
+  .stack-panel:nth-child(3){z-index:3}
+  .stack-panel:nth-child(4){z-index:4}
+  .stack-panel .container{width:100%}
+  .stack-n{font-family:var(--display);font-style:italic;font-size:clamp(3rem,7vw,6rem);color:var(--teal-soft);opacity:.5;line-height:1;margin-bottom:clamp(12px,2vw,20px)}
+  .stack-panel h3{font-size:var(--step-5);max-width:16ch;margin-bottom:clamp(16px,2.5vw,26px)}
+  .stack-panel p{color:var(--muted-on-plum);font-size:var(--step-1);max-width:42ch}
+  .stack-dots{position:absolute;right:clamp(20px,4vw,52px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;z-index:5}
+  .stack-dots span{width:9px;height:9px;border-radius:50%;border:1px solid var(--teal-soft);display:block;transition:background .3s}
+  .stack-dots span.hit{background:var(--teal-soft)}
+  @media(max-width:900px){
+    .stack-pin{height:auto}
+    .stack-sticky{position:relative;height:auto;flex-direction:column;padding:0}
+    .stack-panel{position:relative;inset:auto;clip-path:none!important;padding:44px 0;border-bottom:1px solid var(--line-on-plum)}
+    .stack-dots{display:none}
+  }
   .quote{position:relative;overflow:hidden}
-  .quote .mark{position:absolute;top:-40px;left:-20px;font-family:var(--display);font-size:clamp(14rem,30vw,28rem);line-height:1;color:rgba(181,85,31,.07);pointer-events:none;user-select:none}
+  .quote .mark{position:absolute;top:-40px;left:-20px;font-family:var(--display);font-size:clamp(14rem,30vw,28rem);line-height:1;color:rgba(62,107,99,.08);pointer-events:none;user-select:none}
   blockquote{font-family:var(--display);font-size:var(--step-4);line-height:1.22;font-weight:500;max-width:26ch}
-  blockquote em{font-style:italic;color:var(--clay)}
+  blockquote em{font-style:italic;color:var(--teal)}
   .attrib{margin-top:30px;font-weight:700;display:flex;align-items:center;gap:16px}
-  .attrib .rule{width:48px;height:1px;background:var(--clay)}
+  .attrib .rule{width:48px;height:1px;background:var(--teal)}
   .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
-  .cta{background:var(--navy);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .cta{background:var(--plum);color:#fff;text-align:center;position:relative;overflow:hidden}
   .cta h2{font-size:var(--step-5);max-width:16ch;margin:0 auto;line-height:1.05}
-  .cta h2 em{font-style:italic;color:var(--clay-soft)}
-  .cta p{color:var(--muted-on-navy);margin:22px auto 40px;max-width:44ch}
+  .cta h2 em{font-style:italic;color:var(--teal-soft)}
+  .cta p{color:var(--muted-on-plum);margin:22px auto 40px;max-width:44ch}
   .cta .btn{padding:22px 48px;font-size:var(--step-0)}
-  .cta .ring{position:absolute;border-radius:50%;border:1px solid rgba(228,196,168,.16);pointer-events:none}
+  .cta .ring{position:absolute;border-radius:50%;border:1px solid rgba(155,194,186,.16);pointer-events:none}
   .cta .r1{width:520px;height:520px;left:-200px;bottom:-260px}
   .cta .r2{width:320px;height:320px;right:-120px;top:-160px}
   .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,80px)}
   .contact h2{font-size:var(--step-4)}
   .nap{display:grid;gap:14px;margin-top:28px;font-size:var(--step--1);color:var(--muted)}
   .nap strong{color:var(--ink)}
-  .nap a.tel{color:var(--clay);font-weight:700}
-  form{display:grid;gap:0;border:1px solid var(--line);background:rgba(24,42,34,.02)}
+  .nap a.tel{color:var(--teal);font-weight:700}
+  form{display:grid;gap:0;border:1px solid var(--line);background:rgba(35,29,28,.02)}
   .field{padding:clamp(20px,2.5vw,30px);border-bottom:1px solid var(--line)}
   label{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:grid;gap:10px}
   input,textarea{font:inherit;font-size:16px;background:transparent;border:none;color:var(--ink);width:100%;padding:4px 0}
   input:focus,textarea:focus{outline:none}
-  .field:focus-within{background:rgba(181,85,31,.05)}
-  .field:focus-within label{color:var(--clay)}
+  .field:focus-within{background:rgba(62,107,99,.06)}
+  .field:focus-within label{color:var(--teal)}
   textarea{min-height:90px;resize:vertical}
   form .btn{margin:clamp(20px,2.5vw,30px);justify-content:center}
   .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;padding:0 clamp(20px,2.5vw,30px) 16px}
-  .form-msg.ok{color:#3F7D53}.form-msg.err{color:#A64E1C}
+  .form-msg.ok{color:#3F7D53}.form-msg.err{color:#B0492A}
   .form-note{font-size:var(--step--1);color:var(--muted);padding:0 clamp(20px,2.5vw,30px) clamp(20px,2.5vw,30px)}
   .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
-  footer{background:var(--navy);color:#fff;border-top:1px solid var(--line-on-navy);padding:clamp(48px,6vw,80px) 0 36px}
+  footer{background:var(--plum);color:#fff;border-top:1px solid var(--line-on-plum);padding:clamp(48px,6vw,80px) 0 36px}
   .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
-  .foot-grid h3{font-family:var(--body);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-navy);font-size:12px}
-  .foot-grid ul{list-style:none;display:grid;gap:10px;margin-top:16px;font-size:var(--step--1);color:var(--muted-on-navy)}
-  .foot-grid a:hover{color:var(--clay-soft)}
-  footer .logo em{color:var(--clay-soft)}
-  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-on-navy);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted-on-navy)}
+  .foot-grid h3{font-family:var(--body);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-plum);font-size:12px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px;margin-top:16px;font-size:var(--step--1);color:var(--muted-on-plum)}
+  .foot-grid a:hover{color:var(--teal-soft)}
+  footer .logo em{color:var(--teal-soft)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-on-plum);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted-on-plum)}
   .legal a{font-weight:700;color:#fff}
   .rv{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
   .rv.in{opacity:1;transform:none}
@@ -211,9 +234,10 @@
     .scroll-cue .line::after{animation:none}
   }
   @media print{
-    .cursor-dot,.cursor-ring,.intro,.scroll-cue,#seqCanvas,video{display:none!important}
+    .cursor-dot,.cursor-ring,.intro,.scroll-cue,.stack-dots,video{display:none!important}
     body{background:#fff;color:#111;overflow:visible!important}
-    .dark,.seq-section,.cta,footer{background:#fff!important;color:#111!important}
+    .dark,.stack-section,.cta,footer{background:#fff!important;color:#111!important}
+    .stack-panel{position:relative!important;inset:auto!important;clip-path:none!important;padding:24px 0}
     a{color:#111;text-decoration:underline}
     .rv{opacity:1!important;transform:none!important}
     .hero,section{page-break-inside:avoid}
@@ -314,16 +338,41 @@
     </div>
   </section>
 
-  <section class="seq-section" id="process">
-    <div class="seq-pin">
-      <div class="seq-sticky">
-        <div class="container" style="width:100%;text-align:center">
-          <span class="idx rv" style="color:var(--clay-soft)">(02)</span>
-          <h2 class="rv" style="max-width:none;margin-bottom:clamp(28px,4vw,44px)">No guesswork, <em>ever</em></h2>
+  <section class="stack-section" id="process">
+    <div class="stack-pin">
+      <div class="stack-sticky">
+        <div class="stack-dots" aria-hidden="true">
+          <span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
-        <canvas id="seqCanvas" width="600" height="600" aria-label="A file moving through consultation, preparation, filing and decision, stamped at each stage"></canvas>
-        <div class="seq-caption rv">
-          <p id="seqLabel">Consultation — we lay out every pathway open to you, flat fee quoted before you commit.</p>
+        <div class="stack-panel" data-panel="0">
+          <div class="container">
+            <span class="idx rv">(02)</span>
+            <h2 class="rv" style="margin-bottom:clamp(20px,3vw,32px)">No guesswork, <em>ever</em></h2>
+            <span class="stack-n">01</span>
+            <h3>Consultation</h3>
+            <p>We review your situation, lay out every pathway open to you, and quote a flat fee — before you commit to anything.</p>
+          </div>
+        </div>
+        <div class="stack-panel" data-panel="1">
+          <div class="container">
+            <span class="stack-n">02</span>
+            <h3>Preparation</h3>
+            <p>We build your application: documents, forms, evidence and deadlines tracked for you, with plain-language updates at every stage.</p>
+          </div>
+        </div>
+        <div class="stack-panel" data-panel="2">
+          <div class="container">
+            <span class="stack-n">03</span>
+            <h3>Filing &amp; follow-through</h3>
+            <p>We file, monitor and respond to every request from IRCC until the decision lands — you're never left wondering.</p>
+          </div>
+        </div>
+        <div class="stack-panel" data-panel="3">
+          <div class="container">
+            <span class="stack-n">04</span>
+            <h3>Your decision arrives</h3>
+            <p>And you knew where it stood the whole way. That's the entire point.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -379,7 +428,7 @@
     <div class="foot-grid">
       <div>
         <a class="logo" href="#top">Northgate<em>.</em></a>
-        <p style="margin-top:16px;font-size:var(--step--1);color:var(--muted-on-navy);max-width:36ch">Licensed immigration consulting and paralegal services for Winnipeg families, workers and students.</p>
+        <p style="margin-top:16px;font-size:var(--step--1);color:var(--muted-on-plum);max-width:36ch">Licensed immigration consulting and paralegal services for Winnipeg families, workers and students.</p>
       </div>
       <div>
         <h3>Pages</h3>
@@ -436,12 +485,14 @@
 
     gsap.to('.marquee-track', { xPercent: -50, ease: 'none', duration: 26, repeat: -1 });
 
-    document.querySelectorAll('section:not(.hero)').forEach(sec => {
+    document.querySelectorAll('section:not(.hero):not(.stack-section)').forEach(sec => {
       const els = sec.querySelectorAll('.rv, .svc');
       if (!els.length) return;
       gsap.from(els, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
         scrollTrigger: { trigger: sec, start: 'top 72%' } });
     });
+    gsap.from('.stack-panel:first-child .rv', { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
+      scrollTrigger: { trigger: '.stack-section', start: 'top 72%' } });
 
     gsap.fromTo('.quote .mark', { y: 80 }, { y: -80, ease: 'none',
       scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: .6 } });
@@ -480,63 +531,27 @@
     });
   }
 
-  // Centerpiece: scroll-scrubbed sequence — a document moving through 4 stamped stages
-  // (self-authored SVG frames stand in for real photography/illustration; recipe verified
-  // in design-options-catalog.md — see build-gotchas #22)
+  // Centerpiece: pinned stacked-panel reveal — 4 panels clip-path-wipe over each other
+  // as the section is pinned and scrolled through. No canvas, no line-draw.
   (function(){
-    const canvas = document.getElementById('seqCanvas'); if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const STAGES = [
-      { label: 'Consultation — we lay out every pathway open to you, flat fee quoted before you commit.', stamp: false, fill: 0 },
-      { label: 'Preparation — documents, forms and evidence assembled and checked.', stamp: true, fill: .33 },
-      { label: 'Filing & follow-through — submitted and tracked until IRCC responds.', stamp: true, fill: .66 },
-      { label: 'Your decision arrives — and you knew where it stood the whole way.', stamp: true, fill: 1 }
-    ];
-    const FRAMES = 48, imgs = [];
-    for (let i = 0; i < FRAMES; i++) {
-      const t = i / (FRAMES - 1);
-      const stageIdx = Math.min(STAGES.length - 1, Math.floor(t * STAGES.length));
-      const stage = STAGES[stageIdx];
-      const stampOpacity = stage.stamp ? Math.min(1, (t * STAGES.length - stageIdx) * 3) : 0;
-      const barW = 420 * Math.max(stage.fill, t * (STAGES[STAGES.length-1].fill));
-      const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='600'>
-        <rect width='600' height='600' fill='#16233A'/>
-        <rect x='100' y='90' width='400' height='420' rx='6' fill='#F7F3EA'/>
-        <rect x='140' y='140' width='260' height='14' rx='4' fill='#D8CBB4'/>
-        <rect x='140' y='172' width='320' height='10' rx='3' fill='#E4DACB'/>
-        <rect x='140' y='196' width='320' height='10' rx='3' fill='#E4DACB'/>
-        <rect x='140' y='220' width='240' height='10' rx='3' fill='#E4DACB'/>
-        <rect x='140' y='460' width='320' height='16' rx='4' fill='#EFE7D6'/>
-        <rect x='140' y='460' width='${barW}' height='16' rx='4' fill='#A64E1C'/>
-        <g opacity='${stampOpacity}' transform='translate(430,370) rotate(-18)'>
-          <circle r='58' fill='none' stroke='#A64E1C' stroke-width='6'/>
-          <circle r='46' fill='none' stroke='#A64E1C' stroke-width='2'/>
-          <text x='0' y='6' font-family='Georgia,serif' font-size='15' font-weight='700' fill='#A64E1C' text-anchor='middle' letter-spacing='1'>FILED</text>
-        </g>
-      </svg>`;
-      const im = new Image(); im.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
-      im.dataset.label = stage.label;
-      imgs.push(im);
-    }
-    let lastLabel = '';
-    function draw(i) {
-      ctx.clearRect(0, 0, 600, 600);
-      if (imgs[i] && imgs[i].complete) ctx.drawImage(imgs[i], 0, 0);
-      const lbl = imgs[i] && imgs[i].dataset.label;
-      if (lbl && lbl !== lastLabel) {
-        const el = document.getElementById('seqLabel');
-        if (el) el.textContent = lbl;
-        lastLabel = lbl;
-      }
-    }
-    imgs[0].onload = () => draw(0);
-    if (window.ScrollTrigger && motionOK) {
-      ScrollTrigger.create({
-        trigger: '.seq-pin', start: 'top top', end: 'bottom bottom', scrub: true,
-        onUpdate: self => draw(Math.min(FRAMES - 1, Math.floor(self.progress * FRAMES)))
+    const panels = Array.from(document.querySelectorAll('.stack-panel'));
+    const dots = Array.from(document.querySelectorAll('.stack-dots .dot'));
+    if (!panels.length) return;
+    if (window.gsap && window.ScrollTrigger && motionOK && desktop) {
+      const n = panels.length;
+      const stl = gsap.timeline({
+        scrollTrigger: { trigger: '.stack-pin', start: 'top top', end: 'bottom bottom', scrub: .6, pin: '.stack-sticky',
+          onUpdate: self => {
+            const active = Math.min(n - 1, Math.floor(self.progress * n));
+            dots.forEach((d, i) => d.classList.toggle('hit', i <= active));
+          }
+        }
       });
+      for (let i = 1; i < n; i++) {
+        stl.to(panels[i], { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'none' }, i - 1);
+      }
     } else {
-      draw(FRAMES - 1); // static end-state for reduced-motion / no-JS-adjacent fallback
+      panels.forEach(p => p.style.clipPath = 'none'); // reduced-motion / mobile: all panels shown stacked (see CSS)
     }
   })();
 

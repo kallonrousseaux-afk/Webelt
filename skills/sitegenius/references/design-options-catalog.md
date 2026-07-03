@@ -92,6 +92,8 @@ Pairing guidance: pick 1 spectacle item + 2–3 scroll/hover items + the texture
 All obey standing guards: desktop `(hover:hover)` + `prefers-reduced-motion:no-preference` + ≤900px off unless noted.
 
 ### Scroll-scrubbed image sequence
+**Kallon declined this as a centerpiece for the immigration/paralegal build ("that square is gross, don't use that again")** — a square canvas rendering a document/stamp sequence. The recipe itself is still verified and fine for genuinely product-shaped content (rotation views, before/after), but don't default to a square canvas as a centerpiece for editorial/trust-first registers going forward — try a different technique (pinned panel stack, line-draw, etc.) unless a client specifically wants a rotating-object view.
+
 Pre-render N frames (e.g. product rotation, a process unfolding) as a sprite sequence; draw the frame matching scroll progress to a canvas.
 ```js
 const frames = 90, imgs = []; for (let i=0;i<frames;i++){ const im=new Image(); im.src=`seq/${String(i).padStart(3,'0')}.webp`; imgs.push(im); }
