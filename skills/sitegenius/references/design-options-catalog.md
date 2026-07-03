@@ -18,10 +18,10 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Scroll-snap storytelling (GSAP Observer state machine) | A | pattern in awwwards-research-2026 §3 |
 | CSS view-timeline reveals (zero-JS) | L | pattern in functional/design refs |
 | Smart-sticky header (hide down, reveal up) | B | ✅ awardssite |
-| Scroll-scrubbed video/image sequence (frame = scroll position) | A | new — see recipe below |
-| Full page transitions (Barba.js + GSAP, no reload) | A | new — see recipe below |
+| Scroll-scrubbed video/image sequence (frame = scroll position) | A | ✅ verified via pixel-checksum test (build-gotchas #22) |
+| Full page transitions (Barba.js + GSAP, no reload) | A | ✅ verified via standalone 2-page test (build-gotchas #27) |
 | Morphing/sliding menu overlay (full-screen nav takeover) | B | new — see recipe below |
-| Draggable horizontal gallery (pointer-drag, momentum) | B | new — see recipe below |
+| Draggable horizontal gallery (pointer-drag, momentum) | B | ✅ verified — practice build 3 (`trattoria-awardssite/`) |
 | SVG line-draw-on (stroke-dashoffset for logos/signatures) | B | already in awwwards-techniques §3 (SDF note) |
 | Looping background video (hero or full-section) | B | new — see recipe below |
 
@@ -36,7 +36,7 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Grayscale→color "paint" hover | B | pattern in awwwards-research-2026 §5 |
 | Nav underline slide (scaleX origin swap) | B | ✅ awardssite |
 | Cursor trail / particle emitter (canvas, sparse points following pointer) | A | new — see recipe below |
-| Spotlight cursor (circular reveal mask over hidden content) | A | new — see recipe below |
+| Spotlight cursor (circular reveal mask over hidden content) | A | ✅ verified — practice build 4 (`ironclad-roofing/`), build-gotchas #19 |
 | Squiggly/displaced text on hover (SVG turbulence filter) | B | new — see recipe below |
 
 ## WebGL / spectacle (desktop + motion-on only)
@@ -49,7 +49,7 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | three-mesh-bvh interactive raycasting | A | code in awwwards-techniques §4 |
 | Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | new — see recipe below |
 | 3D product configurator (swap materials/colors on a model) | A | new — see recipe below |
-| Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | new — see recipe below |
+| Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | ✅ verified via render-loop + screenshot test (build-gotchas #28) |
 
 ## Layout & editorial
 | Option | Tier | Status |
