@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TODO before launch: business name (Northgate = placeholder), phone, address,
+     hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys.
+     VIDEO-BACKGROUND VARIANT of v3 — duplicated from clients/immigration-paralegal-v3/
+     (that build is untouched). Same layout, bento grid, and accordion as v3. The
+     WebGL 3D-primitives centerpiece was removed here and replaced with a generated
+     Higgsfield video (Kling 3.0 Turbo) as a full-bleed hero background instead.
+     TODO before real launch: the video currently hot-links Higgsfield's CDN URL
+     (this sandbox's network policy blocks downloading it locally to self-host) —
+     download clients/immigration-paralegal-v3-video/assets/hero-bg.mp4 yourself
+     from the CDN URL in the <source> tag and re-host it on the real domain before
+     shipping; a third-party CDN link is not a production-safe dependency. -->
+<!-- Video generation record: model kling3_0_turbo, 5s, 1920x1080, prompt: "Abstract
+     cinematic macro shot: soft warm light filtering through gently drifting sheer
+     paper or fabric layers, slow graceful motion, subtle dust particles catching
+     light, muted amber and deep charcoal tones, no people, no text, no logos, calm
+     and dignified mood, seamless slow drift, shallow depth of field" — cost 10
+     Higgsfield credits, generated with explicit user confirmation per the standing
+     "always ask before generating" rule. -->
+<title>Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal</title>
+<meta name="description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines. Book a consultation.">
+<link rel="canonical" href="https://TODO-DOMAIN.ca/">
+<meta property="og:title" content="Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal">
+<meta property="og:description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines.">
+<meta property="og:image" content="https://TODO-DOMAIN.ca/TODO-SOCIAL-SHARE-IMAGE.webp">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal">
+<meta name="twitter:description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines.">
+<meta name="twitter:image" content="https://TODO-DOMAIN.ca/TODO-SOCIAL-SHARE-IMAGE.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231C1A17'/><path d='M10 22V10l12 12V10' stroke='%23B0631E' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Northgate Immigration & Paralegal",
+  "description": "Licensed immigration consulting and paralegal services in Winnipeg: work and study permits, permanent residence, citizenship, appeals and hearings.",
+  "url": "https://TODO-DOMAIN.ca",
+  "telephone": "TODO",
+  "email": "TODO",
+  "address": { "@type": "PostalAddress", "streetAddress": "TODO", "addressLocality": "Winnipeg", "addressRegion": "MB", "postalCode": "TODO", "addressCountry": "CA" },
+  "geo": { "@type": "GeoCoordinates", "latitude": "TODO", "longitude": "TODO" },
+  "image": "https://TODO-DOMAIN.ca/TODO-hero-image.webp",
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "TODO", "closes": "TODO" }],
+  "areaServed": "Winnipeg and all of Manitoba",
+  "priceRange": "$$"
+}
+</script>
+<style>
+  :root{
+    --bg:#F3EEE4; --bg-2:#EAE2D2; --ink:#1C1A17; --dark:#1C1A17;
+    --paper:#F3EEE4;
+    --muted:#6B6255; --muted-on-dark:#B8B2A8;
+    --line:rgba(28,26,23,.12); --line-on-dark:rgba(255,255,255,.14);
+    --amber:#B0631E; --amber-deep:#975519; --amber-soft:#E6C09B;
+    --display:"Fraunces",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    --step--1:clamp(.85rem,.82rem + .14vw,.94rem);
+    --step-0:clamp(1rem,.95rem + .2vw,1.13rem);
+    --step-1:clamp(1.25rem,1.16rem + .4vw,1.5rem);
+    --step-2:clamp(1.56rem,1.4rem + .72vw,2rem);
+    --step-3:clamp(1.95rem,1.68rem + 1.22vw,2.66rem);
+    --step-4:clamp(2.44rem,2rem + 2vw,3.55rem);
+    --step-5:clamp(3.05rem,2.34rem + 3.2vw,4.73rem);
+    --dur:.6s; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lock{overflow:hidden}
+  ::selection{background:var(--amber);color:#fff}
+  h1,h2,h3{font-family:var(--display);font-weight:600;letter-spacing:-.015em;text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:2px}
+  .container{max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:#fff;padding:10px 18px;z-index:200;font-weight:700}
+  .skip:focus{left:0}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-deep)}
+  .contact .eyebrow{color:var(--amber-soft)}
+  .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .intro{position:fixed;inset:0;z-index:120;background:var(--paper);display:flex;align-items:center;justify-content:center}
+  .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--amber-deep);overflow:hidden}
+  .intro .word span{display:inline-block}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--amber);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
+  .cursor-ring{position:fixed;top:0;left:0;width:42px;height:42px;border:1.5px solid var(--amber);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
+  .cursor-ring span{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;opacity:0;transition:opacity .2s}
+  .cursor-ring.grow{width:76px;height:76px;background:var(--amber);border-color:var(--amber)}
+  .cursor-ring.grow span{opacity:1}
+  @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
+  /* ============ Standard top header (v1/v2 pattern) ============ */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
+  header.hide{transform:translateY(-110%)}
+  header.solid{background:rgba(243,238,228,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
+  .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
+  .logo em{font-style:italic;color:var(--amber)}
+  .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;list-style:none}
+  .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:#fff;font-weight:700;font-size:var(--step--1);padding:15px 28px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
+  .btn:hover{background:#C4711F}
+  .btn:active{transform:scale(.96)}
+  /* ============ Centerpiece: full-bleed generated video background ============ */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(90px,12vh,140px) 0 clamp(40px,6vh,80px)}
+  #heroVideo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0;transition:opacity 1.8s ease}
+  #heroVideo.on{opacity:1}
+  .hero-veil{position:absolute;inset:0;background:linear-gradient(100deg,rgba(243,238,228,.96) 0%,rgba(243,238,228,.9) 32%,rgba(243,238,228,.55) 58%,rgba(243,238,228,.2) 100%);pointer-events:none}
+  .hero-copy{position:relative;z-index:2;max-width:640px}
+  .hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:clamp(20px,3vh,32px)}
+  .hero-kicker .rule{height:1px;width:64px;background:var(--amber)}
+  .hero h1{font-size:clamp(2.4rem,1.6rem + 4.2vw,5.2rem);line-height:1.02;font-weight:600}
+  .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap}
+  .hero h1 .ln>span{display:inline-block;will-change:transform}
+  .hero h1 em{font-style:italic;color:var(--amber)}
+  .hero-lede{font-size:var(--step-1);color:var(--muted);max-width:44ch;line-height:1.55;margin-top:clamp(24px,4vh,40px)}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(28px,4vh,44px)}
+  .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-line:hover{background:rgba(28,26,23,.05);border-color:var(--amber)}
+  @media(max-width:900px){#heroVideo,.hero-veil{display:none}}
+  section{padding:clamp(64px,10vw,110px) 0}
+  .sec-head{margin-bottom:clamp(36px,5vw,56px)}
+  .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--amber-deep);display:block;margin-bottom:8px}
+  .sec-head h2{font-size:var(--step-4);line-height:1.05;max-width:16ch}
+  .sec-head h2 em{font-style:italic;color:var(--amber)}
+  /* ============ Hover-reveal bento grid ============ */
+  .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,20px)}
+  .bento-card{position:relative;border:1px solid var(--line);border-radius:8px;padding:clamp(24px,3vw,34px);min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:border-color .3s,background .3s}
+  .bento-card:hover,.bento-card:focus-within{border-color:var(--amber);background:var(--bg-2)}
+  .bento-card:nth-child(1){grid-column:span 2}
+  .bento-n{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--amber-deep);position:absolute;top:20px;right:24px}
+  .bento-card h3{font-size:var(--step-2);margin-bottom:8px}
+  .bento-desc{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s var(--ease)}
+  .bento-card:hover .bento-desc,.bento-card:focus-within .bento-desc{max-height:120px;opacity:1;margin-top:8px}
+  .bento-desc p{color:var(--muted);font-size:var(--step--1);max-width:48ch}
+  /* ============ Click-to-expand process accordion ============ */
+  .accordion{border-top:1px solid var(--line)}
+  .acc-item{border-bottom:1px solid var(--line)}
+  .acc-head{width:100%;background:none;border:none;display:flex;align-items:center;gap:clamp(16px,2.5vw,28px);padding:clamp(22px,3vw,32px) 0;cursor:pointer;text-align:left;font-family:inherit}
+  .acc-head .n{font-family:var(--display);font-style:italic;font-size:var(--step-1);color:var(--amber-deep);flex:none;width:34px}
+  .acc-head h3{font-size:var(--step-2);flex:1}
+  .acc-plus{width:28px;height:28px;flex:none;position:relative}
+  .acc-plus::before,.acc-plus::after{content:"";position:absolute;top:50%;left:50%;background:var(--ink);transition:transform .3s var(--ease)}
+  .acc-plus::before{width:16px;height:2px;transform:translate(-50%,-50%)}
+  .acc-plus::after{width:2px;height:16px;transform:translate(-50%,-50%)}
+  .acc-item.open .acc-plus::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+  .acc-body{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+  .acc-item.open .acc-body{max-height:200px}
+  .acc-body p{color:var(--muted);font-size:var(--step-0);max-width:56ch;padding:0 0 clamp(22px,3vw,32px) 50px}
+  .quote{position:relative;overflow:hidden}
+  .quote .mark{position:absolute;top:-40px;left:-20px;font-family:var(--display);font-size:clamp(12rem,24vw,22rem);line-height:1;color:rgba(176,99,30,.08);pointer-events:none;user-select:none}
+  blockquote{font-family:var(--display);font-size:var(--step-3);line-height:1.28;font-weight:500;max-width:30ch}
+  blockquote em{font-style:italic;color:var(--amber)}
+  .attrib{margin-top:26px;font-weight:700;display:flex;align-items:center;gap:16px}
+  .attrib .rule{width:40px;height:1px;background:var(--amber)}
+  .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
+  .contact{background:var(--dark);color:#fff}
+  .contact h2{font-size:var(--step-4)}
+  .contact h2 em{font-style:italic;color:var(--amber-soft)}
+  .contact-lede{color:var(--muted-on-dark);margin:16px 0 32px;max-width:48ch}
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,72px)}
+  .nap{display:grid;gap:12px;margin-top:24px;font-size:var(--step--1);color:var(--muted-on-dark)}
+  .nap strong{color:#fff}
+  .nap a.tel{color:var(--amber-soft);font-weight:700}
+  form{display:grid;gap:0;border:1px solid var(--line-on-dark);background:rgba(255,255,255,.02)}
+  .field{padding:clamp(18px,2.5vw,26px);border-bottom:1px solid var(--line-on-dark)}
+  label{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-on-dark);display:grid;gap:10px}
+  input,textarea{font:inherit;font-size:16px;background:transparent;border:none;color:#fff;width:100%;padding:4px 0}
+  input:focus,textarea:focus{outline:none}
+  .field:focus-within{background:rgba(176,99,30,.08)}
+  .field:focus-within label{color:var(--amber-soft)}
+  textarea{min-height:90px;resize:vertical}
+  form .btn{margin:clamp(18px,2.5vw,26px);justify-content:center}
+  .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;padding:0 clamp(18px,2.5vw,26px) 14px}
+  .form-msg.ok{color:#8FCB9D}.form-msg.err{color:#E4A27C}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  .legal{border-top:1px solid var(--line-on-dark);margin-top:48px;padding-top:20px;font-size:var(--step--1);color:var(--muted-on-dark);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .legal a{font-weight:700;color:#fff}
+  .rv{opacity:0;transform:translateY(24px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  html.gsap .rv{opacity:1;transform:none;transition:none}
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .hero h1 .ln{white-space:normal}
+    .bento{grid-template-columns:1fr}
+    .bento-card:nth-child(1){grid-column:span 1}
+    .bento-desc{max-height:none!important;opacity:1!important}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .intro{display:none}
+    .bento-desc{transition:none}
+    .acc-body{transition:none}
+  }
+  @media print{
+    .cursor-dot,.cursor-ring,.intro,video,.hero-veil{display:none!important}
+    body{background:#fff;color:#111;overflow:visible!important}
+    .contact{background:#fff!important;color:#111!important}
+    .bento-desc,.acc-body{max-height:none!important;opacity:1!important}
+    a{color:#111;text-decoration:underline}
+    .rv{opacity:1!important;transform:none!important}
+    .hero,section{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="intro" aria-hidden="true"><div class="word"><span>Northgate</span></div></div>
+<noscript><style>.intro{display:none!important}</style></noscript>
+
+<header id="hdr">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Northgate<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a consultation</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-label="Introduction">
+    <video id="heroVideo" aria-hidden="true" muted loop playsinline preload="metadata">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_3F9tRaivuhXJbrzv2c10pKMiL4e/hf_20260703_200612_87b664eb-8c6b-454b-a07b-45b6677d5586.mp4" type="video/mp4">
+    </video>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-copy">
+        <div class="hero-kicker rv">
+          <span class="rule" aria-hidden="true"></span>
+          <span class="eyebrow">Winnipeg · Immigration &amp; Paralegal</span>
+        </div>
+        <h1>
+          <span class="ln"><span>Your new life</span></span>
+          <span class="ln"><span>in Canada, <em>filed</em></span></span>
+          <span class="ln"><span><em>right</em> the first time.</span></span>
+        </h1>
+        <p class="hero-lede rv">Licensed representation for work permits, permanent residence, citizenship and appeals — clear timelines, flat fees, and someone who answers the phone.</p>
+        <div class="hero-ctas rv">
+          <a class="btn magnetic" href="#contact" data-cursor="Book">Book a consultation</a>
+          <a class="btn btn-line" href="#services" data-cursor="View">Our services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx rv">(01)</span>
+        <h2 class="rv">Every pathway, prepared <em>end-to-end</em></h2>
+      </div>
+      <div class="bento rv">
+        <div class="bento-card" tabindex="0">
+          <span class="bento-n" aria-hidden="true">01</span>
+          <h3>Permanent Residence</h3>
+          <div class="bento-desc"><p>Express Entry and Manitoba PNP applications prepared and filed end-to-end, so one missed form never costs you a year of your life here.</p></div>
+        </div>
+        <div class="bento-card" tabindex="0">
+          <span class="bento-n" aria-hidden="true">02</span>
+          <h3>Work &amp; Study Permits</h3>
+          <div class="bento-desc"><p>New applications, extensions and restorations filed accurately, with your status protected while you wait.</p></div>
+        </div>
+        <div class="bento-card" tabindex="0">
+          <span class="bento-n" aria-hidden="true">03</span>
+          <h3>Citizenship</h3>
+          <div class="bento-desc"><p>Application, document review and test preparation — the last step handled as carefully as the first.</p></div>
+        </div>
+        <div class="bento-card" tabindex="0">
+          <span class="bento-n" aria-hidden="true">04</span>
+          <h3>Family Sponsorship</h3>
+          <div class="bento-desc"><p>Spousal and family applications with the evidence package built to hold up the first time.</p></div>
+        </div>
+        <div class="bento-card" tabindex="0">
+          <span class="bento-n" aria-hidden="true">05</span>
+          <h3>Appeals, Hearings &amp; Notary</h3>
+          <div class="bento-desc"><p>Refusal reviews, appeal representation, and commissioning of documents under one roof.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx rv">(02)</span>
+        <h2 class="rv">No guesswork, <em>ever</em></h2>
+      </div>
+      <div class="accordion rv">
+        <div class="acc-item open">
+          <button class="acc-head" aria-expanded="true">
+            <span class="n">01</span><h3>Consultation</h3><span class="acc-plus" aria-hidden="true"></span>
+          </button>
+          <div class="acc-body"><p>We review your situation, lay out every pathway open to you, and quote a flat fee — before you commit to anything.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="n">02</span><h3>Preparation</h3><span class="acc-plus" aria-hidden="true"></span>
+          </button>
+          <div class="acc-body"><p>We build your application: documents, forms, evidence and deadlines tracked for you, with plain-language updates at every stage.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="n">03</span><h3>Filing &amp; follow-through</h3><span class="acc-plus" aria-hidden="true"></span>
+          </button>
+          <div class="acc-body"><p>We file, monitor and respond to every request from IRCC until the decision lands — you're never left wondering.</p></div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="n">04</span><h3>Your decision arrives</h3><span class="acc-plus" aria-hidden="true"></span>
+          </button>
+          <div class="acc-body"><p>And you knew where it stood the whole way. That's the entire point.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <div class="container">
+      <p class="eyebrow rv" style="margin-bottom:24px">Why clients trust us</p>
+      <blockquote class="rv">TODO: real client testimonial goes here — <em>with a specific result</em> — before this site ships.</blockquote>
+      <p class="attrib rv"><span class="rule" aria-hidden="true"></span>TODO: Client name<span style="margin-left:0">· TODO: context</span></p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-top:14px">Tell us where <em>you're at</em></h2>
+        <p class="contact-lede">Everything you share is confidential. We reply within one business day.</p>
+        <div class="nap">
+          <p><strong>Northgate Immigration &amp; Paralegal</strong><br>TODO: street address, Winnipeg, MB</p>
+          <p><strong>Call:</strong> <a class="tel" href="tel:+1TODO">TODO: phone</a></p>
+          <p><strong>Email:</strong> <a href="mailto:TODO">TODO: email</a></p>
+          <p><strong>Hours:</strong> TODO: hours</p>
+        </div>
+      </div>
+      <form id="lead-form" class="rv" novalidate>
+        <div class="field"><label>Name <input type="text" name="name" autocomplete="name" required></label></div>
+        <div class="field"><label>Email <input type="email" name="email" autocomplete="email" required></label></div>
+        <div class="field"><label>What do you need help with? <textarea name="message" required placeholder="e.g. My work permit expires in June…"></textarea></label></div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn magnetic" type="submit">Request my consultation</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="container legal">
+      <span>© <span id="yr"></span> Northgate Immigration &amp; Paralegal. All rights reserved.</span>
+      <span>Site by <a href="https://webelt.ca">RNR Solutions</a></span>
+    </div>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const motionOK = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  const desktop = matchMedia('(hover:hover)').matches && innerWidth > 900;
+  const hdr = document.getElementById('hdr');
+
+  let lastY = 0;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    hdr.classList.toggle('solid', y > 40);
+    hdr.classList.toggle('hide', y > 300 && y > lastY);
+    lastY = y;
+  }, { passive: true });
+
+  if (window.gsap && motionOK) {
+    document.body.classList.add('lock'); // no-JS / non-motion users never get locked at all
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add('gsap');
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, onComplete(){ document.body.classList.remove('lock'); } });
+    tl.from('.intro .word span', { yPercent: 120, duration: .7 })
+      .to('.intro .word span', { yPercent: -120, duration: .5, delay: .35, ease: 'power4.in' })
+      .to('.intro', { yPercent: -100, duration: .8, ease: 'power4.inOut' }, '-=.1')
+      .set('.intro', { display: 'none' })
+      .from('.hero h1 .ln > span', { yPercent: 115, duration: 1, stagger: .1 }, '-=.55')
+      .from(['.hero-kicker', '.hero-lede', '.hero-ctas'], { y: 30, opacity: 0, duration: .7, stagger: .08 }, '-=.6');
+
+    document.querySelectorAll('section:not(.hero)').forEach(sec => {
+      const els = sec.querySelectorAll('.rv');
+      if (!els.length) return;
+      gsap.from(els, { y: 32, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
+        scrollTrigger: { trigger: sec, start: 'top 75%' } });
+    });
+
+    gsap.fromTo('.quote .mark', { y: 70 }, { y: -70, ease: 'none',
+      scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: .6 } });
+  } else {
+    document.body.classList.remove('lock');
+    const intro = document.querySelector('.intro'); if (intro) intro.style.display = 'none';
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12, rootMargin: '0px 0px -40px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  }
+
+  if (desktop && motionOK) {
+    const dot = document.createElement('div'); dot.className = 'cursor-dot';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring'; ring.innerHTML = '<span></span>';
+    document.body.append(dot, ring);
+    const label = ring.querySelector('span');
+    let tx = innerWidth/2, ty = innerHeight/2, rx = tx, ry = ty;
+    addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY;
+      dot.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%)`; }, { passive: true });
+    (function loop(){ rx += (tx-rx)*.16; ry += (ty-ry)*.16;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+    document.querySelectorAll('a,button,.bento-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.classList.add('grow'); label.textContent = el.dataset.cursor || ''; });
+      el.addEventListener('mouseleave', () => { ring.classList.remove('grow'); });
+    });
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  // Centerpiece: click-to-expand process accordion
+  document.querySelectorAll('.acc-head').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.acc-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.acc-item.open').forEach(el => { el.classList.remove('open'); el.querySelector('.acc-head').setAttribute('aria-expanded', 'false'); });
+      if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+  });
+
+  // Centerpiece: generated video hero background. Plays only when motion is OK,
+  // on desktop, and the hero is actually in view (IntersectionObserver pause/play
+  // discipline verified in build-gotchas #44). No-JS/reduced-motion/mobile all get
+  // the static veiled paper background with no video at all — never a frozen frame.
+  (function(){
+    const video = document.getElementById('heroVideo'); if (!video) return;
+    if (!motionOK || !desktop) { video.remove(); return; }
+    video.addEventListener('loadeddata', () => video.classList.add('on'), { once: true });
+    const hero = document.querySelector('.hero');
+    new IntersectionObserver(es => {
+      if (es[0].isIntersecting) video.play().catch(() => {}); else video.pause();
+    }, { threshold: 0 }).observe(hero);
+  })();
+
+  // REQUIRED before this works: Supabase blocks anonymous inserts by default (Row Level Security).
+  // Run in the SQL editor for the `leads` table:
+  //   alter table leads enable row level security;
+  //   create policy "anon insert leads" on leads for insert to anon with check (true);
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const form = document.getElementById('lead-form');
+  const msg = form.querySelector('.form-msg');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form._gotcha.value) return;
+    const btn = form.querySelector('button');
+    if (!form.name.value.trim() || !form.email.value.includes('@') || !form.message.value.trim()) {
+      msg.textContent = 'Please fill in all three fields.'; msg.className = 'form-msg err'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, Prefer: 'return=minimal' },
+        body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() })
+      });
+      if (!r.ok) throw 0;
+      msg.textContent = 'Thank you — we will reply within one business day.'; msg.className = 'form-msg ok';
+      form.reset();
+    } catch {
+      msg.textContent = 'Something went wrong — please call us instead.'; msg.className = 'form-msg err';
+    }
+    btn.disabled = false; btn.textContent = 'Request my consultation';
+  });
+</script>
+</body>
+</html>
