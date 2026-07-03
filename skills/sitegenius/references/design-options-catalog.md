@@ -44,9 +44,9 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 |---|---|---|
 | fBm living aura shader (breathing, cursor-reactive, palette-graded) | A | ✅ awardssite + webelt.ca |
 | Single-progress-uniform shader transitions (block reveal, displacement, chromatic aberration) | A | ✅ verified — block-reveal confirmed 0%→50%→100% via screenshots (build-gotchas #46) |
-| Stencil-buffer scene masking / SDF logo morph | A | ❌ TESTED AND FOUND BROKEN as documented — do not use as-is (build-gotchas #47); needs the render-target-composite rework noted there |
+| Stencil-buffer scene masking / SDF logo morph | A | ✅ FIXED and verified — render-target composite approach, screenshot-confirmed clean mask (build-gotchas #49); recipe corrected in awwwards-techniques.md §3 |
 | Instanced 3D objects (single draw call) | A | ✅ verified — 8 instances measured at exactly 1 draw call (build-gotchas #39) |
-| three-mesh-bvh interactive raycasting | A | ⚠️ version-incompatible: npm three-mesh-bvh now requires three>=0.159.0, project pins three@0.158.0 (build-gotchas #48) — resolve before using |
+| three-mesh-bvh interactive raycasting | A | ✅ FIXED and verified — pin `three-mesh-bvh@0.5.24` (predates the BatchedMesh dependency) for compatibility with three@0.158.0; correct hit/miss + intersection point confirmed on a 1408-triangle mesh (build-gotchas #49) |
 | Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | ✅ verified against a real hand-authored GLB (build-gotchas #33) |
 | 3D product configurator (swap materials/colors on a model) | A | ✅ verified — material.color.set() confirmed visually (build-gotchas #39) |
 | Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | ✅ verified via render-loop + screenshot test (build-gotchas #28) |
@@ -249,7 +249,7 @@ Reads as premium/technical (good for tech-ish or "AwardsSite default" clients), 
 | Percentage-counter preloader (branded, real asset progress) | A | ✅ verified — real image files, correct 33/67/100% sequence (build-gotchas #37) |
 | Rive interactive vector animation (icons, mascots, state machines) | B | new — see recipe below |
 | Lottie vector animation (After Effects export, lightweight) | B | ✅ verified against hand-authored Lottie JSON (build-gotchas #38) |
-| Ambient/spatial sound design (directional hover/interaction audio) | A | new — see recipe below, use sparingly |
+| Ambient/spatial sound design (directional hover/interaction audio) | A | ✅ verified — AudioContext resume + StereoPannerNode confirmed against a real WAV + real gesture (build-gotchas #50), use sparingly |
 | UI micro-sound (click/hover blips) | A | ✅ verified against a real WAV + real user-gesture click (build-gotchas #34) |
 | Custom animated 404 page | B | pattern reuses already-verified components — no separate test needed |
 

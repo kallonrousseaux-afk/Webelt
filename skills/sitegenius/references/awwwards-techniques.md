@@ -68,39 +68,39 @@ addEventListener('scroll', () => {
 ```
 Note: `font-variation-settings` re-rasterizes glyphs — apply to ONE hero headline, never body text. Skip under reduced motion.
 
-## 3. Stencil Buffer Masking (Resn) — WebGL scene-through-cutout transitions
+## 3. Scene-Through-Cutout Masking (Resn-style) — render-target composite
 
-Mask one 3D scene through a cutout in another; hidden pixels are discarded, not overdrawn.
+Mask one 3D scene through a cutout shape from another; hidden pixels are discarded, not overdrawn.
+
+**⚠️ correction (verified 2026-07):** the original version of this recipe interleaved raw `gl.stencilFunc`/`colorMask` calls between `renderer.render()` calls. Tested against a real build — it does not work with Three.js's high-level renderer: `THREE.WebGLRenderer` keeps its own internal GL state cache and doesn't know about state changes made via raw `gl.*` calls outside it, so a subsequent `render()` silently leaves stale `colorMask`/stencil state in effect (confirmed via `renderer.autoClear = false` and `renderer.state.reset()`, neither fixed it). **Use the render-target composite approach below instead** — verified working end-to-end (screenshot-confirmed: a blue scene cleanly masked inside a red scene, exact cutout shape, zero bleed).
 
 ```js
-const renderer = new THREE.WebGLRenderer({ stencil: true, antialias: true });
-const gl = renderer.getContext();
+const renderer = new THREE.WebGLRenderer();
+const camera = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
 
-function render() {
-  gl.enable(gl.STENCIL_TEST);
+// Render each layer to its own offscreen target — no shared GL state to fight over
+const rtA = new THREE.WebGLRenderTarget(w, h);
+renderer.setRenderTarget(rtA); renderer.render(sceneA, camera);   // e.g. the "outside" scene
 
-  // Pass 1: write the mask shape (e.g. logo mesh) into the stencil buffer only
-  gl.stencilFunc(gl.ALWAYS, 1, 0xff);
-  gl.stencilOp(gl.KEEP, gl.KEEP, gl.REPLACE);
-  gl.colorMask(false, false, false, false);
-  gl.depthMask(false);
-  renderer.render(maskScene, camera);
+const rtB = new THREE.WebGLRenderTarget(w, h);
+renderer.setRenderTarget(rtB); renderer.render(sceneB, camera);   // e.g. the scene that bleeds through
 
-  // Pass 2: scene B only where stencil == 1 (bleeds through the cutout)
-  gl.colorMask(true, true, true, true);
-  gl.depthMask(true);
-  gl.stencilFunc(gl.EQUAL, 1, 0xff);
-  gl.stencilOp(gl.KEEP, gl.KEEP, gl.KEEP);
-  renderer.render(sceneB, camera);
+const rtMask = new THREE.WebGLRenderTarget(w, h);
+renderer.setRenderTarget(rtMask); renderer.render(maskScene, camera); // white cutout shape on black
 
-  // Pass 3: scene A everywhere else
-  gl.stencilFunc(gl.NOTEQUAL, 1, 0xff);
-  renderer.render(sceneA, camera);
-
-  gl.disable(gl.STENCIL_TEST);
-}
+// Final pass: one fullscreen quad, mix(A, B, mask) — no stencil buffer needed at all
+renderer.setRenderTarget(null);
+const composite = new THREE.ShaderMaterial({
+  uniforms: { tA: {value: rtA.texture}, tB: {value: rtB.texture}, tMask: {value: rtMask.texture} },
+  vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position.xy,0.,1.); }`,
+  fragmentShader: `varying vec2 vUv; uniform sampler2D tA,tB,tMask;
+    void main(){ float m = texture2D(tMask, vUv).r; gl_FragColor = mix(texture2D(tA,vUv), texture2D(tB,vUv), m); }`
+});
+const compositeScene = new THREE.Scene();
+compositeScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2), composite));
+renderer.render(compositeScene, camera);
 ```
-Resn pairs this with **SDF (signed distance field) textures** for logo morphing — an SDF stays crisp at any resolution and lets you animate the shape by shifting the alpha threshold in the fragment shader: `smoothstep(0.5 - u_soft, 0.5 + u_soft, texture2D(u_sdf, vUv).a)`.
+Resn pairs this with **SDF (signed distance field) textures** for logo morphing — an SDF stays crisp at any resolution and lets you animate the shape by shifting the alpha threshold in the mask's fragment shader: `smoothstep(0.5 - u_soft, 0.5 + u_soft, texture2D(u_sdf, vUv).a)`. Swap `rtMask`'s content for an SDF-rendered shape to get morphing for free — same composite pass, no other changes.
 
 ## 4. three-mesh-bvh (Abeto) — fast raycast/collision on complex meshes
 
