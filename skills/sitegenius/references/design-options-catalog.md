@@ -127,6 +127,11 @@ track.addEventListener('pointerup', () => isDown=false);
 ```
 `.drag-track{overflow-x:auto;scroll-snap-type:x proximity;cursor:grab}` + `cursor:grabbing` on `:active`. Use for portfolio/gallery sections instead of the pinned-scroll pattern when you want user-driven pacing.
 
+**Accessibility (required — found missing by a real axe-core scan, a genuine WCAG "serious" violation):** the scrollable container needs `tabindex="0" role="region" aria-label="…scroll horizontally"` in the markup, or keyboard users cannot reach or scroll it at all:
+```html
+<div class="drag-track" tabindex="0" role="region" aria-label="Gallery, scroll horizontally">…</div>
+```
+
 ### Cursor trail / particle emitter
 ```js
 const pts = []; const N = 14;
