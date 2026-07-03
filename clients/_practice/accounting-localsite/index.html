@@ -11,43 +11,43 @@
   (Supabase + honeypot), NAP footer, LocalBusiness JSON-LD,
   scroll reveals, focus-visible, reduced-motion, 375px-safe.
 ============================================================ -->
-<title>{{SERVICE}} in {{CITY}} | {{BUSINESS_NAME}}</title>
-<meta name="description" content="{{META_DESCRIPTION_155_CHARS_BENEFIT_PLUS_CTA}}">
-<link rel="canonical" href="https://{{DOMAIN}}/">
-<meta property="og:title" content="{{SERVICE}} in {{CITY}} | {{BUSINESS_NAME}}">
-<meta property="og:description" content="{{META_DESCRIPTION_155_CHARS_BENEFIT_PLUS_CTA}}">
-<meta property="og:image" content="https://{{DOMAIN}}/{{HERO_IMAGE}}.webp">
+<title>Accounting & Tax in Winnipeg | Larkspur Accounting</title>
+<meta name="description" content="Winnipeg accounting and tax filing for small businesses — fixed fees, no surprises. Book a free consultation.">
+<link rel="canonical" href="https://larkspuraccounting.ca/">
+<meta property="og:title" content="Accounting & Tax in Winnipeg | Larkspur Accounting">
+<meta property="og:description" content="Winnipeg accounting and tax filing for small businesses — fixed fees, no surprises. Book a free consultation.">
+<meta property="og:image" content="https://larkspuraccounting.ca/hero.webp">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231A150F'/><circle cx='16' cy='16' r='6' fill='%23B0492A'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Swap fonts per client vibe; keep display+body pairing, never Inter/Roboto -->
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,900&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "{{SCHEMA_TYPE_e.g_Restaurant_Electrician_HairSalon}}",
-  "name": "{{BUSINESS_NAME}}",
-  "description": "{{ONE_SENTENCE}}",
-  "url": "https://{{DOMAIN}}",
-  "telephone": "{{PHONE_E164}}",
-  "email": "{{EMAIL}}",
-  "image": "https://{{DOMAIN}}/{{HERO_IMAGE}}.webp",
-  "address": { "@type": "PostalAddress", "streetAddress": "{{STREET}}", "addressLocality": "{{CITY}}", "addressRegion": "{{PROVINCE}}", "postalCode": "{{POSTAL}}", "addressCountry": "CA" },
-  "geo": { "@type": "GeoCoordinates", "latitude": {{LAT}}, "longitude": {{LNG}} },
-  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "{{OPENS}}", "closes": "{{CLOSES}}" }],
-  "priceRange": "{{$$}}",
-  "areaServed": "{{CITY_AND_REGION}}",
-  "sameAs": ["{{GBP_URL}}"]
+  "@type": "AccountingService",
+  "name": "Larkspur Accounting",
+  "description": "Fixed-fee accounting and tax filing for Winnipeg small businesses.",
+  "url": "https://larkspuraccounting.ca",
+  "telephone": "+12045557890",
+  "email": "hello@larkspuraccounting.ca",
+  "image": "https://larkspuraccounting.ca/hero.webp",
+  "address": { "@type": "PostalAddress", "streetAddress": "330 Portage Ave", "addressLocality": "Winnipeg", "addressRegion": "MB", "postalCode": "R3C 0V8", "addressCountry": "CA" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 49.895, "longitude": -97.15 },
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:00", "closes": "17:00" }],
+  "priceRange": "$$",
+  "areaServed": "Winnipeg and surrounding Manitoba",
+  "sameAs": ["https://maps.google.com/?cid=2"]
 }
 </script>
 <style>
   /* ============ TOKENS — swap this block per client ============ */
   :root{
-    --bg:#EFE9DE; --surface:#FAF6EF; --surface-2:#F1EADC;
-    --ink:#1A150F; --muted:#5F5544; --line:#DDD2BE;
-    --accent:#B0492A; --accent-deep:#893821; --accent-soft:#EBD7C9;
-    --display:"Fraunces",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    --bg:#F7F5F0; --surface:#FFFFFF; --surface-2:#EFEBE0;
+    --ink:#191C24; --muted:#5A5F6D; --line:#DDD9CC;
+    --accent:#1F2E4D; --accent-deep:#141B2B; --accent-soft:#DCE1EC;
+    --display:"DM Serif Display",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
     /* Fluid type — Major Third-ish, 375px→1280px (Utopia-style) */
     --step--1:clamp(.88rem,.85rem + .13vw,.95rem);
     --step-0:clamp(1rem,.96rem + .18vw,1.1rem);
@@ -171,16 +171,16 @@
 
 <header id="hdr">
   <div class="container nav">
-    <a class="logo" href="#top">{{BUSINESS}}<em>.</em></a>
+    <a class="logo" href="#top">Larkspur<em>.</em></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div style="display:flex;gap:18px;align-items:center">
-      <a class="call-link" href="tel:{{PHONE_E164}}" aria-label="Call {{BUSINESS_NAME}}">
+      <a class="call-link" href="tel:+12045557890" aria-label="Call Larkspur Accounting">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        {{PHONE_DISPLAY}}
+        (204) 555-7890
       </a>
       <a class="btn" href="#contact">Get a quote</a>
     </div>
@@ -192,11 +192,11 @@
   <section class="hero" id="top">
     <div class="container hero-grid">
       <div class="rv">
-        <p class="eyebrow">{{CITY}} · {{INDUSTRY}}</p>
-        <h1 style="margin-top:14px">{{BENEFIT_HEADLINE_WITH_NUMBER_MAX_10_WORDS}}</h1>
-        <p class="lede">{{WHO_ITS_FOR_AND_WHAT_CHANGES_ONE_SENTENCE}}</p>
+        <p class="eyebrow">Winnipeg · Accounting & Tax</p>
+        <h1 style="margin-top:14px">Your books done right, filed on time, every year</h1>
+        <p class="lede">Fixed-fee bookkeeping and tax filing for Winnipeg small businesses — no surprise invoices, no missed deadlines.</p>
         <div class="hero-ctas">
-          <a class="btn" href="#contact">{{PRIMARY_CTA_e.g_Get_your_free_quote}}</a>
+          <a class="btn" href="#contact">Book a free consultation</a>
           <a class="btn btn-ghost" href="#services">See services</a>
         </div>
         <div class="trust">
@@ -207,12 +207,12 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/></svg>
           </span>
-          {{TRUST_LINE_e.g_5.0_from_38_Google_reviews_·_Serving_Winnipeg_since_2014}}
+          CPA-led · Serving Winnipeg small businesses since 2016
         </div>
       </div>
       <div class="hero-media rv">
-        <img src="{{HERO_IMAGE}}.webp" width="720" height="900" fetchpriority="high"
-             alt="{{DESCRIPTIVE_ALT_showing_the_business_or_its_work}}">
+        <img src="hero.webp" width="720" height="900" fetchpriority="high"
+             alt="Accountant reviewing financial statements with a client">
       </div>
     </div>
   </section>
@@ -221,19 +221,19 @@
   <section id="services">
     <div class="container">
       <p class="eyebrow rv">What we do</p>
-      <h2 class="rv" style="margin-top:12px;max-width:18ch">{{SERVICES_HEADING}}</h2>
+      <h2 class="rv" style="margin-top:12px;max-width:18ch">Every number, handled correctly</h2>
       <div class="bento">
         <article class="cell anchor rv">
           <span class="num">01</span>
           <div>
-            <h3>{{FLAGSHIP_SERVICE}}</h3>
-            <p>{{FAB_COPY_feature_advantage_benefit_25_words}}</p>
+            <h3>Corporate Tax Filing</h3>
+            <p>Complete T2 preparation and CRA filing, reviewed by a CPA, so your return is accurate the first time and never flagged for the wrong reasons.</p>
           </div>
         </article>
-        <article class="cell rv"><span class="num">02</span><h3>{{SERVICE_2}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
-        <article class="cell rv"><span class="num">03</span><h3>{{SERVICE_3}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
-        <article class="cell rv"><span class="num">04</span><h3>{{SERVICE_4}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
-        <article class="cell rv"><span class="num">05</span><h3>{{SERVICE_5}}</h3><p>{{FAB_COPY_15_20_words}}</p></article>
+        <article class="cell rv"><span class="num">02</span><h3>Bookkeeping</h3><p>Monthly reconciliation and reporting, so you always know where the business actually stands.</p></article>
+        <article class="cell rv"><span class="num">03</span><h3>Payroll</h3><p>Monthly reconciliation and reporting, so you always know where the business actually stands.</p></article>
+        <article class="cell rv"><span class="num">04</span><h3>Personal Tax</h3><p>Monthly reconciliation and reporting, so you always know where the business actually stands.</p></article>
+        <article class="cell rv"><span class="num">05</span><h3>CFO Advisory</h3><p>Monthly reconciliation and reporting, so you always know where the business actually stands.</p></article>
       </div>
     </div>
   </section>
@@ -241,9 +241,9 @@
   <!-- PROOF: one strong real quote beats six weak ones -->
   <section class="proof" id="about">
     <div class="container">
-      <p class="eyebrow rv">Why {{CITY}} trusts us</p>
-      <blockquote class="rv" style="margin-top:18px">“{{REAL_QUOTE_with_a_<em>specific_result</em>_highlighted}}”</blockquote>
-      <p class="attrib rv">{{CUSTOMER_FULL_NAME}}<span>{{CONTEXT_e.g_Homeowner_River_Heights}}</span></p>
+      <p class="eyebrow rv">Why Winnipeg trusts us</p>
+      <blockquote class="rv" style="margin-top:18px">“TODO: real client testimonial — <em>with a specific result</em> — before this practice build is used as a reference”</blockquote>
+      <p class="attrib rv">TODO: Client name<span>TODO: context</span></p>
     </div>
   </section>
 
@@ -251,8 +251,8 @@
   <section aria-label="Call to action">
     <div class="container">
       <div class="cta-band rv">
-        <h2>{{RESTATED_OFFER_e.g_Ready_for_a_kitchen_you_love?}}</h2>
-        <a class="btn" href="#contact" style="background:var(--accent)">{{PRIMARY_CTA}}</a>
+        <h2>Ready for books that are actually current?</h2>
+        <a class="btn" href="#contact" style="background:var(--accent)">Book a free consultation</a>
       </div>
     </div>
   </section>
@@ -262,13 +262,13 @@
     <div class="container contact-grid">
       <div class="rv">
         <p class="eyebrow">Get in touch</p>
-        <h2 style="margin-top:12px">{{CONTACT_HEADING}}</h2>
+        <h2 style="margin-top:12px">Tell us about your business</h2>
         <div class="nap">
-          <p><strong>{{BUSINESS_NAME}}</strong><br>{{STREET}}, {{CITY}}, {{PROVINCE}} {{POSTAL}}</p>
-          <p><strong>Call:</strong> <a href="tel:{{PHONE_E164}}" style="color:var(--accent);font-weight:700">{{PHONE_DISPLAY}}</a></p>
-          <p><strong>Email:</strong> <a href="mailto:{{EMAIL}}">{{EMAIL}}</a></p>
-          <p><strong>Hours:</strong> {{HOURS_HUMAN}}</p>
-          <p><strong>Service area:</strong> {{AREAS_LIST}}</p>
+          <p><strong>Larkspur Accounting</strong><br>330 Portage Ave, Winnipeg, MB R3C 0V8</p>
+          <p><strong>Call:</strong> <a href="tel:+12045557890" style="color:var(--accent);font-weight:700">(204) 555-7890</a></p>
+          <p><strong>Email:</strong> <a href="mailto:hello@larkspuraccounting.ca">hello@larkspuraccounting.ca</a></p>
+          <p><strong>Hours:</strong> Mon–Fri 9am–5pm</p>
+          <p><strong>Service area:</strong> Winnipeg and all of Manitoba</p>
         </div>
       </div>
       <form id="lead-form" class="rv" novalidate>
@@ -276,7 +276,7 @@
         <label>Email <input type="email" name="email" autocomplete="email" required></label>
         <label>How can we help? <textarea name="message" required></textarea></label>
         <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <button class="btn" type="submit">{{FORM_CTA_e.g_Get_my_free_quote}}</button>
+        <button class="btn" type="submit">Book my consultation</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -287,8 +287,8 @@
   <div class="container">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="#top">{{BUSINESS}}<em>.</em></a>
-        <p style="margin-top:14px;color:var(--muted);font-size:var(--step--1);max-width:36ch">{{ONE_SENTENCE}}</p>
+        <a class="logo" href="#top">Larkspur<em>.</em></a>
+        <p style="margin-top:14px;color:var(--muted);font-size:var(--step--1);max-width:36ch">Fixed-fee accounting and tax filing for Winnipeg small businesses.</p>
       </div>
       <div>
         <h3>Pages</h3>
@@ -301,14 +301,14 @@
       <div>
         <h3>Contact</h3>
         <ul>
-          <li><a href="tel:{{PHONE_E164}}">{{PHONE_DISPLAY}}</a></li>
-          <li><a href="mailto:{{EMAIL}}">{{EMAIL}}</a></li>
-          <li>{{STREET}}, {{CITY}} {{PROVINCE}}</li>
+          <li><a href="tel:+12045557890">(204) 555-7890</a></li>
+          <li><a href="mailto:hello@larkspuraccounting.ca">hello@larkspuraccounting.ca</a></li>
+          <li>330 Portage Ave, Winnipeg MB</li>
         </ul>
       </div>
     </div>
     <div class="legal">
-      <span>© <span id="yr"></span> {{BUSINESS_NAME}}. All rights reserved.</span>
+      <span>© <span id="yr"></span> Larkspur Accounting. All rights reserved.</span>
       <span>Site by <a href="https://webelt.ca" style="font-weight:700">RNR Solutions</a></span>
     </div>
   </div>
@@ -350,9 +350,9 @@
       msg.textContent = 'Thanks — we’ll be in touch within one business day.'; msg.className = 'form-msg ok';
       form.reset();
     } catch {
-      msg.textContent = 'Something went wrong — call us at {{PHONE_DISPLAY}} instead.'; msg.className = 'form-msg err';
+      msg.textContent = 'Something went wrong — call us at (204) 555-7890 instead.'; msg.className = 'form-msg err';
     }
-    btn.disabled = false; btn.textContent = '{{FORM_CTA_e.g_Get_my_free_quote}}';
+    btn.disabled = false; btn.textContent = 'Book my consultation';
   });
 </script>
 </body>

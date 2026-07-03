@@ -47,3 +47,6 @@ const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' })
 12. **User-declared decisions are final** — don't re-offer what was declined, don't keep flagging "pending" items on finished work.
 13. **Facts are never invented** — no fake reviews/hours/credentials/stats; visible `TODO:` markers instead.
 14. **Preview = the deliverable**: send the HTML file itself, mobile screenshots when asked from a phone.
+
+## Grid overflow (found in practice build #1)
+15. **Grid items overflow their track at mobile widths even with `img{width:100%}` in CSS** — a grid item's default `min-width:auto` means the browser considers the child's intrinsic/attribute size (e.g. `<img width="720">`) as a floor before percentage widths apply, blowing the whole row out past the viewport. Symptom: `scrollWidth` far exceeds the viewport at 375px even though every element "looks" responsive in the code. Fix: `.hero-grid>*,.contact-grid>*{min-width:0}` (or `min-width:0` on any grid/flex child holding a sized image). Now baked into `templates/localsite-starter/index.html` — check any OLDER copy of that file for this fix before reusing it.
