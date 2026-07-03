@@ -23,6 +23,7 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Morphing/sliding menu overlay (full-screen nav takeover) | B | new — see recipe below |
 | Draggable horizontal gallery (pointer-drag, momentum) | B | new — see recipe below |
 | SVG line-draw-on (stroke-dashoffset for logos/signatures) | B | already in awwwards-techniques §3 (SDF note) |
+| Looping background video (hero or full-section) | B | new — see recipe below |
 
 ## Cursor & hover
 | Option | Tier | Status |
@@ -147,6 +148,41 @@ Reveals hidden content/image under a circular cursor-following cutout — strong
 <filter id="squiggle"><feTurbulence type="fractalNoise" baseFrequency="0.01 0.03" numOctaves="2" result="noise" seed="2"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="0"><animate attributeName="scale" values="0;6;0" dur="1.2s" begin="indefinite" fill="freeze" id="wig"/></feDisplacementMap></filter>
 ```
 `style="filter:url(#squiggle)"` on the text element; trigger `document.getElementById('wig').beginElement()` on hover. Playful accent for a single hero word — never body text.
+
+### Looping background video
+Yes — very doable, and it's the #1 requested "trend" feature. Full recipe:
+```html
+<div class="video-hero">
+  <video class="bg-video" autoplay muted loop playsinline preload="metadata" poster="hero-poster.webp">
+    <source src="hero-loop.webm" type="video/webm">
+    <source src="hero-loop.mp4" type="video/mp4">
+  </video>
+  <div class="video-veil" aria-hidden="true"></div>
+  <div class="hero-content"><!-- headline, CTA — always OVER a veil, never raw --></div>
+</div>
+```
+```css
+.video-hero{position:relative;overflow:hidden}
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.video-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.15) 40%,rgba(0,0,0,.55) 100%)}
+.hero-content{position:relative;z-index:2}
+@media(prefers-reduced-motion:reduce),(max-width:900px){.bg-video{display:none} .video-hero{background:url(hero-poster.webp) center/cover}}
+```
+```js
+// Pause when offscreen — same discipline as the WebGL rule
+const v = document.querySelector('.bg-video');
+new IntersectionObserver(es => { v.paused ? null : (es[0].isIntersecting ? v.play() : v.pause()); }, {threshold:0}).observe(v.closest('.video-hero'));
+// Respect data saver / slow connections
+if (navigator.connection?.saveData || navigator.connection?.effectiveType?.includes('2g')) { v.remove(); }
+```
+Rules (non-negotiable, this is where background video usually goes wrong):
+- `muted` + `playsinline` are mandatory or autoplay is blocked on mobile/Safari entirely.
+- **Always static poster/image on mobile and reduced-motion** — never autoplay video on a phone (data cost + battery + most browsers won't autoplay unmuted anyway, and looping video is a known mobile-perf killer).
+- **Always a veil/gradient behind the text** — raw video under a headline usually fails contrast in some frame even if it passes in others.
+- Encode short (6–15s), silent, `.webm` primary + `.mp4` fallback, ≤3-4MB for a hero loop — compress hard (CRF 30-32, 1080p max, no audio track at all).
+- Source footage: same rule as every other asset — real business footage (storefront, craft, product in motion) or Higgsfield-generated, never stock. Ask before generating, same as images.
+- `preload="metadata"` not `auto` — don't force the whole file to download before first paint.
+- Pause via IntersectionObserver when scrolled past — same battery/perf discipline as the WebGL canvas.
 
 ## Sources (this round)
 https://www.awwwards.com/websites/scrolling/ · https://muffingroup.com/blog/parallax-scrolling-websites/ · https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/ · https://blog.hubspot.com/website/animated-cursor · https://speckyboy.com/css-javascript-cursor-effects/
