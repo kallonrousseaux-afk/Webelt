@@ -30,6 +30,13 @@ Read `skills/sitegenius/references/technique-selection.md` and apply its four fi
 - Fonts: never Inter/Roboto/Arial. Fraunces, Playfair, Syne, Instrument Serif, Archivo Expanded, Hanken Grotesk (body).
 - Copy: write from the content brief using `references/seo-copy-playbook.md` (PAS/AIDA/FAB per section). Images per `references/imagery-direction.md` — generation always asks the user first.
 - **3D models (GLB/GLTF) — always ask before deciding whether to build with generic primitives or import real assets.** Same standing rule as image generation: before adding any 3D-model-based technique (loaded viewer, floating icons, product configurator), ask Kallon if he wants to supply real models rather than defaulting straight to hand-authored/primitive geometry.
+- **Generated video/image via Higgsfield — the working recipe** (used successfully for a hero video background):
+  1. Ask first, always — concept ("you decide" vs. his own idea) AND which build/section it goes on, via `AskUserQuestion`. Never generate speculatively.
+  2. `models_explore(action:'recommend'|'search', ...)` to pick a model; `get_cost:true` on `generate_video`/`generate_image` to preflight credits before spending them.
+  3. Generation jobs can take a long time (one video took ~16 min) — poll with `job_display` on a `ScheduleWakeup` cadence, not tight loops. If a job runs unusually long, check `balance`/`transactions` to confirm it's genuinely still processing (not silently failed) before assuming something's broken, and tell Kallon it's slow rather than going silent.
+  4. **This sandbox's outbound proxy blocks the Higgsfield/CloudFront CDN host** — downloading the finished asset locally to self-host will 403. This is an org egress policy, not a bug to route around (see `/root/.ccr/README.md`). Reference the CDN URL directly in the `<video>`/`<img src>` tag instead — it works fine once opened in a real browser — and leave an explicit `TODO:` (in the file's header comment and the build's README) to download and re-host it on the real domain before production launch.
+  5. Duplicate the build first if the change might be unwanted (don't modify a delivered/approved build in place when asked to "make another version") — copy the whole client directory, work in the copy.
+  6. Verify the new element degrades gracefully with no network/no video (this sandbox's CDN block doubles as a free real-world test of a slow/failed video load) — confirm no broken layout, no console error, before calling it done.
 - The live example for craft calibration: `index.html` at repo root (webelt.ca). Read, NEVER modify.
 
 ## Step 4 — QA gates (hard, in order — run the exact harness from build-gotchas.md)
