@@ -10,3 +10,5 @@ Goal: touch every register × tier combo once to graduate catalog recipes from d
 - [x] 6. LocalSite via full menu-driven intake (Voltage Fitness) — DONE (`clients/_practice/voltage-fitness/`), type-only statement hero (new pattern), full GSAP motion layer on LocalSite tier per brief, bright/vibrant palette built from scratch
 
 Run one at a time. Keep practice builds lean — single QA pass, not multi-round.
+
+- [x] 7. Multi-page real build (Barba.js in a full site, not synthetic) — trades (Ironclad Multipage) — DONE (`clients/_practice/ironclad-multipage/`), 3 real pages, full nav flow verified, cursor re-init across page swaps confirmed, 2 real bugs found+fixed (missing nav links, form-guard), 0 axe/overflow/console issues across all 3 pages × 2 viewports.

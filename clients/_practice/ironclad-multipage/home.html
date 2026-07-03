@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TODO before launch: business name (Ironclad = placeholder), phone, address,
+     hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys -->
+<title>Roofing & Exteriors in Winnipeg | Ironclad Roofing</title>
+<meta name="description" content="Licensed Winnipeg roofing and exteriors — storm repair, full replacements, free inspections. Get your free quote.">
+<link rel="canonical" href="https://TODO-DOMAIN.ca/">
+<meta property="og:title" content="Roofing & Exteriors in Winnipeg | Ironclad Roofing">
+<meta property="og:description" content="Licensed Winnipeg roofing and exteriors — storm repair, full replacements, free inspections.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230E1626'/><path d='M10 22V10l12 12V10' stroke='%23C9A96A' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RoofingContractor",
+  "name": "Ironclad Roofing",
+  "description": "Licensed roofing and exteriors contractor in Winnipeg: storm damage repair, full roof replacement, siding, and free inspections.",
+  "url": "https://TODO-DOMAIN.ca",
+  "telephone": "TODO",
+  "email": "TODO",
+  "address": { "@type": "PostalAddress", "streetAddress": "TODO", "addressLocality": "Winnipeg", "addressRegion": "MB", "postalCode": "TODO", "addressCountry": "CA" },
+  "geo": { "@type": "GeoCoordinates", "latitude": "TODO", "longitude": "TODO" },
+  "image": "https://TODO-DOMAIN.ca/TODO-hero-image.webp",
+  "openingHoursSpecification": [{ "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "TODO", "closes": "TODO" }],
+  "areaServed": "Winnipeg and all of Manitoba",
+  "priceRange": "$$"
+}
+</script>
+<style>
+  :root{
+    --bg:#1C1D19; --bg-2:#232420; --paper:#F4F2ED; --paper-2:#E9E5D9;
+    --ink:#F4F2ED; --ink-dark:#23241F; --muted:#A9A79C; --muted-dark:#5C594E;
+    --line:rgba(244,242,237,.14); --line-dark:rgba(35,36,31,.14);
+    --brass:#C97B1D; --brass-deep:#A5620F; --brass-text:#8A5410; --ox:#A0492F;
+    --display:"Archivo Expanded",Arial,sans-serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    --step--1:clamp(.85rem,.82rem + .14vw,.94rem);
+    --step-0:clamp(1rem,.95rem + .2vw,1.13rem);
+    --step-1:clamp(1.25rem,1.16rem + .4vw,1.5rem);
+    --step-2:clamp(1.56rem,1.4rem + .72vw,2rem);
+    --step-3:clamp(1.95rem,1.68rem + 1.22vw,2.66rem);
+    --step-4:clamp(2.44rem,2rem + 2vw,3.55rem);
+    --step-5:clamp(3.05rem,2.34rem + 3.2vw,4.73rem);
+    --step-6:clamp(3.6rem,2.5rem + 5.4vw,7.4rem);
+    --dur:.6s; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lock{overflow:hidden}
+  ::selection{background:var(--brass);color:var(--bg)}
+  h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.015em;text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:2px}
+  .container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--brass);color:var(--bg);padding:10px 18px;z-index:200;font-weight:700}
+  .skip:focus{left:0}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+  .light .eyebrow{color:var(--brass-text)}
+  .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .intro{position:fixed;inset:0;z-index:120;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--brass);overflow:hidden}
+  .intro .word span{display:inline-block}
+  .orbit{position:fixed;top:50%;left:50%;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;border:1px solid rgba(201,169,106,.5);pointer-events:none;z-index:1;will-change:transform,opacity}
+  .orbit::after{content:"";position:absolute;inset:22px;border-radius:50%;border:1px solid rgba(201,169,106,.22)}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--brass);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
+  .cursor-ring{position:fixed;top:0;left:0;width:42px;height:42px;border:1.5px solid var(--brass);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
+  .cursor-ring span{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:0;transition:opacity .2s}
+  .cursor-ring.grow{width:76px;height:76px;background:var(--brass);border-color:var(--brass)}
+  .cursor-ring.grow span{opacity:1}
+  @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
+  header.hide{transform:translateY(-110%)}
+  header.solid{background:rgba(14,22,38,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
+  .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
+  .logo em{font-style:normal;font-weight:800;color:var(--brass)}
+  .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;list-style:none}
+  .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .25s;position:relative}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--brass);color:var(--bg);font-weight:700;font-size:var(--step--1);padding:15px 30px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
+  .btn:hover{background:#D8BC82}
+  .btn:active{transform:scale(.96)}
+  .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:2px}
+  .btn-line:hover{background:rgba(245,241,232,.06);border-color:var(--brass)}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-bottom:clamp(40px,6vh,80px)}
+  .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+  .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,29,25,.5),rgba(28,29,25,.1) 40%,rgba(28,29,25,.78) 92%);pointer-events:none;z-index:1}
+  .hero .container{z-index:2}
+  .hero .container{position:relative;width:100%}
+  .hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:clamp(20px,3vh,36px)}
+  .hero-kicker .rule{height:1px;width:64px;background:var(--brass)}
+  .hero h1{font-size:clamp(2.6rem,1.6rem + 5vw,6.4rem);line-height:1.02;font-weight:500}
+  .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap}
+  .hero h1 .ln>span{display:inline-block;will-change:transform}
+  .hero h1 em{font-style:normal;font-weight:800;color:var(--brass)}
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(28px,4vh,52px);flex-wrap:wrap}
+  .hero-foot .lede{font-size:var(--step-1);color:var(--muted);max-width:38ch;line-height:1.55}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .scroll-cue{position:absolute;right:clamp(20px,4vw,52px);bottom:clamp(40px,6vh,80px);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl}
+  .scroll-cue .line{width:1px;height:56px;background:var(--line);position:relative;overflow:hidden}
+  .scroll-cue .line::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--brass);animation:drip 2.2s var(--ease) infinite}
+  @keyframes drip{to{top:110%}}
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg)}
+  .marquee-track{display:flex;gap:0;width:max-content;will-change:transform}
+  .marquee span{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--muted);white-space:nowrap;padding-right:18px}
+  .marquee b{color:var(--brass);font-weight:500;padding-right:18px}
+  .light{background:var(--paper);color:var(--ink-dark)}
+  section{padding:clamp(80px,12vw,150px) 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+  .sec-head h2{font-size:var(--step-5);line-height:1.03;max-width:14ch}
+  .sec-head h2 em{font-style:italic;color:var(--brass-text)}
+  .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--brass-text);padding-bottom:8px}
+  .svc-list{border-top:1px solid var(--line-dark)}
+  .svc{display:grid;grid-template-columns:80px 1fr 2fr 48px;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(24px,3.5vw,42px) 0;border-bottom:1px solid var(--line-dark);position:relative;transition:padding-left .4s var(--ease)}
+  .svc:hover{padding-left:18px}
+  .svc .n{font-family:var(--display);font-style:italic;font-size:var(--step-1);color:var(--brass-text)}
+  .svc h3{font-size:var(--step-3);font-weight:500;line-height:1.08}
+  .svc p{font-size:var(--step-0);color:var(--muted-dark);max-width:46ch}
+  .svc .arrow{width:44px;height:44px;border:1px solid var(--line-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .4s var(--ease);flex:none}
+  .svc:hover .arrow{background:var(--ink-dark);transform:rotate(45deg)}
+  .svc:hover .arrow svg{stroke:var(--paper)}
+  .svc .arrow svg{stroke:var(--ink-dark);transition:stroke .3s}
+  .svc .fill{position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;background:rgba(20,27,43,.035);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);z-index:-1}
+  .svc:hover .fill{transform:scaleY(1)}
+  .spotlight-section{position:relative;background:var(--bg-2)}
+  .spotlight-frame{position:relative;max-width:900px;margin:clamp(32px,5vw,56px) auto 0;border-radius:4px;overflow:hidden;border:1px solid var(--line);aspect-ratio:16/9}
+  .spotlight-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .spotlight-frame .after{z-index:1}
+  .spotlight-frame .before{z-index:2;mask:radial-gradient(160px at var(--mx,50%) var(--my,50%),black 60%,transparent 100%);-webkit-mask:radial-gradient(160px at var(--mx,50%) var(--my,50%),black 60%,transparent 100%)}
+  .spotlight-frame .tag{position:absolute;z-index:3;padding:8px 16px;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;background:var(--brass);color:var(--ink-dark)}
+  .spotlight-frame .tag.before-tag{left:16px;top:16px}
+  .spotlight-frame .tag.after-tag{right:16px;top:16px;background:var(--ink-dark);color:var(--paper)}
+  .spotlight-hint{text-align:center;color:var(--muted);font-size:var(--step--1);margin-top:16px}
+  @media(max-width:900px){.spotlight-frame .before{mask:none;-webkit-mask:none;clip-path:inset(0 50% 0 0)}}
+  .hproc-head{padding:clamp(80px,10vw,130px) 0 clamp(30px,4vw,50px)}
+  .hcard{width:clamp(300px,38vw,520px);flex:none;border:1px solid var(--line);border-radius:4px;padding:clamp(28px,3.5vw,52px);background:linear-gradient(160deg,rgba(245,241,232,.03),rgba(245,241,232,0));position:relative;overflow:hidden}
+  .hcard .hn{font-family:var(--display);font-style:italic;font-size:clamp(4rem,7vw,7.5rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,169,106,.5)}
+  .hcard h3{font-size:var(--step-3);margin:18px 0 12px}
+  .hcard p{color:var(--muted);font-size:var(--step-0);max-width:40ch}
+  .hcard .tag{position:absolute;top:26px;right:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .quote{position:relative;overflow:hidden}
+  .quote .mark{position:absolute;top:-40px;left:-20px;font-family:var(--display);font-size:clamp(14rem,30vw,28rem);line-height:1;color:rgba(201,169,106,.07);pointer-events:none;user-select:none}
+  blockquote{font-family:var(--display);font-size:var(--step-4);line-height:1.22;font-weight:400;max-width:26ch}
+  blockquote em{font-style:normal;font-weight:800;color:var(--brass)}
+  .attrib{margin-top:30px;font-weight:700;display:flex;align-items:center;gap:16px}
+  .attrib .rule{width:48px;height:1px;background:var(--brass)}
+  .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
+  .cta{background:var(--paper);color:var(--ink-dark);text-align:center;position:relative;overflow:hidden}
+  .cta h2{font-size:var(--step-5);max-width:16ch;margin:0 auto;line-height:1.05}
+  .cta h2 em{font-style:italic;color:var(--brass-text)}
+  .cta p{color:var(--muted-dark);margin:22px auto 40px;max-width:44ch}
+  .cta .btn{background:var(--ink-dark);color:var(--paper);padding:22px 48px;font-size:var(--step-0);border-radius:2px}
+  .cta .btn:hover{background:#243149}
+  .cta .ring{position:absolute;border-radius:50%;border:1px solid rgba(122,94,46,.25);pointer-events:none}
+  .cta .r1{width:520px;height:520px;left:-200px;bottom:-260px}
+  .cta .r2{width:320px;height:320px;right:-120px;top:-160px}
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,80px)}
+  .contact h2{font-size:var(--step-4)}
+  .nap{display:grid;gap:14px;margin-top:28px;font-size:var(--step--1);color:var(--muted)}
+  .nap strong{color:var(--ink)}
+  .nap a.tel{color:var(--brass);font-weight:700}
+  form{display:grid;gap:0;border:1px solid var(--line);background:rgba(245,241,232,.02)}
+  .field{padding:clamp(20px,2.5vw,30px);border-bottom:1px solid var(--line)}
+  label{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:grid;gap:10px}
+  input,textarea{font:inherit;font-size:16px;background:transparent;border:none;color:var(--ink);width:100%;padding:4px 0}
+  input:focus,textarea:focus{outline:none}
+  .field:focus-within{background:rgba(201,169,106,.05)}
+  .field:focus-within label{color:var(--brass)}
+  textarea{min-height:90px;resize:vertical}
+  form .btn{margin:clamp(20px,2.5vw,30px);justify-content:center}
+  .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;padding:0 clamp(20px,2.5vw,30px) 16px}
+  .form-msg.ok{color:#7FB98E}.form-msg.err{color:#E08D77}
+  .form-note{font-size:var(--step--1);color:var(--muted);padding:0 clamp(20px,2.5vw,30px) clamp(20px,2.5vw,30px)}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  footer{border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0 36px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
+  .foot-grid h3{font-family:var(--body);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-size:12px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px;margin-top:16px;font-size:var(--step--1);color:var(--muted)}
+  .foot-grid a:hover{color:var(--brass)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted)}
+  .legal a{font-weight:700;color:var(--ink)}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  html.gsap .rv{opacity:1;transform:none;transition:none}
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .hero h1 .ln{white-space:normal}
+    .sec-head{grid-template-columns:1fr}
+    .svc{grid-template-columns:1fr;gap:10px}
+    .svc .arrow{display:none}
+    .hcard{width:100%}
+    .contact-grid,.foot-grid{grid-template-columns:1fr}
+    .orbit{display:none}
+    .scroll-cue{display:none}
+    .quote .mark{font-size:14rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .intro{display:none}
+    .marquee-track{transform:none!important}
+    .scroll-cue .line::after{animation:none}
+    .orbit{display:none}
+  }
+</style>
+</head>
+<body class="lock" data-barba="wrapper">
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="intro" aria-hidden="true"><div class="word"><span>Ironclad</span></div></div>
+<div class="orbit" aria-hidden="true"></div>
+
+<header id="hdr">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Ironclad<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="storm-damage-repair.html">Storm Damage</a></li>
+      <li><a href="roof-replacement.html">Roof Replacement</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Get a free quote</a>
+  </nav>
+</header>
+
+<main id="main" data-barba="container" data-barba-namespace="home">
+  <section class="hero" id="top" aria-label="Introduction">
+    <img class="hero-photo" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%271800%27%20height%3D%271200%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27hsl%2825%2C35%25%2C32%25%29%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27hsl%2855%2C30%25%2C18%25%29%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url%28%2523g%29%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27sans-serif%27%20font-size%3D%2775%27%20fill%3D%27rgba%28255%2C255%2C255%2C.55%29%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EPLACEHOLDER%20%E2%80%94%20hero%3C/text%3E%3C/svg%3E" alt="Roofing crew installing shingles mid-project" width="1800" height="1200" fetchpriority="high">
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-kicker rv">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="eyebrow">Winnipeg · Roofing &amp; Exteriors</span>
+      </div>
+      <h1>
+        <span class="ln"><span>A roof that</span></span>
+        <span class="ln"><span>actually <em>holds</em></span></span>
+        <span class="ln"><span>through <em>every</em> storm.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="lede rv">Free storm inspections, licensed crews, and a 10-year workmanship warranty — Winnipeg roofing done right the first time.</p>
+        <div class="hero-ctas rv">
+          <a class="btn magnetic" href="#contact" data-cursor="Book">Get a free quote</a>
+          <a class="btn btn-line" href="#process" data-cursor="View">See our work</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll<span class="line"></span></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Storm Damage Repair <b>·</b> Full Roof Replacement <b>·</b> Siding <b>·</b> Eavestrough <b>·</b> Free Inspections <b>·</b> Insurance Claims <b>·</b>&nbsp;</span>
+      <span>Storm Damage Repair <b>·</b> Full Roof Replacement <b>·</b> Siding <b>·</b> Eavestrough <b>·</b> Free Inspections <b>·</b> Insurance Claims <b>·</b>&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="light" id="services">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx rv">(01)</span>
+        <h2 class="rv">Every job, done <em>right the first time</em></h2>
+      </div>
+      <div class="svc-list">
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">01</span>
+          <h3>Storm Damage Repair</h3>
+          <p>Same-week inspections after hail or wind damage, with full documentation for your insurance claim.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">02</span>
+          <h3>Full Roof Replacement</h3>
+          <p>Tear-off to final inspection, licensed crews, 10-year workmanship warranty on every job.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">03</span>
+          <h3>Siding</h3>
+          <p>Vinyl and steel siding installed to withstand Manitoba winters.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">04</span>
+          <h3>Eavestrough</h3>
+          <p>Seamless eavestrough and downspouts, sized for real Winnipeg snowmelt.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">05</span>
+          <h3>Insurance Claims</h3>
+          <p>We document the damage and work directly with your adjuster.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="spotlight-section" id="process">
+    <div class="container hproc-head">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="idx rv" style="color:var(--brass)">(02)</span>
+        <h2 class="rv">See the <em style="color:var(--brass)">difference</em></h2>
+      </div>
+    </div>
+    <div class="container">
+      <div class="spotlight-frame" id="spotlightFrame">
+        <img class="after" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27900%27%20height%3D%27506%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27hsl%2825%2C35%25%2C32%25%29%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27hsl%2855%2C30%25%2C18%25%29%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url%28%2523g%29%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27sans-serif%27%20font-size%3D%2737%27%20fill%3D%27rgba%28255%2C255%2C255%2C.55%29%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EPLACEHOLDER%20%E2%80%94%20after%3C/text%3E%3C/svg%3E" alt="Roof after Ironclad replacement">
+        <img class="before" src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%27900%27%20height%3D%27506%27%3E%3Cdefs%3E%3ClinearGradient%20id%3D%27g%27%20x1%3D%270%27%20y1%3D%270%27%20x2%3D%271%27%20y2%3D%271%27%3E%3Cstop%20offset%3D%270%27%20stop-color%3D%27hsl%28210%2C35%25%2C32%25%29%27/%3E%3Cstop%20offset%3D%271%27%20stop-color%3D%27hsl%28240%2C30%25%2C18%25%29%27/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width%3D%27100%25%27%20height%3D%27100%25%27%20fill%3D%27url%28%2523g%29%27/%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2750%25%27%20font-family%3D%27sans-serif%27%20font-size%3D%2737%27%20fill%3D%27rgba%28255%2C255%2C255%2C.55%29%27%20text-anchor%3D%27middle%27%20dominant-baseline%3D%27middle%27%3EPLACEHOLDER%20%E2%80%94%20before%3C/text%3E%3C/svg%3E" alt="Roof before Ironclad replacement">
+        <span class="tag before-tag">Before</span>
+        <span class="tag after-tag">After</span>
+      </div>
+      <p class="spotlight-hint rv">Move your cursor over the photo to reveal the before.</p>
+    </div>
+  </section>
+
+  <section class="quote">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <div class="container">
+      <p class="eyebrow rv" style="margin-bottom:28px">Why clients trust us</p>
+      <blockquote class="rv">TODO: real client testimonial — with a specific result — before this practice build is used as a reference</blockquote>
+      <p class="attrib rv"><span class="rule" aria-hidden="true"></span>TODO: Client name<span style="margin-left:0">· TODO: context</span></p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <span class="ring r1" aria-hidden="true"></span>
+    <span class="ring r2" aria-hidden="true"></span>
+    <div class="container">
+      <h2 class="rv">Storm damage? <em>Don’t wait.</em></h2>
+      <p class="rv">Free inspection, written quote same day — no obligation.</p>
+      <a class="btn magnetic rv" href="#contact" data-cursor="Book">Get a free quote</a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-top:14px">Tell us what happened</h2>
+        <div class="nap">
+          <p><strong>Ironclad Roofing</strong><br>TODO: street address, Winnipeg, MB</p>
+          <p><strong>Call:</strong> <a class="tel" href="tel:+1TODO">TODO: phone</a></p>
+          <p><strong>Email:</strong> <a href="mailto:TODO">TODO: email</a></p>
+          <p><strong>Hours:</strong> TODO: hours</p>
+          <p><strong>Serving:</strong> Winnipeg and all of Manitoba — in person or by video</p>
+        </div>
+      </div>
+      <form id="lead-form" class="rv" novalidate>
+        <div class="field"><label>Name <input type="text" name="name" autocomplete="name" required></label></div>
+        <div class="field"><label>Email <input type="email" name="email" autocomplete="email" required></label></div>
+        <div class="field"><label>Describe the damage or job <textarea name="message" required placeholder="e.g. Hail damage on the north slope"></textarea></label></div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn magnetic" type="submit">Request my free quote</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note">We'll call to book your free inspection within one business day.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">Ironclad<em>.</em></a>
+        <p style="margin-top:16px;font-size:var(--step--1);color:var(--muted);max-width:36ch">Licensed roofing and exteriors contractor serving Winnipeg since 2011.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+1TODO">TODO: phone</a></li>
+          <li><a href="mailto:TODO">TODO: email</a></li>
+          <li>TODO: address, Winnipeg MB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr"></span> Ironclad Roofing. All rights reserved.</span>
+      <span>Site by <a href="https://webelt.ca">RNR Solutions</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="node_modules/@barba/core/dist/barba.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const motionOK = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  const desktop = matchMedia('(hover:hover)').matches && innerWidth > 900;
+  const hdr = document.getElementById('hdr');
+
+  let lastY = 0;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    hdr.classList.toggle('solid', y > 40);
+    hdr.classList.toggle('hide', y > 300 && y > lastY);
+    lastY = y;
+  }, { passive: true });
+
+  if (window.gsap && motionOK) {
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add('gsap');
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, onComplete(){ document.body.classList.remove('lock'); } });
+    tl.from('.intro .word span', { yPercent: 120, duration: .7 })
+      .to('.intro .word span', { yPercent: -120, duration: .5, delay: .35, ease: 'power4.in' })
+      .to('.intro', { yPercent: -100, duration: .8, ease: 'power4.inOut' }, '-=.1')
+      .set('.intro', { display: 'none' })
+      .from('.hero h1 .ln > span', { yPercent: 115, duration: 1, stagger: .1 }, '-=.55')
+      .from(['.hero-kicker', '.hero-foot .lede', '.hero-ctas', '.scroll-cue'], { y: 30, opacity: 0, duration: .7, stagger: .08 }, '-=.6');
+
+    gsap.to('.marquee-track', { xPercent: -50, ease: 'none', duration: 26, repeat: -1 });
+
+    document.querySelectorAll('section:not(.hero)').forEach(sec => {
+      const els = sec.querySelectorAll('.rv, .svc, .hcard');
+      if (!els.length) return;
+      gsap.from(els, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
+        scrollTrigger: { trigger: sec, start: 'top 72%' } });
+    });
+
+    if (desktop) {
+      gsap.set('.orbit', { opacity: 0 });
+      gsap.timeline({ scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: .8 } })
+        .to('.orbit', { opacity: 1, x: '38vw', y: '-18vh', scale: .8, duration: .12 })
+        .to('.orbit', { x: '-40vw', y: '6vh', scale: 1.5, duration: .3 })
+        .to('.orbit', { x: '34vw', y: '10vh', scale: .55, duration: .3 })
+        .to('.orbit', { x: 0, y: '-4vh', scale: 2.6, opacity: .35, duration: .28 });
+    }
+
+    gsap.fromTo('.quote .mark', { y: 80 }, { y: -80, ease: 'none',
+      scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: .6 } });
+    gsap.fromTo('.cta .r1', { y: 60 }, { y: -60, ease: 'none',
+      scrollTrigger: { trigger: '.cta', start: 'top bottom', end: 'bottom top', scrub: .6 } });
+  } else {
+    document.body.classList.remove('lock');
+    const intro = document.querySelector('.intro'); if (intro) intro.style.display = 'none';
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12, rootMargin: '0px 0px -40px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  }
+
+  if (desktop && motionOK) {
+    const dot = document.createElement('div'); dot.className = 'cursor-dot';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring'; ring.innerHTML = '<span></span>';
+    document.body.append(dot, ring);
+    const label = ring.querySelector('span');
+    let tx = innerWidth/2, ty = innerHeight/2, rx = tx, ry = ty;
+    addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY;
+      dot.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%)`; }, { passive: true });
+    (function loop(){ rx += (tx-rx)*.16; ry += (ty-ry)*.16;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+    function bindCursorTargets(root){ root.querySelectorAll('a,button,.svc').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.classList.add('grow'); label.textContent = el.dataset.cursor || ''; });
+      el.addEventListener('mouseleave', () => { ring.classList.remove('grow'); });
+    }); }
+    bindCursorTargets(document);
+    window.__reinitCursorTargets = bindCursorTargets;
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+
+  (function(){
+    const frame = document.getElementById('spotlightFrame'); if(!frame || !desktop) return;
+    frame.addEventListener('mousemove', e => {
+      const r = frame.getBoundingClientRect();
+      frame.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      frame.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  })();
+
+  // REQUIRED before this works: Supabase blocks anonymous inserts by default (Row Level Security).
+  // Run in the SQL editor for the `leads` table:
+  //   alter table leads enable row level security;
+  //   create policy "anon insert leads" on leads for insert to anon with check (true);
+  // Real multi-page navigation (Barba.js) — SPA-style transitions between real pages
+  if (window.barba) {
+    barba.init({
+      transitions: [{
+        leave({ current }) {
+          return gsap.to(current.container, { opacity: 0, y: -16, duration: .35, ease: 'power2.in' });
+        },
+        enter({ next }) {
+          document.body.classList.remove('lock'); // new page's content is already visible, no intro replay on internal nav
+          // Re-init what's page-specific: reveal elements + cursor targets, since Barba swapped the DOM
+          next.container.querySelectorAll('.rv').forEach(el => el.classList.add('in'));
+          if (window.__reinitCursorTargets) window.__reinitCursorTargets(next.container);
+          return gsap.from(next.container, { opacity: 0, y: 16, duration: .45, ease: 'power2.out' });
+        }
+      }]
+    });
+    window.__barbaReady = true;
+  }
+
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const form = document.getElementById('lead-form');
+  if (form) {
+  const msg = form.querySelector('.form-msg');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form._gotcha.value) return;
+    const btn = form.querySelector('button');
+    if (!form.name.value.trim() || !form.email.value.includes('@') || !form.message.value.trim()) {
+      msg.textContent = 'Please fill in all three fields.'; msg.className = 'form-msg err'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, Prefer: 'return=minimal' },
+        body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() })
+      });
+      if (!r.ok) throw 0;
+      msg.textContent = 'Thank you — we will reply within one business day.'; msg.className = 'form-msg ok';
+      form.reset();
+    } catch {
+      msg.textContent = 'Something went wrong — please call us instead.'; msg.className = 'form-msg err';
+    }
+    btn.disabled = false; btn.textContent = 'Request my free quote';
+  });
+  }
+</script>
+</body>
+</html>
