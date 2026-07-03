@@ -154,11 +154,11 @@
   .stack-pin{height:400vh}
   .stack-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
   .stack-panel{position:absolute;inset:0;display:flex;align-items:center;clip-path:inset(100% 0 0 0);background:var(--plum)}
-  .stack-panel:first-child{clip-path:inset(0 0 0 0)}
-  .stack-panel:nth-child(1){z-index:1}
-  .stack-panel:nth-child(2){z-index:2}
-  .stack-panel:nth-child(3){z-index:3}
-  .stack-panel:nth-child(4){z-index:4}
+  .stack-panel.first{clip-path:inset(0 0 0 0)}
+  .stack-panel[data-panel="0"]{z-index:1}
+  .stack-panel[data-panel="1"]{z-index:2}
+  .stack-panel[data-panel="2"]{z-index:3}
+  .stack-panel[data-panel="3"]{z-index:4}
   .stack-panel .container{width:100%}
   .stack-n{font-family:var(--display);font-style:italic;font-size:clamp(3rem,7vw,6rem);color:var(--teal-soft);opacity:.5;line-height:1;margin-bottom:clamp(12px,2vw,20px)}
   .stack-panel h3{font-size:var(--step-5);max-width:16ch;margin-bottom:clamp(16px,2.5vw,26px)}
@@ -344,7 +344,7 @@
         <div class="stack-dots" aria-hidden="true">
           <span class="dot hit"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
         </div>
-        <div class="stack-panel" data-panel="0">
+        <div class="stack-panel first" data-panel="0">
           <div class="container">
             <span class="idx rv">(02)</span>
             <h2 class="rv" style="margin-bottom:clamp(20px,3vw,32px)">No guesswork, <em>ever</em></h2>
@@ -491,7 +491,7 @@
       gsap.from(els, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
         scrollTrigger: { trigger: sec, start: 'top 72%' } });
     });
-    gsap.from('.stack-panel:first-child .rv', { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
+    gsap.from('.stack-panel.first .rv', { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
       scrollTrigger: { trigger: '.stack-section', start: 'top 72%' } });
 
     gsap.fromTo('.quote .mark', { y: 80 }, { y: -80, ease: 'none',
@@ -539,17 +539,25 @@
     if (!panels.length) return;
     if (window.gsap && window.ScrollTrigger && motionOK && desktop) {
       const n = panels.length;
+      const HOLD = 0.8, TRANSITION = 0.3; // each panel gets a real hold before wiping to the next
+      let totalDuration = 0;
       const stl = gsap.timeline({
         scrollTrigger: { trigger: '.stack-pin', start: 'top top', end: 'bottom bottom', scrub: .6, pin: '.stack-sticky',
           onUpdate: self => {
-            const active = Math.min(n - 1, Math.floor(self.progress * n));
+            const t = self.progress * totalDuration;
+            let active = 0;
+            for (let i = 1; i < n; i++) { if (t >= i * (HOLD + TRANSITION) - TRANSITION / 2) active = i; }
             dots.forEach((d, i) => d.classList.toggle('hit', i <= active));
           }
         }
       });
+      let cursor = HOLD; // hold on panel 1 before the first wipe
       for (let i = 1; i < n; i++) {
-        stl.to(panels[i], { clipPath: 'inset(0% 0 0 0)', duration: 1, ease: 'none' }, i - 1);
+        stl.to(panels[i], { clipPath: 'inset(0% 0 0 0)', duration: TRANSITION, ease: 'none' }, cursor);
+        cursor += TRANSITION + HOLD;
       }
+      stl.to({}, { duration: 0.001 }, cursor); // pad so the final panel gets its own hold too
+      totalDuration = cursor;
     } else {
       panels.forEach(p => p.style.clipPath = 'none'); // reduced-motion / mobile: all panels shown stacked (see CSS)
     }
