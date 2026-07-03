@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- TODO before launch: business name (Northgate = placeholder), phone, address,
+     hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys -->
+<title>Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal</title>
+<meta name="description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines. Book a consultation.">
+<link rel="canonical" href="https://TODO-DOMAIN.ca/">
+<meta property="og:title" content="Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal">
+<meta property="og:description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230E1626'/><path d='M10 22V10l12 12V10' stroke='%23C9A96A' stroke-width='2.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  "name": "Northgate Immigration & Paralegal",
+  "description": "Licensed immigration consulting and paralegal services in Winnipeg: work and study permits, permanent residence, citizenship, appeals and hearings.",
+  "url": "https://TODO-DOMAIN.ca",
+  "telephone": "TODO",
+  "email": "TODO",
+  "address": { "@type": "PostalAddress", "streetAddress": "TODO", "addressLocality": "Winnipeg", "addressRegion": "MB", "postalCode": "TODO", "addressCountry": "CA" },
+  "areaServed": "Winnipeg and all of Manitoba",
+  "priceRange": "$$"
+}
+</script>
+<style>
+  :root{
+    --bg:#0E1626; --bg-2:#141F33; --paper:#F5F1E8; --paper-2:#EDE7D9;
+    --ink:#F5F1E8; --ink-dark:#141B2B; --muted:#8B96AD; --muted-dark:#5D6579;
+    --line:rgba(245,241,232,.12); --line-dark:rgba(20,27,43,.12);
+    --brass:#C9A96A; --brass-deep:#9C7A3C; --brass-text:#7A5E2E; --ox:#A0492F;
+    --display:"Playfair Display",Georgia,serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    --step--1:clamp(.85rem,.82rem + .14vw,.94rem);
+    --step-0:clamp(1rem,.95rem + .2vw,1.13rem);
+    --step-1:clamp(1.25rem,1.16rem + .4vw,1.5rem);
+    --step-2:clamp(1.56rem,1.4rem + .72vw,2rem);
+    --step-3:clamp(1.95rem,1.68rem + 1.22vw,2.66rem);
+    --step-4:clamp(2.44rem,2rem + 2vw,3.55rem);
+    --step-5:clamp(3.05rem,2.34rem + 3.2vw,4.73rem);
+    --step-6:clamp(3.6rem,2.5rem + 5.4vw,7.4rem);
+    --dur:.6s; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lock{overflow:hidden}
+  ::selection{background:var(--brass);color:var(--bg)}
+  h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.015em;text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:3px;border-radius:2px}
+  .container{max-width:1240px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--brass);color:var(--bg);padding:10px 18px;z-index:200;font-weight:700}
+  .skip:focus{left:0}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
+  .light .eyebrow{color:var(--brass-text)}
+  .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .intro{position:fixed;inset:0;z-index:120;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--brass);overflow:hidden}
+  .intro .word span{display:inline-block}
+  .orbit{position:fixed;top:50%;left:50%;width:340px;height:340px;margin:-170px 0 0 -170px;border-radius:50%;border:1px solid rgba(201,169,106,.5);pointer-events:none;z-index:1;will-change:transform,opacity}
+  .orbit::after{content:"";position:absolute;inset:22px;border-radius:50%;border:1px solid rgba(201,169,106,.22)}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--brass);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
+  .cursor-ring{position:fixed;top:0;left:0;width:42px;height:42px;border:1.5px solid var(--brass);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s,border-color .3s}
+  .cursor-ring span{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--bg);opacity:0;transition:opacity .2s}
+  .cursor-ring.grow{width:76px;height:76px;background:var(--brass);border-color:var(--brass)}
+  .cursor-ring.grow span{opacity:1}
+  @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
+  header.hide{transform:translateY(-110%)}
+  header.solid{background:rgba(14,22,38,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
+  .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
+  .logo em{font-style:italic;color:var(--brass)}
+  .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;list-style:none}
+  .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .25s;position:relative}
+  .nav-links a::after{content:"";position:absolute;left:0;bottom:-5px;width:100%;height:1px;background:var(--brass);transform:scaleX(0);transform-origin:right;transition:transform .35s var(--ease)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--brass);color:var(--bg);font-weight:700;font-size:var(--step--1);padding:15px 30px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
+  .btn:hover{background:#D8BC82}
+  .btn:active{transform:scale(.96)}
+  .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:2px}
+  .btn-line:hover{background:rgba(245,241,232,.06);border-color:var(--brass)}
+  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-bottom:clamp(40px,6vh,80px)}
+  #gl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 1.6s ease}
+  #gl.on{opacity:1}
+  .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,38,.25),rgba(14,22,38,0) 40%,rgba(14,22,38,.55) 92%);pointer-events:none}
+  .hero .container{position:relative;width:100%}
+  .hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:clamp(20px,3vh,36px)}
+  .hero-kicker .rule{height:1px;width:64px;background:var(--brass)}
+  .hero h1{font-size:clamp(2.6rem,1.6rem + 5vw,6.4rem);line-height:1.02;font-weight:500}
+  .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap}
+  .hero h1 .ln>span{display:inline-block;will-change:transform}
+  .hero h1 em{font-style:italic;color:var(--brass)}
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(28px,4vh,52px);flex-wrap:wrap}
+  .hero-foot .lede{font-size:var(--step-1);color:var(--muted);max-width:38ch;line-height:1.55}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .scroll-cue{position:absolute;right:clamp(20px,4vw,52px);bottom:clamp(40px,6vh,80px);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl}
+  .scroll-cue .line{width:1px;height:56px;background:var(--line);position:relative;overflow:hidden}
+  .scroll-cue .line::after{content:"";position:absolute;top:-40%;left:0;width:100%;height:40%;background:var(--brass);animation:drip 2.2s var(--ease) infinite}
+  @keyframes drip{to{top:110%}}
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:22px 0;background:var(--bg)}
+  .marquee-track{display:flex;gap:0;width:max-content;will-change:transform}
+  .marquee span{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--muted);white-space:nowrap;padding-right:18px}
+  .marquee b{color:var(--brass);font-weight:500;padding-right:18px}
+  .light{background:var(--paper);color:var(--ink-dark)}
+  section{padding:clamp(80px,12vw,150px) 0}
+  .sec-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,64px);align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+  .sec-head h2{font-size:var(--step-5);line-height:1.03;max-width:14ch}
+  .sec-head h2 em{font-style:italic;color:var(--brass-text)}
+  .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--brass-text);padding-bottom:8px}
+  .svc-list{border-top:1px solid var(--line-dark)}
+  .svc{display:grid;grid-template-columns:80px 1fr 2fr 48px;gap:clamp(16px,3vw,44px);align-items:center;padding:clamp(24px,3.5vw,42px) 0;border-bottom:1px solid var(--line-dark);position:relative;transition:padding-left .4s var(--ease)}
+  .svc:hover{padding-left:18px}
+  .svc .n{font-family:var(--display);font-style:italic;font-size:var(--step-1);color:var(--brass-text)}
+  .svc h3{font-size:var(--step-3);font-weight:500;line-height:1.08}
+  .svc p{font-size:var(--step-0);color:var(--muted-dark);max-width:46ch}
+  .svc .arrow{width:44px;height:44px;border:1px solid var(--line-dark);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .3s,transform .4s var(--ease);flex:none}
+  .svc:hover .arrow{background:var(--ink-dark);transform:rotate(45deg)}
+  .svc:hover .arrow svg{stroke:var(--paper)}
+  .svc .arrow svg{stroke:var(--ink-dark);transition:stroke .3s}
+  .svc .fill{position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;background:rgba(20,27,43,.035);transform:scaleY(0);transform-origin:bottom;transition:transform .4s var(--ease);z-index:-1}
+  .svc:hover .fill{transform:scaleY(1)}
+  .hproc{position:relative;background:var(--bg-2)}
+  .hproc .pin{overflow:hidden}
+  .hproc-head{padding:clamp(80px,10vw,130px) 0 clamp(30px,4vw,50px)}
+  .htrack{display:flex;gap:clamp(20px,3vw,44px);padding:0 clamp(20px,5vw,52px) clamp(80px,10vw,130px);width:max-content}
+  .hcard{width:clamp(300px,38vw,520px);flex:none;border:1px solid var(--line);border-radius:4px;padding:clamp(28px,3.5vw,52px);background:linear-gradient(160deg,rgba(245,241,232,.03),rgba(245,241,232,0));position:relative;overflow:hidden}
+  .hcard .hn{font-family:var(--display);font-style:italic;font-size:clamp(4rem,7vw,7.5rem);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(201,169,106,.5)}
+  .hcard h3{font-size:var(--step-3);margin:18px 0 12px}
+  .hcard p{color:var(--muted);font-size:var(--step-0);max-width:40ch}
+  .hcard .tag{position:absolute;top:26px;right:26px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--brass);font-weight:700}
+  .quote{position:relative;overflow:hidden}
+  .quote .mark{position:absolute;top:-40px;left:-20px;font-family:var(--display);font-size:clamp(14rem,30vw,28rem);line-height:1;color:rgba(201,169,106,.07);pointer-events:none;user-select:none}
+  blockquote{font-family:var(--display);font-size:var(--step-4);line-height:1.22;font-weight:400;max-width:26ch}
+  blockquote em{font-style:italic;color:var(--brass)}
+  .attrib{margin-top:30px;font-weight:700;display:flex;align-items:center;gap:16px}
+  .attrib .rule{width:48px;height:1px;background:var(--brass)}
+  .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
+  .cta{background:var(--paper);color:var(--ink-dark);text-align:center;position:relative;overflow:hidden}
+  .cta h2{font-size:var(--step-5);max-width:16ch;margin:0 auto;line-height:1.05}
+  .cta h2 em{font-style:italic;color:var(--brass-text)}
+  .cta p{color:var(--muted-dark);margin:22px auto 40px;max-width:44ch}
+  .cta .btn{background:var(--ink-dark);color:var(--paper);padding:22px 48px;font-size:var(--step-0);border-radius:2px}
+  .cta .btn:hover{background:#243149}
+  .cta .ring{position:absolute;border-radius:50%;border:1px solid rgba(122,94,46,.25);pointer-events:none}
+  .cta .r1{width:520px;height:520px;left:-200px;bottom:-260px}
+  .cta .r2{width:320px;height:320px;right:-120px;top:-160px}
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,80px)}
+  .contact h2{font-size:var(--step-4)}
+  .nap{display:grid;gap:14px;margin-top:28px;font-size:var(--step--1);color:var(--muted)}
+  .nap strong{color:var(--ink)}
+  .nap a.tel{color:var(--brass);font-weight:700}
+  form{display:grid;gap:0;border:1px solid var(--line);background:rgba(245,241,232,.02)}
+  .field{padding:clamp(20px,2.5vw,30px);border-bottom:1px solid var(--line)}
+  label{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:grid;gap:10px}
+  input,textarea{font:inherit;font-size:16px;background:transparent;border:none;color:var(--ink);width:100%;padding:4px 0}
+  input:focus,textarea:focus{outline:none}
+  .field:focus-within{background:rgba(201,169,106,.05)}
+  .field:focus-within label{color:var(--brass)}
+  textarea{min-height:90px;resize:vertical}
+  form .btn{margin:clamp(20px,2.5vw,30px);justify-content:center}
+  .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;padding:0 clamp(20px,2.5vw,30px) 16px}
+  .form-msg.ok{color:#7FB98E}.form-msg.err{color:#E08D77}
+  .form-note{font-size:var(--step--1);color:var(--muted);padding:0 clamp(20px,2.5vw,30px) clamp(20px,2.5vw,30px)}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  footer{border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0 36px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
+  .foot-grid h3{font-family:var(--body);font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-size:12px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px;margin-top:16px;font-size:var(--step--1);color:var(--muted)}
+  .foot-grid a:hover{color:var(--brass)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted)}
+  .legal a{font-weight:700;color:var(--ink)}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  html.gsap .rv{opacity:1;transform:none;transition:none}
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .hero h1 .ln{white-space:normal}
+    .sec-head{grid-template-columns:1fr}
+    .svc{grid-template-columns:1fr;gap:10px}
+    .svc .arrow{display:none}
+    .htrack{width:auto;flex-direction:column;padding-left:clamp(20px,5vw,52px);padding-right:clamp(20px,5vw,52px)}
+    .hcard{width:100%}
+    .contact-grid,.foot-grid{grid-template-columns:1fr}
+    .orbit{display:none}
+    .scroll-cue{display:none}
+    .quote .mark{font-size:14rem}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .intro{display:none}
+    .marquee-track{transform:none!important}
+    .scroll-cue .line::after{animation:none}
+    .orbit{display:none}
+  }
+</style>
+</head>
+<body class="lock">
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="intro" aria-hidden="true"><div class="word"><span>Northgate</span></div></div>
+<div class="orbit" aria-hidden="true"></div>
+
+<header id="hdr">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Northgate<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a consultation</a>
+  </nav>
+</header>
+
+<main id="main">
+  <section class="hero" id="top" aria-label="Introduction">
+    <canvas id="gl" aria-hidden="true"></canvas>
+    <div class="hero-veil" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-kicker rv">
+        <span class="rule" aria-hidden="true"></span>
+        <span class="eyebrow">Winnipeg · Immigration &amp; Paralegal</span>
+      </div>
+      <h1>
+        <span class="ln"><span>Your new life</span></span>
+        <span class="ln"><span>in Canada, <em>filed</em></span></span>
+        <span class="ln"><span><em>right</em> the first time.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="lede rv">Licensed representation for work permits, permanent residence, citizenship and appeals — clear timelines, flat fees, and someone who answers the phone.</p>
+        <div class="hero-ctas rv">
+          <a class="btn magnetic" href="#contact" data-cursor="Book">Book a consultation</a>
+          <a class="btn btn-line" href="#services" data-cursor="View">Our services</a>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-cue" aria-hidden="true">Scroll<span class="line"></span></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Permanent Residence <b>·</b> Work Permits <b>·</b> Study Permits <b>·</b> Citizenship <b>·</b> Family Sponsorship <b>·</b> Appeals &amp; Hearings <b>·</b> Notary <b>·</b>&nbsp;</span>
+      <span>Permanent Residence <b>·</b> Work Permits <b>·</b> Study Permits <b>·</b> Citizenship <b>·</b> Family Sponsorship <b>·</b> Appeals &amp; Hearings <b>·</b> Notary <b>·</b>&nbsp;</span>
+    </div>
+  </div>
+
+  <section class="light" id="services">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx rv">(01)</span>
+        <h2 class="rv">Every pathway, prepared <em>end-to-end</em></h2>
+      </div>
+      <div class="svc-list">
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">01</span>
+          <h3>Permanent Residence</h3>
+          <p>Express Entry and Manitoba PNP applications prepared and filed end-to-end, so one missed form never costs you a year of your life here.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">02</span>
+          <h3>Work &amp; Study Permits</h3>
+          <p>New applications, extensions and restorations filed accurately, with your status protected while you wait.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">03</span>
+          <h3>Citizenship</h3>
+          <p>Application, document review and test preparation — the last step handled as carefully as the first.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">04</span>
+          <h3>Family Sponsorship</h3>
+          <p>Spousal and family applications with the evidence package built to hold up the first time.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+        <a class="svc" href="#contact" data-cursor="Enquire">
+          <span class="fill" aria-hidden="true"></span>
+          <span class="n">05</span>
+          <h3>Appeals, Hearings &amp; Notary</h3>
+          <p>Refusal reviews, appeal representation, and commissioning of documents under one roof.</p>
+          <span class="arrow" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="hproc" id="process" style="padding:0">
+    <div class="pin">
+      <div class="container hproc-head">
+        <div class="sec-head" style="margin-bottom:0">
+          <span class="idx rv" style="color:var(--brass)">(02)</span>
+          <h2 class="rv">No guesswork, <em style="color:var(--brass)">ever</em></h2>
+        </div>
+      </div>
+      <div class="htrack">
+        <article class="hcard">
+          <span class="tag">Step</span>
+          <span class="hn">01</span>
+          <h3>Consultation</h3>
+          <p>We review your situation, lay out every pathway open to you, and quote a flat fee — before you commit to anything.</p>
+        </article>
+        <article class="hcard">
+          <span class="tag">Step</span>
+          <span class="hn">02</span>
+          <h3>Preparation</h3>
+          <p>We build your application: documents, forms, evidence and deadlines tracked for you, with plain-language updates at every stage.</p>
+        </article>
+        <article class="hcard">
+          <span class="tag">Step</span>
+          <span class="hn">03</span>
+          <h3>Filing &amp; follow-through</h3>
+          <p>We file, monitor and respond to every request from IRCC until the decision lands — you're never left wondering.</p>
+        </article>
+        <article class="hcard">
+          <span class="tag">Then</span>
+          <span class="hn">04</span>
+          <h3>Your decision arrives</h3>
+          <p>And you knew where it stood the whole way. That's the entire point.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="quote">
+    <span class="mark" aria-hidden="true">&ldquo;</span>
+    <div class="container">
+      <p class="eyebrow rv" style="margin-bottom:28px">Why clients trust us</p>
+      <blockquote class="rv">TODO: real client testimonial goes here — <em>with a specific result</em> — before this site ships.</blockquote>
+      <p class="attrib rv"><span class="rule" aria-hidden="true"></span>TODO: Client name<span style="margin-left:0">· TODO: context</span></p>
+    </div>
+  </section>
+
+  <section class="cta">
+    <span class="ring r1" aria-hidden="true"></span>
+    <span class="ring r2" aria-hidden="true"></span>
+    <div class="container">
+      <h2 class="rv">Stop guessing about <em>your future here</em>.</h2>
+      <p class="rv">One consultation gives you every pathway, the timeline, and a flat fee. Then you decide.</p>
+      <a class="btn magnetic rv" href="#contact" data-cursor="Book">Book a consultation</a>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-top:14px">Tell us where you're at</h2>
+        <div class="nap">
+          <p><strong>Northgate Immigration &amp; Paralegal</strong><br>TODO: street address, Winnipeg, MB</p>
+          <p><strong>Call:</strong> <a class="tel" href="tel:+1TODO">TODO: phone</a></p>
+          <p><strong>Email:</strong> <a href="mailto:TODO">TODO: email</a></p>
+          <p><strong>Hours:</strong> TODO: hours</p>
+          <p><strong>Serving:</strong> Winnipeg and all of Manitoba — in person or by video</p>
+        </div>
+      </div>
+      <form id="lead-form" class="rv" novalidate>
+        <div class="field"><label>Name <input type="text" name="name" autocomplete="name" required></label></div>
+        <div class="field"><label>Email <input type="email" name="email" autocomplete="email" required></label></div>
+        <div class="field"><label>What do you need help with? <textarea name="message" required placeholder="e.g. My work permit expires in June…"></textarea></label></div>
+        <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <button class="btn magnetic" type="submit">Request my consultation</button>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+        <p class="form-note">Everything you share is confidential. We reply within one business day.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#top">Northgate<em>.</em></a>
+        <p style="margin-top:16px;font-size:var(--step--1);color:var(--muted);max-width:36ch">Licensed immigration consulting and paralegal services for Winnipeg families, workers and students.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="tel:+1TODO">TODO: phone</a></li>
+          <li><a href="mailto:TODO">TODO: email</a></li>
+          <li>TODO: address, Winnipeg MB</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr"></span> Northgate Immigration &amp; Paralegal. All rights reserved.</span>
+      <span>Site by <a href="https://webelt.ca">RNR Solutions</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  const motionOK = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+  const desktop = matchMedia('(hover:hover)').matches && innerWidth > 900;
+  const hdr = document.getElementById('hdr');
+
+  let lastY = 0;
+  addEventListener('scroll', () => {
+    const y = scrollY;
+    hdr.classList.toggle('solid', y > 40);
+    hdr.classList.toggle('hide', y > 300 && y > lastY);
+    lastY = y;
+  }, { passive: true });
+
+  if (window.gsap && motionOK) {
+    gsap.registerPlugin(ScrollTrigger);
+    document.documentElement.classList.add('gsap');
+
+    const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, onComplete(){ document.body.classList.remove('lock'); } });
+    tl.from('.intro .word span', { yPercent: 120, duration: .7 })
+      .to('.intro .word span', { yPercent: -120, duration: .5, delay: .35, ease: 'power4.in' })
+      .to('.intro', { yPercent: -100, duration: .8, ease: 'power4.inOut' }, '-=.1')
+      .set('.intro', { display: 'none' })
+      .from('.hero h1 .ln > span', { yPercent: 115, duration: 1, stagger: .1 }, '-=.55')
+      .from(['.hero-kicker', '.hero-foot .lede', '.hero-ctas', '.scroll-cue'], { y: 30, opacity: 0, duration: .7, stagger: .08 }, '-=.6');
+
+    gsap.to('.marquee-track', { xPercent: -50, ease: 'none', duration: 26, repeat: -1 });
+
+    document.querySelectorAll('section:not(.hero)').forEach(sec => {
+      const els = sec.querySelectorAll('.rv, .svc, .hcard');
+      if (!els.length) return;
+      gsap.from(els, { y: 36, opacity: 0, duration: .8, ease: 'power3.out', stagger: .09,
+        scrollTrigger: { trigger: sec, start: 'top 72%' } });
+    });
+
+    if (desktop) {
+      const track = document.querySelector('.htrack');
+      const pin = document.querySelector('.hproc .pin');
+      const dist = () => track.scrollWidth - innerWidth;
+      gsap.to(track, { x: () => -dist(), ease: 'none',
+        scrollTrigger: { trigger: '.hproc', start: 'top top', end: () => '+=' + dist(), scrub: .7, pin: pin, invalidateOnRefresh: true } });
+
+      gsap.set('.orbit', { opacity: 0 });
+      gsap.timeline({ scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: .8 } })
+        .to('.orbit', { opacity: 1, x: '38vw', y: '-18vh', scale: .8, duration: .12 })
+        .to('.orbit', { x: '-40vw', y: '6vh', scale: 1.5, duration: .3 })
+        .to('.orbit', { x: '34vw', y: '10vh', scale: .55, duration: .3 })
+        .to('.orbit', { x: 0, y: '-4vh', scale: 2.6, opacity: .35, duration: .28 });
+    }
+
+    gsap.fromTo('.quote .mark', { y: 80 }, { y: -80, ease: 'none',
+      scrollTrigger: { trigger: '.quote', start: 'top bottom', end: 'bottom top', scrub: .6 } });
+    gsap.fromTo('.cta .r1', { y: 60 }, { y: -60, ease: 'none',
+      scrollTrigger: { trigger: '.cta', start: 'top bottom', end: 'bottom top', scrub: .6 } });
+  } else {
+    document.body.classList.remove('lock');
+    const intro = document.querySelector('.intro'); if (intro) intro.style.display = 'none';
+    const io = new IntersectionObserver(es => es.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: .12, rootMargin: '0px 0px -40px' });
+    document.querySelectorAll('.rv').forEach(el => io.observe(el));
+  }
+
+  if (desktop && motionOK) {
+    const dot = document.createElement('div'); dot.className = 'cursor-dot';
+    const ring = document.createElement('div'); ring.className = 'cursor-ring'; ring.innerHTML = '<span></span>';
+    document.body.append(dot, ring);
+    const label = ring.querySelector('span');
+    let tx = innerWidth/2, ty = innerHeight/2, rx = tx, ry = ty;
+    addEventListener('mousemove', e => { tx = e.clientX; ty = e.clientY;
+      dot.style.transform = `translate(${tx}px,${ty}px) translate(-50%,-50%)`; }, { passive: true });
+    (function loop(){ rx += (tx-rx)*.16; ry += (ty-ry)*.16;
+      ring.style.transform = `translate(${rx}px,${ry}px) translate(-50%,-50%)`; requestAnimationFrame(loop); })();
+    document.querySelectorAll('a,button,.svc').forEach(el => {
+      el.addEventListener('mouseenter', () => { ring.classList.add('grow'); label.textContent = el.dataset.cursor || ''; });
+      el.addEventListener('mouseleave', () => { ring.classList.remove('grow'); });
+    });
+
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', e => {
+        const r = btn.getBoundingClientRect();
+        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
+      });
+      btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+    });
+  }
+
+  (function(){
+    if(!motionOK || !desktop || !window.THREE) return;
+    const hero=document.querySelector('.hero'), canvas=document.getElementById('gl');
+    if(!hero||!canvas) return;
+    let renderer;
+    try{ renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true}); }catch(e){ return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
+    const scene=new THREE.Scene();
+    const cam=new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+    const uniforms={uTime:{value:0},uRes:{value:new THREE.Vector2(1,1)},uMouse:{value:new THREE.Vector2(0,0)}};
+    const vert='void main(){gl_Position=vec4(position.xy,0.0,1.0);}';
+    const frag=`precision highp float;
+uniform float uTime; uniform vec2 uRes; uniform vec2 uMouse;
+float hash(vec2 p){p=fract(p*vec2(123.34,456.21));p+=dot(p,p+45.32);return fract(p.x*p.y);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);float a=hash(i),b=hash(i+vec2(1.,0.)),c=hash(i+vec2(0.,1.)),d=hash(i+vec2(1.,1.));vec2 u=f*f*(3.-2.*f);return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y;}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*noise(p);p*=2.;a*=.5;}return v;}
+void main(){
+ vec2 uv=gl_FragCoord.xy/uRes.xy;
+ float t=uTime*0.05; float breath=1.0+0.06*sin(uTime*0.15);
+ vec2 p=uv*2.4*breath; p.x*=uRes.x/uRes.y;
+ vec2 q=vec2(fbm(p+vec2(t,0.)),fbm(p+vec2(5.2,1.3)-t));
+ vec2 r=vec2(fbm(p+4.*q+vec2(1.7,9.2)+0.25*uMouse),fbm(p+4.*q+vec2(8.3,2.8)-0.25*uMouse));
+ float f=fbm(p+4.*r+t*0.5);
+ vec3 navy=vec3(0.055,0.086,0.149),navy2=vec3(0.125,0.184,0.310),brass=vec3(0.612,0.478,0.235),soft=vec3(0.788,0.663,0.416),ox=vec3(0.45,0.21,0.14);
+ vec3 col=mix(navy,navy2,smoothstep(0.0,0.62,f));
+ col=mix(col,brass,smoothstep(0.5,1.0,f)*0.6);
+ col=mix(col,ox,smoothstep(0.86,1.2,r.x)*0.4);
+ float shimmer=smoothstep(0.55,0.86,f)*(0.5+0.5*sin(10.0*r.y+uTime*0.6));
+ col+=soft*shimmer*0.14;
+ float mask=smoothstep(0.05,0.9, uv.x*0.7 + uv.y*0.55);
+ float vig=smoothstep(1.35,0.3, length(uv-vec2(0.74,0.68)));
+ gl_FragColor=vec4(col, mask*vig);
+}`;
+    const mat=new THREE.ShaderMaterial({uniforms,vertexShader:vert,fragmentShader:frag,transparent:true});
+    scene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2),mat));
+    function resize(){const w=hero.clientWidth,h=hero.clientHeight;renderer.setSize(w,h,false);const pr=renderer.getPixelRatio();uniforms.uRes.value.set(w*pr,h*pr);}
+    resize(); addEventListener('resize',resize);
+    let tmx=0,tmy=0,mx=0,my=0;
+    addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();tmx=((e.clientX-r.left)/r.width-0.5)*2.0;tmy=((e.clientY-r.top)/r.height-0.5)*2.0;},{passive:true});
+    let vis=true; new IntersectionObserver(es=>{vis=es[0].isIntersecting;},{threshold:0}).observe(hero);
+    const clock=new THREE.Clock();
+    requestAnimationFrame(function loop(){requestAnimationFrame(loop); if(!vis)return; mx+=(tmx-mx)*0.04; my+=(tmy-my)*0.04; uniforms.uMouse.value.set(mx,my); uniforms.uTime.value=clock.getElapsedTime(); renderer.render(scene,cam);});
+    canvas.classList.add('on');
+  })();
+
+  const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
+  const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+  const form = document.getElementById('lead-form');
+  const msg = form.querySelector('.form-msg');
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form._gotcha.value) return;
+    const btn = form.querySelector('button');
+    if (!form.name.value.trim() || !form.email.value.includes('@') || !form.message.value.trim()) {
+      msg.textContent = 'Please fill in all three fields.'; msg.className = 'form-msg err'; return;
+    }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    try {
+      const r = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY },
+        body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() })
+      });
+      if (!r.ok) throw 0;
+      msg.textContent = 'Thank you — we will reply within one business day.'; msg.className = 'form-msg ok';
+      form.reset();
+    } catch {
+      msg.textContent = 'Something went wrong — please call us instead.'; msg.className = 'form-msg err';
+    }
+    btn.disabled = false; btn.textContent = 'Request my consultation';
+  });
+</script>
+</body>
+</html>
