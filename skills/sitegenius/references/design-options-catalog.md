@@ -47,6 +47,9 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Stencil-buffer scene masking / SDF logo morph | A | code in awwwards-techniques §3 |
 | Instanced 3D objects (single draw call) | A | code in awwwards-techniques §7 |
 | three-mesh-bvh interactive raycasting | A | code in awwwards-techniques §4 |
+| Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | new — see recipe below |
+| 3D product configurator (swap materials/colors on a model) | A | new — see recipe below |
+| Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | new — see recipe below |
 
 ## Layout & editorial
 | Option | Tier | Status |
@@ -183,6 +186,61 @@ Rules (non-negotiable, this is where background video usually goes wrong):
 - Source footage: same rule as every other asset — real business footage (storefront, craft, product in motion) or Higgsfield-generated, never stock. Ask before generating, same as images.
 - `preload="metadata"` not `auto` — don't force the whole file to download before first paint.
 - Pause via IntersectionObserver when scrolled past — same battery/perf discipline as the WebGL canvas.
+
+### Loaded 3D model viewer (GLB/GLTF)
+Real 3D objects — a product, a mascot, an architectural piece — dropped into the page and rotated by scroll or drag. This is the single most-requested "3D" feature and is fully within reach.
+```js
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
+const draco = new DRACOLoader(); draco.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+const loader = new GLTFLoader(); loader.setDRACOLoader(draco);
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(35, w/h, 0.1, 100); camera.position.set(0,0.4,4);
+scene.add(new THREE.HemisphereLight(0xffffff,0x444444,1.2));
+const key = new THREE.DirectionalLight(0xffffff,1.4); key.position.set(3,4,2); scene.add(key);
+
+let model;
+loader.load('model.glb', gltf => {
+  model = gltf.scene;
+  model.traverse(n => { if(n.isMesh){ n.castShadow=true; } });
+  scene.add(model);
+});
+
+// Scroll-driven rotation
+ScrollTrigger.create({ trigger:'.model-section', start:'top bottom', end:'bottom top', scrub:1,
+  onUpdate: self => { if(model) model.rotation.y = self.progress * Math.PI * 2; } });
+
+// OR drag-to-rotate (mutually exclusive with scroll-drive, pick one)
+let dragging=false, lastX=0;
+canvas.addEventListener('pointerdown', e => { dragging=true; lastX=e.clientX; });
+addEventListener('pointermove', e => { if(dragging && model){ model.rotation.y += (e.clientX-lastX)*0.005; lastX=e.clientX; } });
+addEventListener('pointerup', () => dragging=false);
+```
+Rules:
+- **Compress with Draco or Meshopt** — an unoptimized GLB can be 20-50MB; compressed, the same model is often <2MB. Never ship an uncompressed export.
+- Bake lighting where possible; keep live lights to 2-3 max (perf).
+- Same guard set as every other WebGL feature: desktop + hover:hover + motion-on + pause offscreen (`IntersectionObserver`) + `if(!window.THREE) return` fallback to a static rendered image of the model.
+- Mobile: swap to a pre-rendered image/video turntable of the same model — do NOT load Three.js + GLTFLoader + a multi-MB model on a phone connection.
+- Getting the model: client-supplied CAD/product scan, a freelance 3D artist, or (for simple geometric brand marks) built directly in Three.js primitives — never claim a "3D scan" that's actually a stock asset.
+
+### 3D product configurator
+Same viewer as above, plus swappable materials:
+```js
+function setColor(hex) { model.traverse(n => { if(n.isMesh && n.name === 'Body') n.material.color.set(hex); }); }
+// wire to swatch buttons: setColor('#B0492A')
+```
+Only worth building when the client actually sells a configurable physical product (furniture, vehicles, custom goods) — it's a $12k+ AwardsSite feature, not a default.
+
+### Floating/orbiting 3D icon set (no modeled assets needed)
+Cheaper 3D touch using only Three.js primitives — no model files, no artist needed. Good middle ground for AwardsSite builds without a product to show.
+```js
+const geo = new THREE.IcosahedronGeometry(0.6, 0);
+const mat = new THREE.MeshStandardMaterial({ color: 0xC9A96A, roughness: .3, metalness: .6 });
+const shapes = [0,1,2].map(i => { const m = new THREE.Mesh(geo, mat); m.position.set((i-1)*2.2, Math.sin(i)*0.6, 0); scene.add(m); return m; });
+function loop(t){ requestAnimationFrame(loop); shapes.forEach((s,i)=>{ s.rotation.x = t*0.0002*(i+1); s.rotation.y = t*0.00015*(i+1); s.position.y += Math.sin(t*0.001+i)*0.002; }); renderer.render(scene,camera); }
+```
+Reads as premium/technical (good for tech-ish or "AwardsSite default" clients), not appropriate for warm local-business builds — pair with the techno-futurist aesthetic camp, not editorial.
 
 ## Sources (this round)
 https://www.awwwards.com/websites/scrolling/ · https://muffingroup.com/blog/parallax-scrolling-websites/ · https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/ · https://blog.hubspot.com/website/animated-cursor · https://speckyboy.com/css-javascript-cursor-effects/
