@@ -242,5 +242,83 @@ function loop(t){ requestAnimationFrame(loop); shapes.forEach((s,i)=>{ s.rotatio
 ```
 Reads as premium/technical (good for tech-ish or "AwardsSite default" clients), not appropriate for warm local-business builds — pair with the techno-futurist aesthetic camp, not editorial.
 
+## Sound, loading & vector motion (Sites of the Year staples — genuine gaps)
+
+| Option | Tier | Status |
+|---|---|---|
+| Percentage-counter preloader (branded, real asset progress) | A | new — see recipe below |
+| Rive interactive vector animation (icons, mascots, state machines) | B | new — see recipe below |
+| Lottie vector animation (After Effects export, lightweight) | B | new — see recipe below |
+| Ambient/spatial sound design (directional hover/interaction audio) | A | new — see recipe below, use sparingly |
+| UI micro-sound (click/hover blips) | A | new — see recipe below, opt-in only |
+| Custom animated 404 page | B | new — see recipe below |
+
+### Percentage-counter preloader
+Real progress, not a fake spinner — count actual asset bytes loaded, not a timer.
+```js
+let loaded = 0; const assets = [...document.images, ...document.querySelectorAll('video')];
+const total = assets.length || 1;
+const tick = () => { loaded++; document.getElementById('pct').textContent = Math.round(loaded/total*100) + '%';
+  if (loaded >= total) gsap.to('.preloader', { yPercent:-100, duration:.8, ease:'power4.inOut', onComplete:()=>document.body.classList.remove('lock') }); };
+assets.forEach(a => a.complete ? tick() : a.addEventListener('load', tick, {once:true}));
+```
+Pair with the existing `.intro` word-reveal pattern in the AwardsSite starter — percentage counter for image-heavy/3D-heavy builds, word-reveal for lighter ones. Never block longer than ~2.5s of perceived wait; if real load time exceeds that, the intro animation itself should carry the time (don't just freeze on 94%).
+
+### Rive (interactive vector, state-machine driven)
+Best for a logo mark, mascot, or icon that needs to *react* (hover, click, scroll state) rather than just play once. Export from Rive editor as `.riv`, then:
+```html
+<script src="https://unpkg.com/@rive-app/canvas@latest"></script>
+<canvas id="rive-canvas" width="400" height="400"></canvas>
+<script>
+  const r = new rive.Rive({ src:'mark.riv', canvas:document.getElementById('rive-canvas'), autoplay:true,
+    stateMachines:'State Machine 1',
+    onLoad: () => { const inputs = r.stateMachineInputs('State Machine 1');
+      const hoverInput = inputs.find(i=>i.name==='hover');
+      document.getElementById('rive-canvas').addEventListener('mouseenter', ()=> hoverInput.value = true);
+      document.getElementById('rive-canvas').addEventListener('mouseleave', ()=> hoverInput.value = false); } });
+</script>
+```
+Requires an artist/designer to build the `.riv` file in the Rive editor — same sourcing reality as a 3D model. Worth it for a client's animated logo mark; not a DIY-from-code feature.
+
+### Lottie (After Effects → JSON vector animation)
+Cheaper than Rive, no interactivity/state machine, just plays — good for onboarding illustrations, icon reveals, success-state animations.
+```html
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<lottie-player src="success.json" autoplay loop speed="1" style="width:120px"></lottie-player>
+```
+Source `.json` files from LottieFiles marketplace (free/licensed) or a designer's After Effects export — never claim a marketplace Lottie as custom-made for the client.
+
+### Ambient/spatial sound design
+Bruno Simon-style directional audio (birds, ambient loops, positional interaction sounds) is real and effective, but it's a rare, high-craft feature — reserve for AwardsSite portfolios/experiences, essentially never for local-business or professional-services clients (a lawyer's site making noise is a liability, not a delight).
+```js
+const ctx = new (window.AudioContext||window.webkitAudioContext)();
+const panner = new StereoPannerNode(ctx, { pan: 0 });
+fetch('ambient-loop.mp3').then(r=>r.arrayBuffer()).then(b=>ctx.decodeAudioData(b)).then(buf=>{
+  const src = ctx.createBufferSource(); src.buffer = buf; src.loop = true; src.connect(panner).connect(ctx.destination);
+  // must start on user gesture — browsers block autoplay audio
+  document.body.addEventListener('click', ()=>{ ctx.resume(); src.start(0); }, {once:true});
+});
+```
+Rules: NEVER autoplay audio (blocked by every browser anyway, and rude even where allowed); always an explicit, visible mute/unmute toggle, default OFF; pan/volume tied to cursor position or scroll section for the "spatial" effect.
+
+### UI micro-sound (hover/click blips)
+Subtle click confirmation sounds on primary CTAs only — the restrained version of the above.
+```js
+const blip = new Audio('click.mp3'); blip.volume = .15;
+document.querySelectorAll('.btn').forEach(b => b.addEventListener('click', () => { blip.currentTime=0; blip.play().catch(()=>{}); }));
+```
+Same rule: opt-in via a visible toggle, default off, never on by default for a client site — this is a "wow" feature for portfolio/agency/creative clients, not a default add.
+
+### Custom animated 404 page
+Reuses whatever is already in the build (continuity orb, aura shader, GSAP) rather than inventing new motion — cheap polish for AwardsSite builds.
+```html
+<!-- 404.html: same header/footer/tokens as the site, hero-style panel -->
+<h1>Lost the trail.</h1>
+<p>That page doesn't exist — but your consultation still does.</p>
+<a class="btn magnetic" href="/">Back home</a>
+```
+Low effort, disproportionate "someone cared about this" signal — add to every AwardsSite build as a default, LocalSite as a nice-to-have.
+
 ## Sources (this round)
+https://www.awwwards.com/annual-awards-2025/ · https://www.awwwards.com/websites/lottie/ · https://futurists.in/10-best-award-winning-websites-of-2026/ · https://htmlburger.com/blog/website-preloaders/ · https://www.awwwards.com/awwwards/collections/loading-page/
 https://www.awwwards.com/websites/scrolling/ · https://muffingroup.com/blog/parallax-scrolling-websites/ · https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/ · https://blog.hubspot.com/website/animated-cursor · https://speckyboy.com/css-javascript-cursor-effects/
