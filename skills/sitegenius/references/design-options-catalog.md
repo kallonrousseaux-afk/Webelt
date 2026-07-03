@@ -20,7 +20,7 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Smart-sticky header (hide down, reveal up) | B | ✅ awardssite |
 | Scroll-scrubbed video/image sequence (frame = scroll position) | A | ✅ verified via pixel-checksum test (build-gotchas #22) |
 | Full page transitions (Barba.js + GSAP, no reload) | A | ✅ verified via standalone 2-page test (build-gotchas #27) |
-| Morphing/sliding menu overlay (full-screen nav takeover) | B | new — see recipe below |
+| Morphing/sliding menu overlay (full-screen nav takeover) | B | ✅ verified — clip-path toggle confirmed (build-gotchas #36) |
 | Draggable horizontal gallery (pointer-drag, momentum) | B | ✅ verified — practice build 3 (`trattoria-awardssite/`) |
 | SVG line-draw-on (stroke-dashoffset for logos/signatures) | B | already in awwwards-techniques §3 (SDF note) |
 | Looping background video (hero or full-section) | B | new — see recipe below |
@@ -33,11 +33,11 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Magnetic buttons (pull toward cursor) | B | ✅ awardssite |
 | 3D hover tilt on cards (≤12deg) | B | webelt.ca example |
 | Editorial list hover (row shifts, bg fills, arrow rotates) | B | ✅ awardssite (services) |
-| Grayscale→color "paint" hover | B | pattern in awwwards-research-2026 §5 |
+| Grayscale→color "paint" hover | B | ✅ verified — filter resolves correctly on hover state (build-gotchas #36) |
 | Nav underline slide (scaleX origin swap) | B | ✅ awardssite |
-| Cursor trail / particle emitter (canvas, sparse points following pointer) | A | new — see recipe below |
+| Cursor trail / particle emitter (canvas, sparse points following pointer) | A | ✅ verified — real mouse tracking confirmed (build-gotchas #37) |
 | Spotlight cursor (circular reveal mask over hidden content) | A | ✅ verified — practice build 4 (`ironclad-roofing/`), build-gotchas #19 |
-| Squiggly/displaced text on hover (SVG turbulence filter) | B | new — see recipe below |
+| Squiggly/displaced text on hover (SVG turbulence filter) | B | ✅ verified — visible displacement confirmed (build-gotchas #36) |
 
 ## WebGL / spectacle (desktop + motion-on only)
 | Option | Tier | Status |
@@ -45,10 +45,10 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | fBm living aura shader (breathing, cursor-reactive, palette-graded) | A | ✅ awardssite + webelt.ca |
 | Single-progress-uniform shader transitions (block reveal, displacement, chromatic aberration) | A | code in awwwards-research-2026 §1 |
 | Stencil-buffer scene masking / SDF logo morph | A | code in awwwards-techniques §3 |
-| Instanced 3D objects (single draw call) | A | code in awwwards-techniques §7 |
+| Instanced 3D objects (single draw call) | A | ✅ verified — 8 instances measured at exactly 1 draw call (build-gotchas #39) |
 | three-mesh-bvh interactive raycasting | A | code in awwwards-techniques §4 |
 | Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | ✅ verified against a real hand-authored GLB (build-gotchas #33) |
-| 3D product configurator (swap materials/colors on a model) | A | new — see recipe below |
+| 3D product configurator (swap materials/colors on a model) | A | ✅ verified — material.color.set() confirmed visually (build-gotchas #39) |
 | Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | ✅ verified via render-loop + screenshot test (build-gotchas #28) |
 
 ## Layout & editorial
@@ -246,12 +246,12 @@ Reads as premium/technical (good for tech-ish or "AwardsSite default" clients), 
 
 | Option | Tier | Status |
 |---|---|---|
-| Percentage-counter preloader (branded, real asset progress) | A | new — see recipe below |
+| Percentage-counter preloader (branded, real asset progress) | A | ✅ verified — real image files, correct 33/67/100% sequence (build-gotchas #37) |
 | Rive interactive vector animation (icons, mascots, state machines) | B | new — see recipe below |
-| Lottie vector animation (After Effects export, lightweight) | B | new — see recipe below |
+| Lottie vector animation (After Effects export, lightweight) | B | ✅ verified against hand-authored Lottie JSON (build-gotchas #38) |
 | Ambient/spatial sound design (directional hover/interaction audio) | A | new — see recipe below, use sparingly |
 | UI micro-sound (click/hover blips) | A | ✅ verified against a real WAV + real user-gesture click (build-gotchas #34) |
-| Custom animated 404 page | B | new — see recipe below |
+| Custom animated 404 page | B | pattern reuses already-verified components — no separate test needed |
 
 ### Percentage-counter preloader
 Real progress, not a fake spinner — count actual asset bytes loaded, not a timer.
