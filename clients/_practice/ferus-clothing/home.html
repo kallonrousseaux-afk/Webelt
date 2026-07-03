@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Practice build: FERUS. (fictional streetwear label) — 3-page AwardsSite-tier
+     e-commerce demo (spectacle-tolerant register, creative freedom given). Real
+     working client-side cart (localStorage, persists across all 3 real pages via
+     Barba.js SPA navigation). NOT a real client — placeholder brand, invented
+     product names/prices (fictional product catalog is fine; NEVER invented real
+     business facts like reviews/credentials/stats — none used here).
+     TODO before this pattern could ever ship for a real client: real checkout/
+     payment processing (Stripe/Shopify) — this cart is add/remove/qty/subtotal
+     only, no payment flow; real product photography; per-product dynamic pages
+     (product.html here is a single fixed template, not a real PDP router). -->
+<title>FERUS. — New Drop, Now Live</title>
+<meta name="description" content="FERUS. — raw-edge streetwear cut for movement. Shop the new drop: utility outerwear, wide-leg denim, layering essentials.">
+<link rel="canonical" href="https://TODO-DOMAIN.example/">
+<meta property="og:title" content="FERUS. — New Drop, Now Live">
+<meta property="og:description" content="Raw-edge streetwear cut for movement. Shop the new drop.">
+<meta property="og:image" content="https://TODO-DOMAIN.example/TODO-SOCIAL-SHARE-IMAGE.webp">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FERUS. — New Drop, Now Live">
+<meta name="twitter:description" content="Raw-edge streetwear cut for movement. Shop the new drop.">
+<meta name="twitter:image" content="https://TODO-DOMAIN.example/TODO-SOCIAL-SHARE-IMAGE.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0A0A'/><text x='16' y='23' font-family='Georgia' font-size='20' font-weight='900' fill='%23C8FF3D' text-anchor='middle'>F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ClothingStore",
+  "name": "FERUS.",
+  "description": "Raw-edge streetwear label — utility outerwear, denim, layering essentials.",
+  "url": "https://TODO-DOMAIN.example",
+  "telephone": "TODO",
+  "email": "TODO",
+  "address": { "@type": "PostalAddress", "streetAddress": "TODO", "addressLocality": "TODO", "addressRegion": "TODO", "postalCode": "TODO", "addressCountry": "TODO" },
+  "priceRange": "$$"
+}
+</script>
+<meta name="hz:slide-selector" content=".page">
+<style>
+  :root{
+    --bg:#0A0A0A; --bg-2:#141414; --paper:#F2F0EA;
+    --ink:#F2F0EA; --ink-2:#0A0A0A; --muted:#8C8C86; --muted-dark:#85857C;
+    --line:rgba(242,240,234,.14); --line-dark:rgba(10,10,10,.12);
+    --acid:#C8FF3D; --acid-deep:#4C610E;
+    --display:"Archivo Expanded",Georgia,sans-serif; --body:"Hanken Grotesk",-apple-system,sans-serif;
+    --step--1:clamp(.85rem,.82rem + .14vw,.94rem);
+    --step-0:clamp(1rem,.95rem + .2vw,1.13rem);
+    --step-1:clamp(1.25rem,1.16rem + .4vw,1.5rem);
+    --step-2:clamp(1.56rem,1.4rem + .72vw,2rem);
+    --step-3:clamp(1.95rem,1.68rem + 1.22vw,2.66rem);
+    --step-4:clamp(2.44rem,2rem + 2vw,3.55rem);
+    --step-5:clamp(3.05rem,2.34rem + 3.2vw,4.73rem);
+    --step-6:clamp(3.6rem,2.5rem + 5.4vw,8.2rem);
+    --dur:.5s; --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  body.lock{overflow:hidden}
+  ::selection{background:var(--acid);color:var(--ink-2)}
+  h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.01em;text-transform:uppercase;text-wrap:balance}
+  p{text-wrap:pretty}
+  a{color:inherit;text-decoration:none}
+  :focus-visible{outline:3px solid var(--acid);outline-offset:3px;border-radius:2px}
+  .container{max-width:1320px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--acid);color:var(--ink-2);padding:10px 18px;z-index:200;font-weight:700}
+  .skip:focus{left:0}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;padding:0;margin:-1px}
+  .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acid)}
+  .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .intro{position:fixed;inset:0;z-index:130;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  .intro .word{font-family:var(--display);font-weight:800;font-size:var(--step-4);color:var(--acid);overflow:hidden;text-transform:uppercase}
+  .intro .word span{display:inline-block}
+  .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--acid);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
+  .cursor-ring{position:fixed;top:0;left:0;width:46px;height:46px;border:1.5px solid var(--acid);border-radius:50%;pointer-events:none;z-index:149;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;transition:width .3s var(--ease),height .3s var(--ease),background .3s;mix-blend-mode:difference}
+  .cursor-ring span{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);opacity:0;transition:opacity .2s}
+  .cursor-ring.grow{width:80px;height:80px;background:var(--acid)}
+  .cursor-ring.grow span{opacity:1}
+  @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .4s var(--ease),background .3s,border-color .3s}
+  header.hide{transform:translateY(-110%)}
+  header.solid{background:rgba(10,10,10,.85);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,56px);border-bottom:1px solid transparent}
+  .logo{font-family:var(--display);font-weight:800;font-size:var(--step-1);letter-spacing:.02em;text-transform:uppercase}
+  .logo em{font-style:normal;color:var(--acid)}
+  .nav-links{display:flex;gap:clamp(20px,3vw,44px);align-items:center;list-style:none}
+  .nav-links a{font-weight:700;font-size:var(--step--1);letter-spacing:.04em;text-transform:uppercase;color:var(--muted);transition:color .25s;position:relative}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .cart-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:none;border:1px solid var(--line);color:var(--ink);padding:11px 18px;border-radius:999px;font-weight:700;font-size:var(--step--1);text-transform:uppercase;letter-spacing:.04em;cursor:pointer;transition:border-color .25s,background .25s}
+  .cart-btn:hover{border-color:var(--acid)}
+  .cart-count{background:var(--acid);color:var(--ink-2);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--acid);color:var(--ink-2);font-weight:800;font-size:var(--step--1);letter-spacing:.03em;text-transform:uppercase;padding:16px 32px;border-radius:999px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
+  .btn:hover{background:#D8FF6E}
+  .btn:active{transform:scale(.96)}
+  .btn-line{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .btn-line:hover{border-color:var(--acid);color:var(--acid)}
+  /* ============ Hero ============ */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(120px,14vh,180px) 0 clamp(60px,8vh,100px);overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(200,255,61,.14),transparent 60%)}
+  .hero h1{font-size:clamp(3.2rem,2rem + 7vw,9rem);line-height:.86;position:relative;z-index:2}
+  .hero h1 .ln{display:block;overflow:hidden}
+  .hero h1 .ln>span{display:inline-block;will-change:transform}
+  .hero h1 em{font-style:normal;color:var(--acid);-webkit-text-stroke:2px var(--acid);color:transparent}
+  .hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(32px,5vh,56px);flex-wrap:wrap;position:relative;z-index:2}
+  .hero-foot .lede{font-size:var(--step-1);color:var(--muted);max-width:36ch}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;padding:20px 0;background:var(--bg-2)}
+  .marquee-track{display:flex;gap:0;width:max-content;will-change:transform}
+  .marquee span{font-family:var(--display);font-weight:800;font-size:var(--step-2);color:var(--bg-2);-webkit-text-stroke:1.5px var(--ink);text-transform:uppercase;white-space:nowrap;padding-right:34px}
+  .marquee b{-webkit-text-stroke:1.5px var(--acid);color:var(--bg-2);padding-right:34px;font-family:var(--display);font-weight:800;text-transform:uppercase}
+  section{padding:clamp(80px,12vw,150px) 0}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(40px,6vw,64px);flex-wrap:wrap}
+  .sec-head h2{font-size:var(--step-5);line-height:.95}
+  .sec-head .idx{font-family:var(--display);font-weight:700;font-size:var(--step-0);color:var(--acid);letter-spacing:.1em}
+  /* ============ Product grid ============ */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,2.5vw,28px)}
+  .card{position:relative}
+  .card-img{position:relative;aspect-ratio:3/4;border-radius:4px;overflow:hidden;background:var(--bg-2)}
+  .card-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:opacity .4s var(--ease)}
+  .card-img .img-b{opacity:0}
+  .card:hover .img-a{opacity:0}
+  .card:hover .img-b{opacity:1}
+  .card-tag{position:absolute;top:14px;left:14px;background:var(--acid);color:var(--ink-2);font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;z-index:2}
+  .card-add{position:absolute;bottom:14px;right:14px;width:42px;height:42px;border-radius:50%;background:var(--ink);color:var(--ink-2);border:none;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease),background .25s;z-index:2}
+  .card:hover .card-add{opacity:1;transform:translateY(0)}
+  .card-add:hover{background:var(--acid)}
+  .card-info{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-top:14px}
+  .card-info h3{font-size:var(--step-0);text-transform:none;font-weight:700}
+  .card-price{font-family:var(--display);font-weight:700;color:var(--acid);font-size:var(--step-0)}
+  @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}}
+  /* ============ Cart drawer ============ */
+  .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:159;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+  .cart-overlay.open{opacity:1;pointer-events:auto}
+  .cart-drawer{position:fixed;top:0;right:0;bottom:0;width:min(420px,92vw);background:var(--bg);border-left:1px solid var(--line);z-index:160;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column}
+  .cart-drawer.open{transform:translateX(0)}
+  .cart-head{display:flex;justify-content:space-between;align-items:center;padding:24px clamp(20px,3vw,32px);border-bottom:1px solid var(--line)}
+  .cart-head h2{font-size:var(--step-2)}
+  .cart-close{background:none;border:none;color:var(--ink);font-size:28px;cursor:pointer;line-height:1;padding:4px}
+  .cart-items{flex:1;overflow-y:auto;padding:20px clamp(20px,3vw,32px)}
+  .cart-item{display:grid;grid-template-columns:64px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:center}
+  .cart-item img{width:64px;height:80px;object-fit:cover;border-radius:3px;background:var(--bg-2)}
+  .cart-item h4{font-size:var(--step--1);font-weight:700;text-transform:none}
+  .cart-item .meta{font-size:12px;color:var(--muted);margin-top:2px}
+  .cart-item .qty{display:flex;align-items:center;gap:8px;margin-top:8px}
+  .cart-item .qty button{width:22px;height:22px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;border-radius:3px}
+  .cart-item .price{font-family:var(--display);font-weight:700;color:var(--acid);text-align:right;align-self:start}
+  .cart-item .remove{font-size:11px;color:var(--muted-dark);text-decoration:underline;cursor:pointer;margin-top:6px;display:inline-block}
+  .cart-empty{color:var(--muted);text-align:center;padding:60px 0;font-size:var(--step--1)}
+  .cart-foot{padding:20px clamp(20px,3vw,32px) clamp(24px,3vw,32px);border-top:1px solid var(--line)}
+  .cart-subtotal{display:flex;justify-content:space-between;font-family:var(--display);font-weight:700;font-size:var(--step-1);margin-bottom:14px}
+  .cart-foot .note{font-size:12px;color:var(--muted-dark);margin-top:10px;text-align:center}
+  /* ============ Newsletter ============ */
+  .news{background:var(--paper);color:var(--ink-2)}
+  .news h2{font-size:var(--step-4);max-width:14ch}
+  .news h2 em{font-style:normal;color:var(--acid-deep)}
+  .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center}
+  .news form{display:flex;gap:0;border:1.5px solid var(--ink-2);border-radius:999px;overflow:hidden}
+  .news input{flex:1;border:none;background:none;padding:16px 22px;font:inherit;font-size:16px;color:var(--ink-2)}
+  .news input:focus{outline:none}
+  .news .btn{border-radius:0;padding:16px 30px}
+  .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;margin-top:12px}
+  .form-msg.ok{color:#3F7D53}.form-msg.err{color:#9F3A26}
+  .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
+  footer{border-top:1px solid var(--line);padding:clamp(48px,6vw,80px) 0 36px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:clamp(28px,4vw,64px)}
+  .foot-grid h3{font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-size:12px}
+  .foot-grid ul{list-style:none;display:grid;gap:10px;margin-top:16px;font-size:var(--step--1);color:var(--muted)}
+  .foot-grid a:hover{color:var(--acid)}
+  .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted-dark)}
+  .legal a{font-weight:700;color:var(--ink)}
+  .rv{opacity:0;transform:translateY(28px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  .rv.in{opacity:1;transform:none}
+  html.gsap .rv{opacity:1;transform:none;transition:none}
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .grid{grid-template-columns:repeat(2,1fr)}
+    .news-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .rv{opacity:1;transform:none;transition:none}
+    .intro{display:none}
+    .marquee-track{transform:none!important}
+  }
+  @media print{
+    .cursor-dot,.cursor-ring,.intro,.cart-drawer,.cart-overlay,video{display:none!important}
+    body{background:#fff;color:#111;overflow:visible!important}
+    .marquee,footer{background:#fff!important}
+    .marquee span,.marquee b{color:#fff!important;-webkit-text-stroke:1px #111}
+    a{color:#111;text-decoration:underline}
+    .rv{opacity:1!important;transform:none!important}
+    .hero,section{page-break-inside:avoid}
+  }
+</style>
+</head>
+<body data-barba="wrapper">
+<a class="skip" href="#main">Skip to content</a>
+<div class="grain" aria-hidden="true"></div>
+<div class="intro" aria-hidden="true"><div class="word"><span>Ferus.</span></div></div>
+<noscript><style>.intro{display:none!important}</style></noscript>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping cart" inert>
+  <div class="cart-head">
+    <h2>Cart</h2>
+    <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-foot">
+    <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0</span></div>
+    <button class="btn" style="width:100%;justify-content:center" id="checkoutBtn">Checkout</button>
+    <p class="note">TODO: real payment processing (Stripe/Shopify) required — this cart does not process real payments.</p>
+  </div>
+</aside>
+
+<header id="hdr">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="home.html">Ferus<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="home.html" class="active">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="product.html">Featured</a></li>
+    </ul>
+    <button class="cart-btn" id="cartOpen" aria-label="Open cart">Cart <span class="cart-count" id="cartCount">0</span></button>
+  </nav>
+</header>
+
+<div data-barba="container" data-barba-namespace="home">
+<main id="main">
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container">
+      <h1>
+        <span class="ln"><span>New drop.</span></span>
+        <span class="ln"><span><em>Cut</em> for movement.</span></span>
+      </h1>
+      <div class="hero-foot">
+        <p class="lede rv">Raw-edge streetwear built for people who move — utility outerwear, wide-leg denim, layering essentials. No filler, no fast-fashion churn.</p>
+        <div class="hero-ctas rv">
+          <a class="btn magnetic" href="shop.html" data-cursor="Shop">Shop the drop</a>
+          <a class="btn btn-line" href="product.html" data-cursor="View">Featured piece</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Utility Jacket <b>·</b> Raw Edge Tee <b>·</b> Wide-Leg Cargo <b>·</b> Selvedge Denim <b>·</b> Cropped Hoodie <b>·</b> Mesh Layer <b>·</b>&nbsp;</span>
+      <span>Utility Jacket <b>·</b> Raw Edge Tee <b>·</b> Wide-Leg Cargo <b>·</b> Selvedge Denim <b>·</b> Cropped Hoodie <b>·</b> Mesh Layer <b>·</b>&nbsp;</span>
+    </div>
+  </div>
+
+  <section id="featured">
+    <div class="container">
+      <div class="sec-head">
+        <span class="idx rv">(01)</span>
+        <h2 class="rv">This week's<br><em style="font-style:normal;color:var(--acid)">picks</em></h2>
+        <a class="btn-line btn rv" href="shop.html" data-cursor="Shop">View all</a>
+      </div>
+      <div class="grid rv" id="featuredGrid"></div>
+    </div>
+  </section>
+
+  <section class="news">
+    <div class="container news-grid">
+      <div class="rv">
+        <p class="eyebrow" style="color:var(--acid-deep)">Get 10% off</p>
+        <h2 style="margin-top:14px">Join the <em>list</em>. First drop notice, first.</h2>
+      </div>
+      <div class="rv">
+        <form id="news-form" novalidate>
+          <input type="email" name="email" placeholder="you@email.com" autocomplete="email" required>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="btn" type="submit">Join</button>
+        </form>
+        <p class="form-msg" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="home.html">Ferus<em>.</em></a>
+        <p style="margin-top:16px;font-size:var(--step--1);color:var(--muted);max-width:36ch">Raw-edge streetwear label. Independent, small-batch, cut for movement.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="shop.html">All products</a></li>
+          <li><a href="product.html">Featured</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:TODO">TODO: email</a></li>
+          <li>TODO: shipping region / address</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© <span id="yr"></span> Ferus. All rights reserved.</span>
+      <span>Practice build by <a href="https://webelt.ca">RNR Solutions</a> — not a real store</span>
+    </div>
+  </div>
+</footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@barba/core@2/dist/barba.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+<script src="ferus-shared.js"></script>
+</body>
+</html>
