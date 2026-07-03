@@ -5,13 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- TODO before launch: business name (Northgate = placeholder), phone, address,
      hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys.
-     THIRD DIRECTION (v3) for the same client, same content — genuinely different
-     page architecture from v1 (top header, aura shader) and v2 (top header, pinned
-     panel stack): a persistent left sidebar nav (not a top header), a hover-reveal
-     bento grid for services (not a list), and a click-to-expand accordion for the
-     process section (not scroll-scrubbed/pinned anything). No marquee, no pinned
-     slide/stack — different techniques per Kallon's request to keep testing the
-     skill's range rather than variations on the same layout. -->
+     THIRD DIRECTION (v3) for the same client, same content. Revision history:
+     draft A used a persistent left sidebar nav + no WebGL centerpiece — rejected
+     ("no animations at all", "don't like the bar on the side"). Draft B (this one):
+     standard top header restored; kept the bento grid + accordion (not the
+     complaint); added a real WebGL centerpiece using actual 3D geometry (five lit
+     Three.js primitives representing the five service pathways, floating with
+     independent rotation + scroll-linked group rotation) — a technique not used in
+     v1 (fullscreen shader) or v2 (DOM clip-path panel stack). No marquee, no
+     pinned slide/stack. -->
 <title>Immigration & Paralegal Services in Winnipeg | Northgate Immigration & Paralegal</title>
 <meta name="description" content="Licensed immigration and paralegal services in Winnipeg — work permits, PR, citizenship and appeals with flat fees and clear timelines. Book a consultation.">
 <link rel="canonical" href="https://TODO-DOMAIN.ca/">
@@ -46,8 +48,8 @@
 </script>
 <style>
   :root{
-    --bg:#F3EEE4; --bg-2:#EAE2D2; --ink:#1C1A17;
-    --paper:#F3EEE4; --sidebar:#1C1A17;
+    --bg:#F3EEE4; --bg-2:#EAE2D2; --ink:#1C1A17; --dark:#1C1A17;
+    --paper:#F3EEE4;
     --muted:#6B6255; --muted-on-dark:#B8B2A8;
     --line:rgba(28,26,23,.12); --line-on-dark:rgba(255,255,255,.14);
     --amber:#B0631E; --amber-deep:#975519; --amber-soft:#E6C09B;
@@ -59,11 +61,10 @@
     --step-3:clamp(1.95rem,1.68rem + 1.22vw,2.66rem);
     --step-4:clamp(2.44rem,2rem + 2vw,3.55rem);
     --step-5:clamp(3.05rem,2.34rem + 3.2vw,4.73rem);
-    --sidebar-w:300px;
     --dur:.6s; --ease:cubic-bezier(.22,1,.36,1);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:24px}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   body.lock{overflow:hidden}
   ::selection{background:var(--amber);color:#fff}
@@ -71,10 +72,11 @@
   p{text-wrap:pretty}
   a{color:inherit;text-decoration:none}
   :focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:2px}
+  .container{max-width:1160px;margin:0 auto;padding:0 clamp(20px,5vw,52px)}
   .skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:#fff;padding:10px 18px;z-index:200;font-weight:700}
   .skip:focus{left:0}
   .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--amber-deep)}
-  .sidebar .eyebrow,.contact .eyebrow{color:var(--amber-soft)}
+  .contact .eyebrow{color:var(--amber-soft)}
   .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.045;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .intro{position:fixed;inset:0;z-index:120;background:var(--paper);display:flex;align-items:center;justify-content:center}
   .intro .word{font-family:var(--display);font-style:italic;font-size:var(--step-4);color:var(--amber-deep);overflow:hidden}
@@ -85,39 +87,41 @@
   .cursor-ring.grow{width:76px;height:76px;background:var(--amber);border-color:var(--amber)}
   .cursor-ring.grow span{opacity:1}
   @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
-  /* ============ Persistent sidebar (not a top header) ============ */
-  .sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar);color:#fff;z-index:100;display:flex;flex-direction:column;padding:clamp(28px,3vw,40px) clamp(24px,2.5vw,32px);overflow-y:auto}
-  .sidebar .logo{font-family:var(--display);font-weight:600;font-size:var(--step-2);letter-spacing:.01em}
-  .sidebar .logo em{font-style:italic;color:var(--amber)}
-  .sidebar-nav{display:grid;gap:4px;margin-top:clamp(40px,6vh,64px)}
-  .sidebar-nav a{font-weight:600;font-size:var(--step--1);color:var(--muted-on-dark);padding:10px 0;transition:color .25s;border-bottom:1px solid transparent}
-  .sidebar-nav a:hover,.sidebar-nav a.active{color:#fff}
-  .sidebar-mini{margin-top:clamp(32px,5vh,56px);font-size:var(--step--1);color:var(--muted-on-dark);display:grid;gap:8px}
-  .sidebar-mini strong{color:#fff;display:block;margin-bottom:2px}
-  .sidebar .btn{margin-top:auto;padding-top:clamp(28px,4vh,44px)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--amber);color:#fff;font-weight:700;font-size:var(--step--1);padding:15px 26px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform;width:100%}
+  /* ============ Standard top header (v1/v2 pattern) ============ */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
+  header.hide{transform:translateY(-110%)}
+  header.solid{background:rgba(243,238,228,.88);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
+  .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
+  .logo em{font-style:italic;color:var(--amber)}
+  .nav-links{display:flex;gap:clamp(18px,3vw,40px);align-items:center;list-style:none}
+  .nav-links a{font-weight:600;font-size:var(--step--1);color:var(--muted);transition:color .25s}
+  .nav-links a:hover{color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:12px;background:var(--amber);color:#fff;font-weight:700;font-size:var(--step--1);padding:15px 28px;border-radius:2px;border:none;cursor:pointer;transition:transform .3s var(--ease),background .25s;will-change:transform}
   .btn:hover{background:#C4711F}
-  .btn:active{transform:scale(.97)}
-  /* ============ Main content, offset by sidebar width ============ */
-  .site-main{margin-left:var(--sidebar-w)}
-  .container{max-width:920px;padding:0 clamp(28px,5vw,72px)}
-  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:clamp(60px,8vh,100px) 0}
+  .btn:active{transform:scale(.96)}
+  /* ============ Centerpiece: real 3D geometry (Three.js), not a shader, not DOM ============ */
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;padding:clamp(90px,12vh,140px) 0 clamp(40px,6vh,80px)}
+  #gl3d{position:absolute;top:0;right:0;width:38%;height:100%;pointer-events:none;opacity:0;transition:opacity 1.6s ease}
+  #gl3d.on{opacity:1}
+  .hero-copy{position:relative;z-index:2;max-width:640px}
   .hero-kicker{display:flex;align-items:center;gap:18px;margin-bottom:clamp(20px,3vh,32px)}
   .hero-kicker .rule{height:1px;width:64px;background:var(--amber)}
-  .hero h1{font-size:clamp(2.4rem,1.6rem + 4.6vw,5.4rem);line-height:1.02;font-weight:600}
+  .hero h1{font-size:clamp(2.4rem,1.6rem + 4.2vw,5.2rem);line-height:1.02;font-weight:600}
   .hero h1 .ln{display:block;overflow:hidden;white-space:nowrap}
   .hero h1 .ln>span{display:inline-block;will-change:transform}
   .hero h1 em{font-style:italic;color:var(--amber)}
   .hero-lede{font-size:var(--step-1);color:var(--muted);max-width:44ch;line-height:1.55;margin-top:clamp(24px,4vh,40px)}
-  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.5vw,28px);margin-top:clamp(40px,6vh,64px);border-top:1px solid var(--line);padding-top:clamp(24px,3.5vh,36px)}
-  .hero-stats .num{font-family:var(--display);font-style:italic;font-size:var(--step-3);color:var(--amber-deep)}
-  .hero-stats .lbl{font-size:var(--step--1);color:var(--muted);margin-top:4px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:clamp(28px,4vh,44px)}
+  .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line)}
+  .btn-line:hover{background:rgba(28,26,23,.05);border-color:var(--amber)}
+  @media(max-width:900px){#gl3d{display:none}}
   section{padding:clamp(64px,10vw,110px) 0}
   .sec-head{margin-bottom:clamp(36px,5vw,56px)}
   .sec-head .idx{font-family:var(--display);font-style:italic;font-size:var(--step-2);color:var(--amber-deep);display:block;margin-bottom:8px}
   .sec-head h2{font-size:var(--step-4);line-height:1.05;max-width:16ch}
   .sec-head h2 em{font-style:italic;color:var(--amber)}
-  /* ============ Centerpiece 1: hover-reveal bento grid ============ */
+  /* ============ Hover-reveal bento grid ============ */
   .bento{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(14px,2vw,20px)}
   .bento-card{position:relative;border:1px solid var(--line);border-radius:8px;padding:clamp(24px,3vw,34px);min-height:190px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transition:border-color .3s,background .3s}
   .bento-card:hover,.bento-card:focus-within{border-color:var(--amber);background:var(--bg-2)}
@@ -127,7 +131,7 @@
   .bento-desc{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s var(--ease),opacity .3s var(--ease)}
   .bento-card:hover .bento-desc,.bento-card:focus-within .bento-desc{max-height:120px;opacity:1;margin-top:8px}
   .bento-desc p{color:var(--muted);font-size:var(--step--1);max-width:48ch}
-  /* ============ Centerpiece 2: click-to-expand process accordion ============ */
+  /* ============ Click-to-expand process accordion ============ */
   .accordion{border-top:1px solid var(--line)}
   .acc-item{border-bottom:1px solid var(--line)}
   .acc-head{width:100%;background:none;border:none;display:flex;align-items:center;gap:clamp(16px,2.5vw,28px);padding:clamp(22px,3vw,32px) 0;cursor:pointer;text-align:left;font-family:inherit}
@@ -148,14 +152,15 @@
   .attrib{margin-top:26px;font-weight:700;display:flex;align-items:center;gap:16px}
   .attrib .rule{width:40px;height:1px;background:var(--amber)}
   .attrib span{display:block;font-weight:500;color:var(--muted);font-size:var(--step--1)}
-  .contact{background:var(--sidebar);color:#fff}
+  .contact{background:var(--dark);color:#fff}
   .contact h2{font-size:var(--step-4)}
   .contact h2 em{font-style:italic;color:var(--amber-soft)}
   .contact-lede{color:var(--muted-on-dark);margin:16px 0 32px;max-width:48ch}
-  .nap{display:grid;gap:12px;margin:24px 0 32px;font-size:var(--step--1);color:var(--muted-on-dark)}
+  .contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,72px)}
+  .nap{display:grid;gap:12px;margin-top:24px;font-size:var(--step--1);color:var(--muted-on-dark)}
   .nap strong{color:#fff}
   .nap a.tel{color:var(--amber-soft);font-weight:700}
-  form{display:grid;gap:0;border:1px solid var(--line-on-dark);background:rgba(255,255,255,.02);max-width:520px}
+  form{display:grid;gap:0;border:1px solid var(--line-on-dark);background:rgba(255,255,255,.02)}
   .field{padding:clamp(18px,2.5vw,26px);border-bottom:1px solid var(--line-on-dark)}
   label{font-weight:700;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-on-dark);display:grid;gap:10px}
   input,textarea{font:inherit;font-size:16px;background:transparent;border:none;color:#fff;width:100%;padding:4px 0}
@@ -163,10 +168,9 @@
   .field:focus-within{background:rgba(176,99,30,.08)}
   .field:focus-within label{color:var(--amber-soft)}
   textarea{min-height:90px;resize:vertical}
-  form .btn{margin:clamp(18px,2.5vw,26px);width:calc(100% - clamp(36px,5vw,52px))}
+  form .btn{margin:clamp(18px,2.5vw,26px);justify-content:center}
   .form-msg{font-weight:600;font-size:var(--step--1);min-height:1.4em;padding:0 clamp(18px,2.5vw,26px) 14px}
   .form-msg.ok{color:#8FCB9D}.form-msg.err{color:#E4A27C}
-  .form-note{font-size:var(--step--1);color:var(--muted-on-dark);padding:0 clamp(18px,2.5vw,26px) clamp(18px,2.5vw,26px)}
   .hp{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
   .legal{border-top:1px solid var(--line-on-dark);margin-top:48px;padding-top:20px;font-size:var(--step--1);color:var(--muted-on-dark);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .legal a{font-weight:700;color:#fff}
@@ -174,14 +178,12 @@
   .rv.in{opacity:1;transform:none}
   html.gsap .rv{opacity:1;transform:none;transition:none}
   @media(max-width:900px){
-    .sidebar{position:relative;width:100%;height:auto;flex-direction:row;align-items:center;justify-content:space-between;padding:16px 20px}
-    .sidebar-nav,.sidebar-mini,.sidebar .btn{display:none}
-    .site-main{margin-left:0}
+    .nav-links{display:none}
     .hero h1 .ln{white-space:normal}
-    .hero-stats{grid-template-columns:1fr}
     .bento{grid-template-columns:1fr}
     .bento-card:nth-child(1){grid-column:span 1}
     .bento-desc{max-height:none!important;opacity:1!important}
+    .contact-grid{grid-template-columns:1fr}
   }
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
@@ -191,10 +193,9 @@
     .acc-body{transition:none}
   }
   @media print{
-    .cursor-dot,.cursor-ring,.intro,video{display:none!important}
+    .cursor-dot,.cursor-ring,.intro,#gl3d,video{display:none!important}
     body{background:#fff;color:#111;overflow:visible!important}
-    .sidebar,.contact{background:#fff!important;color:#111!important;position:static!important;width:100%!important}
-    .site-main{margin-left:0}
+    .contact{background:#fff!important;color:#111!important}
     .bento-desc,.acc-body{max-height:none!important;opacity:1!important}
     a{color:#111;text-decoration:underline}
     .rv{opacity:1!important;transform:none!important}
@@ -208,37 +209,37 @@
 <div class="intro" aria-hidden="true"><div class="word"><span>Northgate</span></div></div>
 <noscript><style>.intro{display:none!important}</style></noscript>
 
-<nav class="sidebar" id="sidebar" aria-label="Main">
-  <a class="logo" href="#top">Northgate<em>.</em></a>
-  <div class="sidebar-nav">
-    <a href="#services">Services</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <div class="sidebar-mini">
-    <p><strong>Winnipeg &amp; all of Manitoba</strong><br>In person or by video</p>
-  </div>
-  <a class="btn magnetic" href="#contact" data-cursor="Book">Book a consultation</a>
-</nav>
+<header id="hdr">
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Northgate<em>.</em></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn" href="#contact">Book a consultation</a>
+  </nav>
+</header>
 
-<div class="site-main">
 <main id="main">
   <section class="hero" id="top" aria-label="Introduction">
+    <canvas id="gl3d" aria-hidden="true"></canvas>
     <div class="container">
-      <div class="hero-kicker rv">
-        <span class="rule" aria-hidden="true"></span>
-        <span class="eyebrow">Winnipeg · Immigration &amp; Paralegal</span>
-      </div>
-      <h1>
-        <span class="ln"><span>Your new life</span></span>
-        <span class="ln"><span>in Canada, <em>filed</em></span></span>
-        <span class="ln"><span><em>right</em> the first time.</span></span>
-      </h1>
-      <p class="hero-lede rv">Licensed representation for work permits, permanent residence, citizenship and appeals — clear timelines, flat fees, and someone who answers the phone.</p>
-      <div class="hero-stats rv">
-        <div><span class="num">5</span><p class="lbl">Pathways handled end-to-end</p></div>
-        <div><span class="num">1</span><p class="lbl">Business day to hear back</p></div>
-        <div><span class="num">$</span><p class="lbl">Flat fees, quoted upfront</p></div>
+      <div class="hero-copy">
+        <div class="hero-kicker rv">
+          <span class="rule" aria-hidden="true"></span>
+          <span class="eyebrow">Winnipeg · Immigration &amp; Paralegal</span>
+        </div>
+        <h1>
+          <span class="ln"><span>Your new life</span></span>
+          <span class="ln"><span>in Canada, <em>filed</em></span></span>
+          <span class="ln"><span><em>right</em> the first time.</span></span>
+        </h1>
+        <p class="hero-lede rv">Licensed representation for work permits, permanent residence, citizenship and appeals — clear timelines, flat fees, and someone who answers the phone.</p>
+        <div class="hero-ctas rv">
+          <a class="btn magnetic" href="#contact" data-cursor="Book">Book a consultation</a>
+          <a class="btn btn-line" href="#services" data-cursor="View">Our services</a>
+        </div>
       </div>
     </div>
   </section>
@@ -324,17 +325,19 @@
   </section>
 
   <section class="contact" id="contact">
-    <div class="container">
-      <p class="eyebrow">Get in touch</p>
-      <h2 style="margin-top:14px">Tell us where <em>you're at</em></h2>
-      <p class="contact-lede">Everything you share is confidential. We reply within one business day.</p>
-      <div class="nap">
-        <p><strong>Northgate Immigration &amp; Paralegal</strong><br>TODO: street address, Winnipeg, MB</p>
-        <p><strong>Call:</strong> <a class="tel" href="tel:+1TODO">TODO: phone</a></p>
-        <p><strong>Email:</strong> <a href="mailto:TODO">TODO: email</a></p>
-        <p><strong>Hours:</strong> TODO: hours</p>
+    <div class="container contact-grid">
+      <div class="rv">
+        <p class="eyebrow">Get in touch</p>
+        <h2 style="margin-top:14px">Tell us where <em>you're at</em></h2>
+        <p class="contact-lede">Everything you share is confidential. We reply within one business day.</p>
+        <div class="nap">
+          <p><strong>Northgate Immigration &amp; Paralegal</strong><br>TODO: street address, Winnipeg, MB</p>
+          <p><strong>Call:</strong> <a class="tel" href="tel:+1TODO">TODO: phone</a></p>
+          <p><strong>Email:</strong> <a href="mailto:TODO">TODO: email</a></p>
+          <p><strong>Hours:</strong> TODO: hours</p>
+        </div>
       </div>
-      <form id="lead-form" novalidate>
+      <form id="lead-form" class="rv" novalidate>
         <div class="field"><label>Name <input type="text" name="name" autocomplete="name" required></label></div>
         <div class="field"><label>Email <input type="email" name="email" autocomplete="email" required></label></div>
         <div class="field"><label>What do you need help with? <textarea name="message" required placeholder="e.g. My work permit expires in June…"></textarea></label></div>
@@ -342,30 +345,29 @@
         <button class="btn magnetic" type="submit">Request my consultation</button>
         <p class="form-msg" role="status" aria-live="polite"></p>
       </form>
-      <div class="legal">
-        <span>© <span id="yr"></span> Northgate Immigration &amp; Paralegal. All rights reserved.</span>
-        <span>Site by <a href="https://webelt.ca">RNR Solutions</a></span>
-      </div>
+    </div>
+    <div class="container legal">
+      <span>© <span id="yr"></span> Northgate Immigration &amp; Paralegal. All rights reserved.</span>
+      <span>Site by <a href="https://webelt.ca">RNR Solutions</a></span>
     </div>
   </section>
 </main>
-</div>
 
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   const motionOK = matchMedia('(prefers-reduced-motion: no-preference)').matches;
   const desktop = matchMedia('(hover:hover)').matches && innerWidth > 900;
+  const hdr = document.getElementById('hdr');
 
-  // Sidebar active-link highlight on scroll (replaces the top-header hide/solid logic
-  // from v1/v2 since there's no top header here)
-  const navLinks = Array.from(document.querySelectorAll('.sidebar-nav a'));
-  const navSections = navLinks.map(a => document.querySelector(a.getAttribute('href')));
+  let lastY = 0;
   addEventListener('scroll', () => {
-    let current = navSections[0];
-    navSections.forEach(sec => { if (sec && scrollY >= sec.offsetTop - 200) current = sec; });
-    navLinks.forEach(a => a.classList.toggle('active', document.querySelector(a.getAttribute('href')) === current));
+    const y = scrollY;
+    hdr.classList.toggle('solid', y > 40);
+    hdr.classList.toggle('hide', y > 300 && y > lastY);
+    lastY = y;
   }, { passive: true });
 
   if (window.gsap && motionOK) {
@@ -379,7 +381,7 @@
       .to('.intro', { yPercent: -100, duration: .8, ease: 'power4.inOut' }, '-=.1')
       .set('.intro', { display: 'none' })
       .from('.hero h1 .ln > span', { yPercent: 115, duration: 1, stagger: .1 }, '-=.55')
-      .from(['.hero-kicker', '.hero-lede', '.hero-stats'], { y: 30, opacity: 0, duration: .7, stagger: .08 }, '-=.6');
+      .from(['.hero-kicker', '.hero-lede', '.hero-ctas'], { y: 30, opacity: 0, duration: .7, stagger: .08 }, '-=.6');
 
     document.querySelectorAll('section:not(.hero)').forEach(sec => {
       const els = sec.querySelectorAll('.rv');
@@ -417,14 +419,13 @@
     document.querySelectorAll('.magnetic').forEach(btn => {
       btn.addEventListener('mousemove', e => {
         const r = btn.getBoundingClientRect();
-        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.2}px,${(e.clientY-r.top-r.height/2)*.3}px)`;
+        btn.style.transform = `translate(${(e.clientX-r.left-r.width/2)*.25}px,${(e.clientY-r.top-r.height/2)*.35}px)`;
       });
       btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
     });
   }
 
-  // Centerpiece: click-to-expand process accordion — replaces both v1's pinned
-  // horizontal cards and v2's pinned panel stack with a plain interaction model.
+  // Centerpiece: click-to-expand process accordion
   document.querySelectorAll('.acc-head').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.acc-item');
@@ -433,6 +434,69 @@
       if (!wasOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
     });
   });
+
+  // Centerpiece: real 3D geometry — five lit Three.js primitives representing the
+  // five service pathways, each rotating independently, plus a scroll-linked group
+  // rotation as the visitor scrolls past the hero. Full WebGL guard set (gotchas #6).
+  (function(){
+    if (!motionOK || !desktop || !window.THREE) return;
+    const hero = document.querySelector('.hero'), canvas = document.getElementById('gl3d');
+    if (!hero || !canvas) return;
+    let renderer;
+    try { renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true }); } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+    camera.position.set(0, 0, 9);
+
+    scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+    const key = new THREE.DirectionalLight(0xffffff, 0.9); key.position.set(4, 6, 6); scene.add(key);
+    const rim = new THREE.DirectionalLight(0xB0631E, 0.5); rim.position.set(-4, -2, -4); scene.add(rim);
+
+    const amber = new THREE.MeshStandardMaterial({ color: 0xB0631E, roughness: .35, metalness: .15 });
+    const ink = new THREE.MeshStandardMaterial({ color: 0x2A2620, roughness: .5, metalness: .1 });
+    const geos = [
+      new THREE.IcosahedronGeometry(1, 0),
+      new THREE.TorusGeometry(.85, .32, 16, 48),
+      new THREE.OctahedronGeometry(1.05, 0),
+      new THREE.BoxGeometry(1.3, 1.3, 1.3),
+      new THREE.ConeGeometry(1, 1.6, 24)
+    ];
+    const group = new THREE.Group();
+    const meshes = geos.map((geo, i) => {
+      const mesh = new THREE.Mesh(geo, i % 2 === 0 ? amber : ink);
+      const angle = (i / geos.length) * Math.PI * 2;
+      mesh.position.set(Math.cos(angle) * 1.5, Math.sin(angle) * 1.8, Math.sin(angle * 1.3) * 1.2);
+      mesh.userData.spin = { x: (Math.random() - .5) * .006, y: (Math.random() - .5) * .008 + .004 };
+      group.add(mesh);
+      return mesh;
+    });
+    scene.add(group);
+
+    function resize() {
+      const w = hero.clientWidth, h = hero.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h; camera.updateProjectionMatrix();
+    }
+    resize(); addEventListener('resize', resize);
+
+    let vis = true;
+    new IntersectionObserver(es => { vis = es[0].isIntersecting; }, { threshold: 0 }).observe(hero);
+
+    if (window.ScrollTrigger) {
+      gsap.to(group.rotation, { y: Math.PI * 0.7, ease: 'none',
+        scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: .8 } });
+    }
+
+    requestAnimationFrame(function loop() {
+      requestAnimationFrame(loop);
+      if (!vis) return;
+      meshes.forEach(m => { m.rotation.x += m.userData.spin.x; m.rotation.y += m.userData.spin.y; });
+      renderer.render(scene, camera);
+    });
+    canvas.classList.add('on');
+  })();
 
   // REQUIRED before this works: Supabase blocks anonymous inserts by default (Row Level Security).
   // Run in the SQL editor for the `leads` table:

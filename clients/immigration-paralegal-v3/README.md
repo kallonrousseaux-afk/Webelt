@@ -1,20 +1,18 @@
 # Immigration & Paralegal — Third direction (v3)
 
-Third design for the same client/content, this time testing a genuinely different **page architecture**, not just palette/centerpiece variations — per explicit request to keep exercising the skill's range.
+Third design for the same client/content, testing genuinely different page architecture and a WebGL technique not used in v1 or v2.
 
-## What's different from v1 and v2
-- **Persistent left sidebar nav** (300px, fixed) instead of a top header — logo, nav, mini contact info, and the primary CTA all live in one always-visible rail. Active section highlights on scroll.
-- **Hover-reveal bento grid** for services instead of a row list (v1/v2) — cards expand their description on hover/focus, one large "hero" card plus four smaller ones.
-- **Click-to-expand accordion** for the process section instead of any scroll-scrubbed or pinned technique — a genuinely different interaction model (click, not scroll).
-- **No marquee.** No pinned slide/stack of any kind.
-- New palette: warm bone/near-black ink + single amber accent — distinct from v1's navy/brass and v2's teal/plum.
+## Revision history
+- **Draft A**: persistent left sidebar nav (300px, fixed) instead of a top header, hover-reveal bento grid for services, click-to-expand accordion for process, no marquee/slide, amber accent palette. **Rejected**: "no animations at all" (there was reveal/hover/cursor motion, but no scroll-driven centerpiece — the build read as static next to v1/v2's spectacle) and "don't like the bar on the side."
+- **Draft B (current)**: standard top header restored (matching v1/v2). Kept the bento grid and accordion — those weren't the complaint. Added a real WebGL centerpiece: five lit Three.js primitives (icosahedron, torus, octahedron, box, cone — one per service pathway) floating in the hero with independent rotation, plus a scroll-linked group rotation as the visitor scrolls past the hero. Explicitly a different technique from both v1 (fullscreen fBm shader, no real geometry) and v2 (DOM `clip-path` panel stack, no WebGL at all).
 
-## Real bugs found and fixed during this build
-1. **Contrast fail found by axe, only reproducible after scroll**: `.bento-n` (the large decorative index number on each service card) used `opacity:.6` on top of an already-contrast-checked color, diluting it to 2.43:1 — well under the 3:1 large-text minimum. The bug was invisible on a fresh page load because the cards' reveal animation hadn't fired yet (still `opacity:0`), so axe had nothing to measure; it only showed up once scrolled into view. Fixed by removing the opacity dimming — the base color already passes at full opacity. **Lesson**: contrast math on a base hex value doesn't account for CSS `opacity` layered on top in the actual rule — check the rendered/computed color, not just the source hex.
-2. **`.contact .eyebrow` inherited the light-background amber-deep color while sitting on the dark sidebar-color contact section** — missing the same dark-background override `.sidebar .eyebrow` already had. Fixed by adding `.contact` to that selector.
+## Real bugs found and fixed
+1. **Draft A**: `.bento-n`'s `opacity:.6` diluted an already-contrast-checked color to 2.43:1 (axe only caught it after scroll, since the card hadn't revealed on fresh load — see build-gotchas for the durable lesson).
+2. **Draft A**: `.contact .eyebrow` was missing the dark-background color override the sidebar had, same class of oversight.
+3. **Draft B**: the 3D object canvas (`width:56%`) overlapped the hero headline on a 1440px viewport — the text column and the WebGL canvas region shared screen space. Fixed by narrowing the canvas to `38%` and tightening the objects' orbital radius so they cluster clearly in the right portion instead of spreading toward center.
 
 ## QA result
-1440px and 375px: 0 overflow, 0 console errors, 0 axe-core violations (after both fixes above). Bento hover-reveal and accordion click-to-expand both visually verified working. Sidebar collapses to a simple top bar at ≤900px per the standing mobile rules.
+1440px and 375px: 0 overflow, 0 console errors, 0 axe-core violations. `#gl3d.on` confirmed present (WebGL scene actually initialized and rendered, not just attempted). Full WebGL guard set applied (`prefers-reduced-motion` + `hover:hover` + width>900 + `THREE` existence check + try/catch on renderer + DPR≤1.5 + `IntersectionObserver` pause offscreen), matching every other WebGL centerpiece in this project. Bento hover-reveal and accordion click-to-expand re-verified working after the header swap.
 
 ## TODOs before this could ship
 Same as v1/v2 — real business name/phone/address/hours/credentials/testimonial, Supabase keys, social share image, domain.
