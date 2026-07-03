@@ -207,10 +207,11 @@
   }
 </style>
 </head>
-<body class="lock">
+<body>
 <a class="skip" href="#main">Skip to content</a>
 <div class="grain" aria-hidden="true"></div>
 <div class="intro" aria-hidden="true"><div class="word"><span>Aurora</span></div></div>
+<noscript><style>.intro{display:none!important}</style></noscript>
 <div class="orbit" aria-hidden="true"></div>
 
 <header id="hdr">
@@ -410,6 +411,7 @@
   }, { passive: true });
 
   if (window.gsap && motionOK) {
+    document.body.classList.add('lock'); // no-JS / non-motion users never get locked at all
     gsap.registerPlugin(ScrollTrigger);
     document.documentElement.classList.add('gsap');
 
