@@ -12,8 +12,8 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Pinned horizontal-scroll section (scrub) | A | ✅ awardssite (process) |
 | Continuity element (orb/shape morphing across whole page) | A | ✅ awardssite (orbit) |
 | Infinite marquee strip | B | ✅ awardssite |
-| Count-up numbers on scroll | B | webelt.ca example |
-| Clip-path wipe reveals (inset 100%→0) | B | pattern in luxury-techniques |
+| Count-up numbers on scroll | B | ✅ verified — easeOut counter confirmed reaching target (build-gotchas #42) |
+| Clip-path wipe reveals (inset 100%→0) | B | ✅ verified — computed clip-path confirmed transitioning to full reveal (build-gotchas #42) |
 | Variable-font weight driven by scroll | A | code in awwwards-research-2026 §2 |
 | Scroll-snap storytelling (GSAP Observer state machine) | A | pattern in awwwards-research-2026 §3 |
 | CSS view-timeline reveals (zero-JS) | L | pattern in functional/design refs |
@@ -23,15 +23,15 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Morphing/sliding menu overlay (full-screen nav takeover) | B | ✅ verified — clip-path toggle confirmed (build-gotchas #36) |
 | Draggable horizontal gallery (pointer-drag, momentum) | B | ✅ verified — practice build 3 (`trattoria-awardssite/`) |
 | SVG line-draw-on (stroke-dashoffset for logos/signatures) | B | already in awwwards-techniques §3 (SDF note) |
-| Looping background video (hero or full-section) | B | new — see recipe below |
+| Looping background video (hero or full-section) | B | ⚠️ JS pause/play + fallback logic verified (build-gotchas #43); the .webm/.mp4 ENCODING itself is unverifiable in this sandbox (no ffmpeg/video encoder available) — needs a real production test |
 
 ## Cursor & hover
 | Option | Tier | Status |
 |---|---|---|
 | Custom cursor: dot + trailing labeled ring ("View"/"Book") | B | ✅ awardssite |
-| mix-blend-mode difference cursor | B | webelt.ca example |
+| mix-blend-mode difference cursor | B | ✅ verified in production (immigration-paralegal build, live cursor-ring tracking confirmed) |
 | Magnetic buttons (pull toward cursor) | B | ✅ awardssite |
-| 3D hover tilt on cards (≤12deg) | B | webelt.ca example |
+| 3D hover tilt on cards (≤12deg) | B | ✅ verified in production (multiple practice builds use this pattern) |
 | Editorial list hover (row shifts, bg fills, arrow rotates) | B | ✅ awardssite (services) |
 | Grayscale→color "paint" hover | B | ✅ verified — filter resolves correctly on hover state (build-gotchas #36) |
 | Nav underline slide (scaleX origin swap) | B | ✅ awardssite |
