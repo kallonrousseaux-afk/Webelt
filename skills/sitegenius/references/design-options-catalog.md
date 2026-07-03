@@ -47,7 +47,7 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Stencil-buffer scene masking / SDF logo morph | A | code in awwwards-techniques §3 |
 | Instanced 3D objects (single draw call) | A | code in awwwards-techniques §7 |
 | three-mesh-bvh interactive raycasting | A | code in awwwards-techniques §4 |
-| Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | new — see recipe below |
+| Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | ✅ verified against a real hand-authored GLB (build-gotchas #33) |
 | 3D product configurator (swap materials/colors on a model) | A | new — see recipe below |
 | Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | ✅ verified via render-loop + screenshot test (build-gotchas #28) |
 
@@ -250,7 +250,7 @@ Reads as premium/technical (good for tech-ish or "AwardsSite default" clients), 
 | Rive interactive vector animation (icons, mascots, state machines) | B | new — see recipe below |
 | Lottie vector animation (After Effects export, lightweight) | B | new — see recipe below |
 | Ambient/spatial sound design (directional hover/interaction audio) | A | new — see recipe below, use sparingly |
-| UI micro-sound (click/hover blips) | A | new — see recipe below, opt-in only |
+| UI micro-sound (click/hover blips) | A | ✅ verified against a real WAV + real user-gesture click (build-gotchas #34) |
 | Custom animated 404 page | B | new — see recipe below |
 
 ### Percentage-counter preloader
