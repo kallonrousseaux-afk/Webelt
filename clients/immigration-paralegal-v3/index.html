@@ -475,7 +475,7 @@
     scene.add(group);
 
     function resize() {
-      const w = hero.clientWidth, h = hero.clientHeight;
+      const w = canvas.clientWidth, h = canvas.clientHeight;
       renderer.setSize(w, h, false);
       camera.aspect = w / h; camera.updateProjectionMatrix();
     }

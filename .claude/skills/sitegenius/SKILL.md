@@ -29,6 +29,7 @@ Read `skills/sitegenius/references/technique-selection.md` and apply its four fi
 - Any technique beyond what's in the two starters comes from `design-options-catalog.md` — it's a recipe, not yet battle-tested, so budget extra QA time and watch for the failure modes in `build-gotchas.md`.
 - Fonts: never Inter/Roboto/Arial. Fraunces, Playfair, Syne, Instrument Serif, Archivo Expanded, Hanken Grotesk (body).
 - Copy: write from the content brief using `references/seo-copy-playbook.md` (PAS/AIDA/FAB per section). Images per `references/imagery-direction.md` — generation always asks the user first.
+- **3D models (GLB/GLTF) — always ask before deciding whether to build with generic primitives or import real assets.** Same standing rule as image generation: before adding any 3D-model-based technique (loaded viewer, floating icons, product configurator), ask Kallon if he wants to supply real models rather than defaulting straight to hand-authored/primitive geometry.
 - The live example for craft calibration: `index.html` at repo root (webelt.ca). Read, NEVER modify.
 
 ## Step 4 — QA gates (hard, in order — run the exact harness from build-gotchas.md)
