@@ -209,6 +209,12 @@
     .marquee-track{transform:none!important}
     .scroll-cue .line::after{animation:none}
     .orbit{display:none}
+  @media print{
+    .cursor-dot,.cursor-ring,#gl,.intro,.orbit,.scroll-cue,video{display:none!important}
+    body{background:#fff;color:#111;overflow:visible!important}
+    a{color:#111;text-decoration:underline}
+    .rv{opacity:1!important;transform:none!important}
+    .hero,section{page-break-inside:avoid}
   }
 </style>
 </head>

@@ -39,7 +39,7 @@ Read `skills/sitegenius/references/technique-selection.md` and apply its four fi
 5. **Open and LOOK at every screenshot before saying done.** If it looks bland to you, it is worse for Kallon.
 
 ## Step 5 — Deliver
-Send the HTML file itself (SendUserFile, display render) as the primary preview — stills cannot show motion and Kallon judges in the browser. Include mobile stills if he's on his phone. List remaining `TODO:`s. Commit and push per branch instructions.
+Send the HTML file itself (SendUserFile, display render) as the primary preview — stills cannot show motion and Kallon judges in the browser. Include mobile stills if he's on his phone. List remaining `TODO:`s. Also deliver `robots.txt` and `sitemap.xml` (copy from `templates/robots.txt`/`templates/sitemap.xml`, swap `TODO-DOMAIN.ca` for the real domain, add one `<url>` block per real page for multi-page builds) — every build needs these at the site root; they are not optional extras. Commit and push per branch instructions.
 
 ## Standing rules
 - Decisions Kallon has made are final; don't re-offer declined things or nag about "pending" items on finished work.
