@@ -43,10 +43,10 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Option | Tier | Status |
 |---|---|---|
 | fBm living aura shader (breathing, cursor-reactive, palette-graded) | A | ✅ awardssite + webelt.ca |
-| Single-progress-uniform shader transitions (block reveal, displacement, chromatic aberration) | A | code in awwwards-research-2026 §1 |
-| Stencil-buffer scene masking / SDF logo morph | A | code in awwwards-techniques §3 |
+| Single-progress-uniform shader transitions (block reveal, displacement, chromatic aberration) | A | ✅ verified — block-reveal confirmed 0%→50%→100% via screenshots (build-gotchas #46) |
+| Stencil-buffer scene masking / SDF logo morph | A | ❌ TESTED AND FOUND BROKEN as documented — do not use as-is (build-gotchas #47); needs the render-target-composite rework noted there |
 | Instanced 3D objects (single draw call) | A | ✅ verified — 8 instances measured at exactly 1 draw call (build-gotchas #39) |
-| three-mesh-bvh interactive raycasting | A | code in awwwards-techniques §4 |
+| three-mesh-bvh interactive raycasting | A | ⚠️ version-incompatible: npm three-mesh-bvh now requires three>=0.159.0, project pins three@0.158.0 (build-gotchas #48) — resolve before using |
 | Loaded 3D model viewer (GLB/GLTF, scroll- or drag-rotated) | A | ✅ verified against a real hand-authored GLB (build-gotchas #33) |
 | 3D product configurator (swap materials/colors on a model) | A | ✅ verified — material.color.set() confirmed visually (build-gotchas #39) |
 | Floating/orbiting 3D icon set (lightweight primitives, not modeled assets) | A | ✅ verified via render-loop + screenshot test (build-gotchas #28) |
