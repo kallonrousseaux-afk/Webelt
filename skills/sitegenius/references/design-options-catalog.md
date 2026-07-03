@@ -18,6 +18,11 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Scroll-snap storytelling (GSAP Observer state machine) | A | pattern in awwwards-research-2026 §3 |
 | CSS view-timeline reveals (zero-JS) | L | pattern in functional/design refs |
 | Smart-sticky header (hide down, reveal up) | B | ✅ awardssite |
+| Scroll-scrubbed video/image sequence (frame = scroll position) | A | new — see recipe below |
+| Full page transitions (Barba.js + GSAP, no reload) | A | new — see recipe below |
+| Morphing/sliding menu overlay (full-screen nav takeover) | B | new — see recipe below |
+| Draggable horizontal gallery (pointer-drag, momentum) | B | new — see recipe below |
+| SVG line-draw-on (stroke-dashoffset for logos/signatures) | B | already in awwwards-techniques §3 (SDF note) |
 
 ## Cursor & hover
 | Option | Tier | Status |
@@ -29,6 +34,9 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Editorial list hover (row shifts, bg fills, arrow rotates) | B | ✅ awardssite (services) |
 | Grayscale→color "paint" hover | B | pattern in awwwards-research-2026 §5 |
 | Nav underline slide (scaleX origin swap) | B | ✅ awardssite |
+| Cursor trail / particle emitter (canvas, sparse points following pointer) | A | new — see recipe below |
+| Spotlight cursor (circular reveal mask over hidden content) | A | new — see recipe below |
+| Squiggly/displaced text on hover (SVG turbulence filter) | B | new — see recipe below |
 
 ## WebGL / spectacle (desktop + motion-on only)
 | Option | Tier | Status |
@@ -72,3 +80,73 @@ Quick-reference menu of every technique in the bundle. ✅ = already coded in a 
 | Drip scroll-cue indicator | A | ✅ awardssite |
 
 Pairing guidance: pick 1 spectacle item + 2–3 scroll/hover items + the texture stack per build. Everything obeys the standing guards (reduced-motion, ≤900px, transform/opacity only). When Kallon asks for options on a build, present choices from this catalog via AskUserQuestion.
+
+---
+
+## New recipes (not yet in a starter — copy-paste, then wire into the build)
+
+All obey standing guards: desktop `(hover:hover)` + `prefers-reduced-motion:no-preference` + ≤900px off unless noted.
+
+### Scroll-scrubbed image sequence
+Pre-render N frames (e.g. product rotation, a process unfolding) as a sprite sequence; draw the frame matching scroll progress to a canvas.
+```js
+const frames = 90, imgs = []; for (let i=0;i<frames;i++){ const im=new Image(); im.src=`seq/${String(i).padStart(3,'0')}.webp`; imgs.push(im); }
+const ctx = canvas.getContext('2d');
+ScrollTrigger.create({ trigger:'.seq-section', start:'top top', end:'bottom bottom', scrub:true,
+  onUpdate: self => { const i = Math.min(frames-1, Math.floor(self.progress*frames)); ctx.clearRect(0,0,canvas.width,canvas.height); ctx.drawImage(imgs[i],0,0); } });
+```
+Cost: N images (use .webp, ~40-80KB each, lazy-load ahead of viewport). Best for product/process reveals, not decoration.
+
+### Full page transitions (Barba.js + GSAP)
+```js
+barba.init({ transitions: [{
+  leave({ current }) { return gsap.to(current.container, { opacity: 0, y: -20, duration: .4 }); },
+  enter({ next }) { return gsap.from(next.container, { opacity: 0, y: 20, duration: .5 }); }
+}]});
+```
+Multi-page HTML only; re-run all init scripts (cursor, reveals) on `barba:after` since the DOM swaps. Skip for single-page LocalSite builds — not worth the complexity under 3 pages.
+
+### Morphing full-screen nav overlay
+```css
+.nav-overlay{position:fixed;inset:0;background:var(--bg);clip-path:circle(0% at 100% 0%);transition:clip-path .6s var(--ease);z-index:110}
+.nav-overlay.open{clip-path:circle(150% at 100% 0%)}
+```
+Toggle `.open` on hamburger click; stagger-reveal the nav links inside with GSAP once open. Good mobile replacement for a plain dropdown on AwardsSite builds.
+
+### Draggable horizontal gallery
+```js
+const track = document.querySelector('.drag-track');
+let isDown=false, startX, scrollStart;
+track.addEventListener('pointerdown', e => { isDown=true; startX=e.pageX; scrollStart=track.scrollLeft; track.setPointerCapture(e.pointerId); });
+track.addEventListener('pointermove', e => { if(!isDown) return; track.scrollLeft = scrollStart - (e.pageX - startX); });
+track.addEventListener('pointerup', () => isDown=false);
+```
+`.drag-track{overflow-x:auto;scroll-snap-type:x proximity;cursor:grab}` + `cursor:grabbing` on `:active`. Use for portfolio/gallery sections instead of the pinned-scroll pattern when you want user-driven pacing.
+
+### Cursor trail / particle emitter
+```js
+const pts = []; const N = 14;
+addEventListener('mousemove', e => { pts.unshift({x:e.clientX,y:e.clientY}); if(pts.length>N) pts.pop();
+  pts.forEach((p,i) => { const dot = trailDots[i]; dot.style.transform = `translate(${p.x}px,${p.y}px)`; dot.style.opacity = 1-i/N; }); });
+```
+14 small fixed-position dots pre-created in DOM, updated per mousemove — cheap, no canvas needed for a subtle trail. Use sparingly; it reads as playful/creative-agency, wrong for legal/medical/trades clients.
+
+### Spotlight cursor (reveal mask)
+```css
+.spotlight-section{position:relative}
+.spotlight-mask{position:absolute;inset:0;background:var(--bg);mask:radial-gradient(160px at var(--mx) var(--my), transparent 60%, black 100%);pointer-events:none}
+```
+```js
+section.addEventListener('mousemove', e => { const r=section.getBoundingClientRect();
+  section.style.setProperty('--mx', e.clientX-r.left+'px'); section.style.setProperty('--my', e.clientY-r.top+'px'); });
+```
+Reveals hidden content/image under a circular cursor-following cutout — strong for "before/after" or "see the difference" sections.
+
+### Squiggly hover text (SVG turbulence)
+```html
+<filter id="squiggle"><feTurbulence type="fractalNoise" baseFrequency="0.01 0.03" numOctaves="2" result="noise" seed="2"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="0"><animate attributeName="scale" values="0;6;0" dur="1.2s" begin="indefinite" fill="freeze" id="wig"/></feDisplacementMap></filter>
+```
+`style="filter:url(#squiggle)"` on the text element; trigger `document.getElementById('wig').beginElement()` on hover. Playful accent for a single hero word — never body text.
+
+## Sources (this round)
+https://www.awwwards.com/websites/scrolling/ · https://muffingroup.com/blog/parallax-scrolling-websites/ · https://tympanus.net/codrops/2019/01/31/custom-cursor-effects/ · https://blog.hubspot.com/website/animated-cursor · https://speckyboy.com/css-javascript-cursor-effects/
