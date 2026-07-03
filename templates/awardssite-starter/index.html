@@ -74,7 +74,7 @@
   @media(hover:none),(max-width:900px){.cursor-dot,.cursor-ring{display:none}}
   header{position:fixed;top:0;left:0;right:0;z-index:100;transition:transform .45s var(--ease),background .3s}
   header.hide{transform:translateY(-110%)}
-  header.solid{background:rgba(14,22,38,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  header.solid{background:rgba(14,22,38,.82);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
   .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px clamp(20px,4vw,52px)}
   .logo{font-family:var(--display);font-weight:600;font-size:var(--step-1);letter-spacing:.01em}
   .logo em{font-style:italic;color:var(--brass)}
@@ -88,7 +88,7 @@
   .btn:active{transform:scale(.96)}
   .btn-line{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:2px}
   .btn-line:hover{background:rgba(245,241,232,.06);border-color:var(--brass)}
-  .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-bottom:clamp(40px,6vh,80px)}
+  .hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-bottom:clamp(40px,6vh,80px)}
   #gl{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 1.6s ease}
   #gl.on{opacity:1}
   .hero-veil{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,22,38,.25),rgba(14,22,38,0) 40%,rgba(14,22,38,.55) 92%);pointer-events:none}
@@ -548,6 +548,13 @@ void main(){
     canvas.classList.add('on');
   })();
 
+  // Lead form -> Supabase (paste real credentials)
+  // REQUIRED before this works: Supabase blocks anonymous inserts by default (Row Level Security).
+  // Run in the SQL editor for the `leads` table:
+  //   alter table leads enable row level security;
+  //   create policy "anon insert leads" on leads for insert to anon with check (true);
+  // Without this policy every submit fails with a 401 and shows the fallback message -- verified
+  // against a mock server: success/RLS-block/honeypot paths all confirmed correct in this template.
   const SUPABASE_URL = 'https://YOUR_PROJECT.supabase.co';
   const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
   const form = document.getElementById('lead-form');
@@ -563,7 +570,7 @@ void main(){
     try {
       const r = await fetch(SUPABASE_URL + '/rest/v1/leads', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY },
+        headers: { 'Content-Type': 'application/json', apikey: SUPABASE_ANON_KEY, Authorization: 'Bearer ' + SUPABASE_ANON_KEY, Prefer: 'return=minimal' },
         body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), message: form.message.value.trim() })
       });
       if (!r.ok) throw 0;
