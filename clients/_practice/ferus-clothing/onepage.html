@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js');if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('pageshow',()=>scrollTo({top:0,left:0,behavior:'instant'}));</script><!-- js-gate + reload-at-top (gotchas #130/#132a) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Single-file, single-page version of the FERUS. 3-page build, for a plain
      download-and-open preview (the multi-page version needs its shared JS file
@@ -11,6 +12,16 @@
      inlined below instead of an external <script src>. Same design, same real
      working cart, same content — just packaged as one file. -->
 <title>FERUS. — New Drop, Now Live</title>
+<link rel="canonical" href="https://TODO-DOMAIN.ca/">
+<meta property="og:title" content="FERUS. — New Drop, Now Live">
+<meta property="og:description" content="Streetwear cut for the loud ones. Limited runs, no restocks.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://TODO-DOMAIN.ca/og-share.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FERUS. — New Drop, Now Live">
+<meta name="twitter:description" content="Streetwear cut for the loud ones. Limited runs, no restocks.">
+<meta name="twitter:image" content="https://TODO-DOMAIN.ca/og-share.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230A0A0A'/><path d='M11 24V8h11M11 16h8' stroke='%23C8FF3D' stroke-width='3' fill='none' stroke-linecap='round'/></svg>">
 <meta name="description" content="FERUS. — raw-edge streetwear cut for movement. Shop the new drop.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230A0A0A'/><text x='16' y='23' font-family='Georgia' font-size='20' font-weight='900' fill='%23C8FF3D' text-anchor='middle'>F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,6 +60,7 @@
   .eyebrow{font-size:var(--step--1);font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acid)}
   .grain{position:fixed;inset:0;z-index:80;pointer-events:none;opacity:.05;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
   .intro{position:fixed;inset:0;z-index:130;background:var(--bg);display:flex;align-items:center;justify-content:center}
+  html:not(.js) .intro{display:none}
   .intro .word{font-family:var(--display);font-weight:800;font-size:var(--step-4);color:var(--acid);overflow:hidden;text-transform:uppercase}
   .intro .word span{display:inline-block}
   .cursor-dot{position:fixed;top:0;left:0;width:8px;height:8px;background:var(--acid);border-radius:50%;pointer-events:none;z-index:150;transform:translate(-50%,-50%)}
@@ -148,8 +160,8 @@
   .foot-grid a:hover{color:var(--acid)}
   .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted-dark)}
   .legal a{font-weight:700;color:var(--ink)}
-  .rv{opacity:0;transform:translateY(28px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
-  .rv.in{opacity:1;transform:none}
+  html.js .rv{opacity:0;transform:translateY(28px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  html.js .rv.in{opacity:1;transform:none}
   html.gsap .rv{opacity:1;transform:none;transition:none}
   @media(max-width:900px){
     .nav-links{display:none}
