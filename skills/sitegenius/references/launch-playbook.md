@@ -23,7 +23,8 @@ Produce a **deploy package**: a folder/zip containing exactly what gets uploaded
 6. **Form wired to the real endpoint**: Supabase URL + anon key for the client's project (webelt.ca pattern: POST `/rest/v1/leads`, honeypot, RLS insert-only policy). If the client project doesn't exist yet, the form stays in demo mode and the handoff kit says so explicitly.
 7. **Analytics** (if sold): plausible/GA snippet slot filled; otherwise omit — no placeholder scripts.
 8. **Performance pass on the package**: images `.webp` ≤120KB hero / ≤60KB cards, `loading="lazy"` below fold, `fetchpriority="high"` on hero, fonts `display=swap`, video `preload="metadata"` + poster frame.
-9. **Zip it** and deliver via SendUserFile alongside the handoff kit.
+9. **Run the staging rig on the package** (`skills/sitegenius/staging-rig/` — see its README): serves the package Hostinger-style and runs the Part-2 verification list as automated checks, including JS-disabled readability, slow-CDN resilience, branded-404 behavior, share-card audit, and a form success-path rehearsal against a mock Supabase. All checks green (or each failure explained as a declared TODO) before the package ships.
+10. **Zip it** and deliver via SendUserFile alongside the handoff kit.
 
 ## Part 2 — Kallon executes (the 15-minute go-live)
 

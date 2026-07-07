@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add('js')</script><!-- gates .rv hidden state: reveals require JS, so no-JS visitors see full content (gotcha #130) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- TODO before launch: business name (Northgate = placeholder), phone, address,
      hours, email, domain, RCIC/LSM credentials, real testimonial, Supabase keys.
@@ -213,8 +214,8 @@
   footer .logo em{color:var(--teal-soft)}
   .legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;border-top:1px solid var(--line-on-plum);margin-top:48px;padding-top:24px;font-size:var(--step--1);color:var(--muted-on-plum)}
   .legal a{font-weight:700;color:#fff}
-  .rv{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
-  .rv.in{opacity:1;transform:none}
+  html.js .rv{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+  html.js .rv.in{opacity:1;transform:none}
   html.gsap .rv{opacity:1;transform:none;transition:none}
   @media(max-width:900px){
     .nav-links{display:none}
