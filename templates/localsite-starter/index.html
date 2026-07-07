@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<script>document.documentElement.classList.add('js')</script><!-- gates .rv hidden state: reveals require JS, so no-JS visitors see full content (gotcha #130) -->
+<script>document.documentElement.classList.add('js');if('scrollRestoration' in history)history.scrollRestoration='manual';window.scrollTo(0,0);addEventListener('pageshow',()=>scrollTo({top:0,left:0,behavior:'instant'}));</script><!-- gates .rv hidden state: reveals require JS, so no-JS visitors see full content (gotcha #130) -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- ============================================================
   RNR LocalSite Starter — production base for $350-band builds

@@ -206,6 +206,22 @@ function get(url) {
     await ctx.close();
   }
 
+  // ---- 11: reload scroll position — pages with intros/pinned sections must
+  // reload at the top, not at a restored offset against a not-yet-inflated layout
+  {
+    const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+    const page = await ctx.newPage();
+    await page.goto(base + '/', { waitUntil: 'load' });
+    await page.waitForTimeout(1200);
+    await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+    await page.waitForTimeout(600);
+    await page.reload({ waitUntil: 'load' });
+    await page.waitForTimeout(1500);
+    const y = await page.evaluate(() => window.scrollY);
+    check('reload lands at top of page', y < 50, `scrollY after reload: ${y}`);
+    await ctx.close();
+  }
+
   await browser.close();
   if (server) server.kill();
 
