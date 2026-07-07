@@ -2,6 +2,20 @@
 
 Fills the imagery gap: how to direct, crop, and grade images so any site reads premium. Applies to Higgsfield generations, client photos, and photo direction you give clients.
 
+## The image plan — decide imagery at intake, not as an afterthought
+
+Placeholder gradients are the single biggest tell that a build is a mockup — a food or product business with gray tiles reads fake no matter how good the layout is. So:
+
+1. **At intake, imagery gets its own question**: client photos / Higgsfield generation / placeholders-for-now. Present the credit cost when generation is on the table (image ≈ cheap, video ≈ 10 credits — preflight with `get_cost:true` for the real number) and get one up-front yes for the SET, not a re-ask per image.
+2. **A standard generated set is 3–5 images, planned before generating any**: one hero (wide, copy space on the headline side), 1–2 section/feature shots (medium), 1–2 texture/detail tiles (tight). One consistent prompt family = one grade family.
+3. **Prompt recipe per register** — always include: palette words from the locked tokens, light direction, grade ("film grain", "soft directional window light"), and NEGATIVES ("no text, no logos, no people close-up" — generated faces as fake staff are banned).
+   - *Warm-local (restaurant/café)*: "overhead 45° food photography, [palette] palette, warm window light, shallow depth, film grain, no text no logos"
+   - *Trust-first (professional)*: "architectural interior detail, [palette] palette, soft morning light, calm negative space, editorial, no people no text"
+   - *Craft/impact (trades)*: "low-angle work-in-progress detail, tool and material texture, [palette] tones, directional workshop light, no faces no text"
+   - *Spectacle/product*: "studio product still, single object, [palette] backdrop, dramatic side light, subtle grain, no text"
+4. **Reference generated assets by their CDN URL directly** (sandbox can't download/re-host — SKILL.md step 3 rules apply), with the standing `TODO:` to re-host before production launch.
+5. **Video is the hero-only upgrade**: one looping ambient video (5s, 16:9, 1080p) for the hero when the register supports it — Kallon has approved this pattern twice. Everything below the fold stays stills; multiple videos on one page is cost and weight with no added signal.
+
 ## The 2026 direction: authentic + cinematic
 
 - **Authenticity beat perfection** — the industry moved off polished/photoshopped toward relatable, human-focused imagery. For local clients this is good news: their real shop, real staff, real work — properly graded — beats stock every time. (Reinforces the existing no-stock rule.)

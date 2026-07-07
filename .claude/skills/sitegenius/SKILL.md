@@ -13,6 +13,8 @@ You are building a production website for an RNR Solutions client. Never ship dr
 1. `skills/sitegenius/references/intake-menu.md` — the kickoff flow (menu-or-decide + content brief)
 2. `skills/sitegenius/references/build-gotchas.md` — bugs already paid for; the QA harness lives here
 3. `skills/sitegenius/references/design-planning.md` — style tile + industry presets
+4. `skills/sitegenius/references/kallon-taste.md` — his real accept/reject history. Check the direction against it BEFORE building; update it after every reaction (a taste call left in chat history is lost when the session ends)
+5. `skills/sitegenius/references/component-library.md` — proven components + their canonical source files. Transplant from the canonical file listed there, never from memory or an old build (stale copies reintroduce fixed bugs — gotcha #109)
 
 ## Step 1 — Intake (always)
 Follow intake-menu.md exactly: AskUserQuestion "Menu or you decide?" → menu flow or solo decisions → **content brief** (business facts in one message; extract from pasted material; `TODO:` for unknowns; NEVER invent facts — no fake reviews/hours/credentials/stats).
@@ -28,7 +30,9 @@ Read `skills/sitegenius/references/technique-selection.md` and apply its four fi
 - **AwardsSite ($12k-band)**: start from `templates/awardssite-starter/index.html` — a complete verified immersive build (intro reveal, full-viewport fBm aura, line-by-line hero, marquee, editorial hover list, pinned horizontal scroll, continuity orbit, labeled cursor, magnetic CTAs). Follow its README: change tokens, shader vec3 colors, copy, schema — keep every script block and guard intact. If Step 2.5 selected a different centerpiece (3D model, scroll-scrubbed sequence, etc.) than the aura shader, swap that one system using its recipe in `design-options-catalog.md` — leave the rest of the starter's verified motion intact.
 - Any technique beyond what's in the two starters comes from `design-options-catalog.md` — it's a recipe, not yet battle-tested, so budget extra QA time and watch for the failure modes in `build-gotchas.md`.
 - Fonts: never Inter/Roboto/Arial. Fraunces, Playfair, Syne, Instrument Serif, Archivo Expanded, Hanken Grotesk (body).
-- Copy: write from the content brief using `references/seo-copy-playbook.md` (PAS/AIDA/FAB per section). Images per `references/imagery-direction.md` — generation always asks the user first.
+- Copy: write from the content brief using `references/seo-copy-playbook.md` (PAS/AIDA/FAB per section). Images per `references/imagery-direction.md` — plan the image SET at intake (its "image plan" section: 3–5 shots, one prompt family, one up-front cost approval), generation always asks the user first. Placeholders are a mockup tell — any build headed to a client gets real or generated imagery.
+- **Two-polarity accent tokens**: any accent color used on both light and dark backgrounds gets TWO named tokens up front (`--accent`/`--accent-lite`), each verified ≥5:1 against its own background — don't stretch one token across both polarities and wait for axe to complain (gotchas #121/#123/#124).
+- **Single-file delivery is the default**: all "pages" as anchor-linked sections, all JS in one inline `<script>` (which also means one parse error kills the whole page — the pageerror QA check is non-optional). Multi-file only when files will genuinely be served together (gotchas #107/#110/#118).
 - **3D models (GLB/GLTF) — always ask before deciding whether to build with generic primitives or import real assets.** Same standing rule as image generation: before adding any 3D-model-based technique (loaded viewer, floating icons, product configurator), ask Kallon if he wants to supply real models rather than defaulting straight to hand-authored/primitive geometry.
 - **Generated video/image via Higgsfield — the working recipe** (used successfully for a hero video background):
   1. Ask first, always — concept ("you decide" vs. his own idea) AND which build/section it goes on, via `AskUserQuestion`. Never generate speculatively.
@@ -43,13 +47,19 @@ Read `skills/sitegenius/references/technique-selection.md` and apply its four fi
 1. Sandbox CDN is blocked: make a `test-live.html` copy with local npm libs (never edit the real file's CDN URLs).
 2. Playwright (`/opt/pw-browsers/chromium`) at 1440×900 and 375×812: wait for intro, walk the page, screenshot.
 3. Assert: zero pageerrors · 375 scrollWidth == 375 · WebGL canvas has class `on` on desktop · reveals actually visible.
-4. Contrast: run the gotchas script on every changed token pair — ≥4.5 text, ≥3.0 large/UI.
-5. **Open and LOOK at every screenshot before saying done.** If it looks bland to you, it is worse for Kallon.
+4. Contrast: run the gotchas script on every changed token pair — target ≥5:1 for 4.5-threshold text (values within ~0.1 of a threshold from an offline calc are NOT verified — only a rendered axe scan is, gotcha #121). Then re-run axe on the rendered page.
+5. Robustness: page must be readable and correctly colored with JS/GSAP failed to load (CSS-declared backgrounds, content not gated behind script — gotchas #101/#116); `page.on('pageerror')` clean (one parse error kills everything in a single-script build — gotcha #118).
+6. Performance basics: `loading="lazy"` below fold, hero `fetchpriority="high"`, fonts via preconnect, no layout shift from late-rendering JS grids.
+
+## Step 4.5 — Visual self-review (the "ugly check" — automated QA cannot do this)
+Run `references/visual-review.md` in full: screenshot 4+ scroll positions at 1440 + 2 at 375, answer its checklist (spacing rhythm, one dominant type moment, grade consistency, distinct-shapes/proportion test), and the two killer questions — "would a designer I respect sign this screen?" and "does this rhyme too closely with a recent build?" (check `kallon-taste.md`). The two worst misses in project history (squished WebGL, the FIELDWORK rejection) passed every automated gate and failed here. A "no" on any item is a design fix + re-screenshot, not a note.
 
 ## Step 5 — Deliver
 Send the HTML file itself (SendUserFile, display render) as the primary preview — stills cannot show motion and Kallon judges in the browser. Include mobile stills if he's on his phone. List remaining `TODO:`s. Also deliver `robots.txt` and `sitemap.xml` (copy from `templates/robots.txt`/`templates/sitemap.xml`, swap `TODO-DOMAIN.ca` for the real domain, add one `<url>` block per real page for multi-page builds) — every build needs these at the site root; they are not optional extras. Commit and push per branch instructions.
 
 ## Standing rules
 - Decisions Kallon has made are final; don't re-offer declined things or nag about "pending" items on finished work.
+- After every Kallon reaction (accept/reject/complaint/silence-and-move-on), append it to `references/kallon-taste.md`'s ledger and update its profile if the signal changes it — same commit as the build change.
+- If you improve a component in a new build, that build becomes its canonical source — update `references/component-library.md`'s pointer in the same commit.
 - Zero mobile overlap at 375px is a ship blocker. `transform`/`opacity` only. All motion dead under `prefers-reduced-motion`, decorative layers hidden ≤900px.
 - Three.js pinned @0.158.0. Full WebGL guard set every time (see gotchas §6).
