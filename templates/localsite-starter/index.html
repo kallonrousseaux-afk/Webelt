@@ -69,6 +69,7 @@
   }
   /* ============ BASE ============ */
   *{box-sizing:border-box;margin:0;padding:0}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}/* heading-order bridges (gotcha #106/#113): visually-hidden <h2> before any h3-card grid */
   html{scroll-behavior:smooth;scroll-padding-top:90px}
   body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:var(--step-0);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   ::selection{background:var(--accent);color:#fff}

@@ -53,22 +53,16 @@ Design signed off 2026-06-24. Do not push 10/10 upgrades.
 Colors: cream #F6F0E6 / red #C63B1E / green #173C2B / gold #D8A14B / charcoal #2D2D2D. Fonts: Playfair Display italic 700 + Inter.
 Remaining: fix focus-ring contrast on green button (use `outline: 3px solid #FFF; outline-offset: 3px`), Vercel deploy (domain not registered), Resend API setup, confirm founders photo.
 
-## SiteGenius skill (7-phase pipeline)
-Local: `C:\Users\Owner\.claude\skills\sitegenius\`. Two modes: **LocalSite** (premium 9/10, GSAP, lean, $2.5k–$8k — default) and **AwardsSite** (immersive 9.5/10, + Three.js WebGL, $12k+). AwardsSite WebGL rules: desktop + hover:hover + motion-on only, off ≤900px and reduced-motion, DPR ≤1.5, pause offscreen, mask shader away from text, `if(!window.THREE) return` fallback.
-Phases: 0 brief → 1 tokens/fonts (avoid Inter/Roboto; use Fraunces/Playfair/Syne/etc.) → 2 Figma → 3 AI assets (Higgsfield, ask first) → 4 motion (GSAP+SplitText+ScrollTrigger, transform/opacity only) → 5 luxury CSS (blend modes, clip-path reveals, tilt ≤12deg, horizontal scroll desktop-only) → 6 components (React only) → 7 QA/ship (375/768/1280/1920 screenshots, CWV green, zero console errors).
+## SiteGenius skill
+**The pipeline lives in `.claude/skills/sitegenius/SKILL.md` in this repo — that file is the source of truth, not this summary.** (An older local copy may exist at `C:\Users\Owner\.claude\skills\sitegenius\` — the repo version supersedes it; the old "7-phase / Figma / React components" description is obsolete.)
+
+Current shape: Step 0 read references (incl. `kallon-taste.md` + `component-library.md`) → intake (`intake-menu.md`) → style-tile sign-off → technique selection → **build by transplant** from the two verified starters (`templates/localsite-starter/`, `templates/awardssite-starter/`) → QA gates (the harness in `build-gotchas.md`) → visual self-review (`visual-review.md`) → deliver single-file → launch (`launch-playbook.md` + `handoff-kit.md`).
+
 ### Reference bundle in this repo (`skills/sitegenius/references/`)
-- `awwwards-techniques.md` — 7-studio spectacle techniques (VATs, stencil masking, continuity element…)
-- `awwwards-research-2026.md` — rated 2026 winner techniques (progress-uniform, parabola easing…)
-- `functional-sites-2026.md` — conversion patterns + data (10-second test, 3-field forms, pricing anchors…)
-- `design-fundamentals-2026.md` — type scales, OKLCH color, layered shadows, bento, micro-interactions, nav
-- `imagery-direction.md` — art direction, grading to palette, per-industry image recipes
-- `seo-copy-playbook.md` — LocalBusiness JSON-LD, on-page checklist, PAS/AIDA/FAB copy recipes
-- `intake-menu.md` — **MANDATORY kickoff flow**: when Kallon asks for a site, first ask "menu or you decide?"; if menu, run the AskUserQuestion multiple-choice flow (options + Other); if no, decide everything and build.
-
-### Starter template
-`templates/localsite-starter/index.html` — production base for $350 builds (tokens, fluid type, layered shadows, click-to-call sticky header, bento services, 3-field Supabase form, NAP footer, JSON-LD, reveals, a11y). Verified clean at 375/1280. Start every LocalSite from it.
-
-(Copy files to local skill dir `C:\Users\Owner\.claude\skills\sitegenius\` as needed.)
+Research: `awwwards-techniques.md`, `awwwards-research-2026.md`, `functional-sites-2026.md`, `design-fundamentals-2026.md`, `design-options-catalog.md`, `technique-selection.md`.
+Process: `intake-menu.md` (mandatory kickoff), `design-planning.md`, `seo-copy-playbook.md`, `imagery-direction.md` (incl. the image-plan + Higgsfield prompt recipes).
+Accumulated experience: `build-gotchas.md` (120+ paid-for bugs + the QA harness), `kallon-taste.md` (accept/reject ledger — update after every reaction), `component-library.md` (proven components by canonical source file), `visual-review.md` (the mandatory "ugly check").
+Launch: `launch-playbook.md` (deploy package spec + Hostinger go-live), `handoff-kit.md` (client-facing handoff template).
 
 ## Known bugs / lessons
 | Problem | Fix |
@@ -80,8 +74,7 @@ Phases: 0 brief → 1 tokens/fonts (avoid Inter/Roboto; use Fraunces/Playfair/Sy
 | font_recommend errors | user_query ≤ 150 chars |
 
 ## Pending tasks (priority)
-1. ~~Write awwwards-techniques.md~~ — done, in this repo.
-2. ~~Supabase setup~~ — done, live on webelt.ca.
-3. ~~RNR site edits~~ — none needed; site is up. This repo is reference material for future client sites.
-4. SAAP contrast fix — green button focus ring.
-5. SAAP deploy — after saapthaicurry.com registered.
+1. SAAP contrast fix — green button focus ring (on Kallon's machine, not this repo).
+2. SAAP deploy — after saapthaicurry.com registered.
+3. First REAL client launch: run `launch-playbook.md` end-to-end on a paying client and bring back every live-side failure so it gets folded into the playbook — the sandbox side is fully rehearsed (deploy package pattern proven on `clients/_practice/rowan-winebar/`), the live side has zero paid-for gotchas yet.
+(Older items — awwwards research, Supabase on webelt.ca, RNR site edits — done and folded in.)

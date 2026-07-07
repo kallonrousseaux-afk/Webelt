@@ -23,7 +23,7 @@ Ask ONE question via AskUserQuestion before anything else:
 
 **Call 2 — content (only if not obvious from the request):**
 1. **Pages/sections** — 3-page standard (home/services/contact) / One-pager with sections / 5+ pages (trades SEO structure)
-2. **Imagery** — Client has photos / Generate with Higgsfield (ask-first rule still applies) / Browser-mock portfolio style / Minimal, type-led
+2. **Imagery** — Client has photos / Generate with Higgsfield (plan the full 3–5 shot SET per `imagery-direction.md`'s image plan and get ONE up-front cost approval for the set — not a re-ask per image) / Browser-mock portfolio style / Minimal, type-led
 3. **Motion level** — Subtle reveals only / Full motion system (cursor, tilt, magnetic) / Almost none (fastest)
 4. **Form goal** — Quote/contact form / Booking-style / Mailing list / Click-to-call only
 

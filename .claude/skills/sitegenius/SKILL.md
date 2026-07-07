@@ -57,6 +57,9 @@ Run `references/visual-review.md` in full: screenshot 4+ scroll positions at 144
 ## Step 5 — Deliver
 Send the HTML file itself (SendUserFile, display render) as the primary preview — stills cannot show motion and Kallon judges in the browser. Include mobile stills if he's on his phone. List remaining `TODO:`s. Also deliver `robots.txt` and `sitemap.xml` (copy from `templates/robots.txt`/`templates/sitemap.xml`, swap `TODO-DOMAIN.ca` for the real domain, add one `<url>` block per real page for multi-page builds) — every build needs these at the site root; they are not optional extras. Commit and push per branch instructions.
 
+## Step 6 — Launch (real client builds only)
+Run `references/launch-playbook.md`: Claude pre-stages the full deploy package (final HTML + filled meta/OG/favicon layer + branded `404.html` + robots/sitemap with the real domain + `ASSETS-TODO.md` for anything the sandbox can't download + form wired to the client's live Supabase + zip), then Kallon executes the 15-minute Hostinger go-live and the live verification list. Fill `references/handoff-kit.md` and send it WITH the package — a client site isn't delivered until the client knows what they own, what's demo, and who to call. Any launch-stage failure Kallon reports gets logged in `build-gotchas.md` and folded back into the playbook. (Practice builds stop at Step 5; the meta/404 layer is still cheap and worth including so packages are always launch-shaped.)
+
 ## Standing rules
 - Decisions Kallon has made are final; don't re-offer declined things or nag about "pending" items on finished work.
 - After every Kallon reaction (accept/reject/complaint/silence-and-move-on), append it to `references/kallon-taste.md`'s ledger and update its profile if the signal changes it — same commit as the build change.
